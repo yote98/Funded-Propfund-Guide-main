@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Funded Program Guide</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .gradient-text {
+            background: linear-gradient(to right, #14b8a6, #0f172a);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-slate-700">
+    <div class="min-h-screen flex flex-col">
+        <!-- Header -->
+        <header class="bg-white shadow-sm sticky top-0 z-50">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex items-center justify-between h-16">
+                    <div class="flex items-center">
+                        <button class="flex items-center space-x-3">
+                            <div class="h-8 w-8 bg-gradient-to-r from-teal-500 to-slate-900 rounded"></div>
+                            <span class="font-bold text-lg text-slate-800">Funded Program Guide</span>
+                        </button>
+                    </div>
+                    <nav class="hidden md:flex items-center space-x-1">
+                        <button class="px-3 py-2 text-sm font-medium text-teal-600 bg-teal-50 rounded-md">Home</button>
+                        <button class="px-3 py-2 text-sm font-medium text-slate-600 hover:bg-gray-100 rounded-md">Compare Firms</button>
+                        <button class="px-3 py-2 text-sm font-medium text-slate-600 hover:bg-gray-100 rounded-md">Education</button>
+                        <button class="px-3 py-2 text-sm font-medium text-slate-600 hover:bg-gray-100 rounded-md">Glossary</button>
+                        <button class="px-3 py-2 text-sm font-medium text-slate-600 hover:bg-gray-100 rounded-md">About</button>
+                    </nav>
+                    <div class="md:hidden">
+                        <button class="inline-flex items-center justify-center p-2 rounded-md text-slate-400 hover:text-slate-500 hover:bg-slate-100">
+                            <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="flex-grow container mx-auto px-4 sm:px-6 lg:px-8 py-8">
+            <div class="space-y-16">
+                <!-- Hero Section -->
+                <section class="text-center py-16">
+                    <h1 class="text-5xl md:text-6xl font-extrabold text-slate-900 tracking-tight">
+                        <span class="block gradient-text">
+                            We Research. You Profit.
+                        </span>
+                    </h1>
+                    <p class="mt-4 max-w-2xl mx-auto text-lg text-slate-600">
+                        Smart Solutions. Expert Analysis
+                    </p>
+                    <div class="mt-8 flex justify-center gap-4">
+                        <button class="text-center bg-gradient-to-r from-teal-500 to-slate-900 text-white font-semibold py-3 px-8 rounded-lg hover:from-teal-600 hover:to-slate-800 transition-all duration-300">
+                            Compare All Firms
+                        </button>
+                    </div>
+                </section>
+
+                <!-- Featured Firms Section -->
+                <section id="featured-firms">
+                    <h2 class="text-3xl font-bold text-slate-900 text-center mb-8">Featured Firms</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        <!-- Firm Card 1 - The 5%ers -->
+                        <div class="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow cursor-pointer">
+                            <div class="flex items-center mb-4">
+                                <img src="https://logo.clearbit.com/the5ers.com" alt="The 5%ers" class="h-12 w-12 rounded-lg mr-4">
+                                <div>
+                                    <h3 class="font-bold text-lg text-slate-900">The 5%ers</h3>
+                                    <p class="text-sm text-slate-600">Hyper Growth, Bootcamp, and High Stakes Programs</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center mb-4">
+                                <div class="flex text-yellow-400">
+                                    ★★★★★
+                                </div>
+                                <span class="ml-2 text-sm text-slate-600">4.8 (18,000 reviews)</span>
+                            </div>
+                            <p class="text-slate-600 mb-4">Offers up to $4M in funding with unique evaluation models and profit splits up to 100%.</p>
+                            <button class="w-full bg-teal-500 text-white py-2 px-4 rounded-lg hover:bg-teal-600 transition-colors">
+                                View Details
+                            </button>
+                        </div>
+
+                        <!-- Firm Card 2 - Apex Trader Funding -->
+                        <div class="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow cursor-pointer">
+                            <div class="flex items-center mb-4">
+                                <img src="https://apextraderfunding.com/logos" alt="Apex Trader Funding" class="h-12 w-12 rounded-lg mr-4">
+                                <div>
+                                    <h3 class="font-bold text-lg text-slate-900">Apex Trader Funding</h3>
+                                    <p class="text-sm text-slate-600">The Leader in Futures Funding</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center mb-4">
+                                <div class="flex text-yellow-400">
+                                    ★★★★★
+                                </div>
+                                <span class="ml-2 text-sm text-slate-600">4.7 (13,000 reviews)</span>
+                            </div>
+                            <p class="text-slate-600 mb-4">Premier futures prop firm with a simple one-step evaluation, no daily drawdown, and up to 20 accounts.</p>
+                            <button class="w-full bg-teal-500 text-white py-2 px-4 rounded-lg hover:bg-teal-600 transition-colors">
+                                View Details
+                            </button>
+                        </div>
+
+                        <!-- Firm Card 3 - Audacity Capital -->
+                        <div class="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow cursor-pointer">
+                            <div class="flex items-center mb-4">
+                                <img src="https://logo.clearbit.com/audacitycapital.co.uk" alt="Audacity Capital" class="h-12 w-12 rounded-lg mr-4">
+                                <div>
+                                    <h3 class="font-bold text-lg text-slate-900">Audacity Capital</h3>
+                                    <p class="text-sm text-slate-600">Instant Funding for Experienced Traders</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center mb-4">
+                                <div class="flex text-yellow-400">
+                                    ★★★★★
+                                </div>
+                                <span class="ml-2 text-sm text-slate-600">4.6 (500 reviews)</span>
+                            </div>
+                            <p class="text-slate-600 mb-4">Established firm from 2012 offering instant funding and tight spreads, with a strong focus on education.</p>
+                            <button class="w-full bg-teal-500 text-white py-2 px-4 rounded-lg hover:bg-teal-600 transition-colors">
+                                View Details
+                            </button>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Top Deals Section -->
+                <section id="top-deals">
+                    <h2 class="text-3xl font-bold text-slate-900 text-center mb-2">Top October Deals</h2>
+                    <p class="text-center text-slate-600 mb-8">Verified firms, top discounts.</p>
+                    <div class="bg-white rounded-lg shadow-md p-6">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div class="border-l-4 border-teal-500 pl-4">
+                                <h3 class="font-bold text-lg text-slate-900">The 5%ers - 20% Off</h3>
+                                <p class="text-slate-600">Get 20% off your first evaluation with code FPG20</p>
+                            </div>
+                            <div class="border-l-4 border-teal-500 pl-4">
+                                <h3 class="font-bold text-lg text-slate-900">Apex Trader - Free Reset</h3>
+                                <p class="text-slate-600">Free account reset on your first evaluation</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="bg-slate-900 text-white py-8">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center">
+                    <p>&copy; 2024 Funded Program Guide. All rights reserved.</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        // Add some basic interactivity
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add click handlers for navigation
+            const navButtons = document.querySelectorAll('nav button');
+            navButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // Remove active class from all buttons
+                    navButtons.forEach(btn => {
+                        btn.classList.remove('text-teal-600', 'bg-teal-50');
+                        btn.classList.add('text-slate-600', 'hover:bg-gray-100');
+                    });
+                    // Add active class to clicked button
+                    this.classList.remove('text-slate-600', 'hover:bg-gray-100');
+                    this.classList.add('text-teal-600', 'bg-teal-50');
+                });
+            });
+
+            // Add click handlers for firm cards
+            const firmCards = document.querySelectorAll('.bg-white.rounded-lg.shadow-md');
+            firmCards.forEach(card => {
+                card.addEventListener('click', function() {
+                    alert('Firm details would open here!');
+                });
+            });
+
+            // Add click handler for compare button
+            const compareButton = document.querySelector('button');
+            if (compareButton && compareButton.textContent.includes('Compare All Firms')) {
+                compareButton.addEventListener('click', function() {
+                    alert('Comparison tool would open here!');
+                });
+            }
+        });
+    </script>
+</body>
+</html>
