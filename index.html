@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" href="/logos/fpg-favicon.png" type="image/png">
+    <link rel="apple-touch-icon" href="/logos/fpg-favicon.png">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Funded Program Guide</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-start: #f8fafc; /* slate-50 */
+            --bg-mid:   #e2e8f0; /* slate-200 */
+            --bg-end:   #cbd5e1; /* slate-300 */
+            --blob-a:   120, 119, 198; /* indigo-ish */
+            --blob-b:   20, 184, 166;  /* teal */
+            --blob-c:   99, 102, 241;  /* indigo-500 */
+        }
+
+        body { 
+            font-family: 'Plus Jakarta Sans', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; 
+        }
+        .heading-font {
+            font-family: 'Space Grotesk', 'Plus Jakarta Sans', sans-serif;
+        }
+        .gradient-text {
+            background: linear-gradient(to right, #14b8a6, #0f172a);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        /* Clean vertical gradient background matching MoniUp Finance UI Kit */
+        body {
+            background: linear-gradient(180deg, #f8fafc 0%, #e2e8f0 30%, #cbd5e1 70%, #94a3b8 100%);
+            background-attachment: fixed;
+            position: relative;
+        }
+        
+        /* Glass morphism effect for cards */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.28);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.22);
+            box-shadow: 0 8px 30px rgba(15, 23, 42, 0.10);
+        }
+        
+        /* Enhanced shadows for 3D effect */
+        .card-3d {
+            box-shadow: 
+                0 6px 14px -6px rgba(15, 23, 42, 0.12),
+                0 8px 24px -4px rgba(15, 23, 42, 0.10),
+                0 0 0 1px rgba(2, 6, 23, 0.04);
+        }
+    </style>
+</head>
+<body class="text-slate-700">
+    <div id="root"></div>
+    <script type="module" src="/index.tsx"></script>
+</body>
+</html>
