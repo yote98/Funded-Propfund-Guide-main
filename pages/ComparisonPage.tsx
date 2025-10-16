@@ -54,6 +54,7 @@ const ComparisonPage: React.FC<ComparisonPageProps> = ({ viewFirm, firms, initia
     }, [initialSearchTerm, onSearchHandled]);
 
     const debouncedSearchTerm = useDebounce(searchTerm, 300);
+    
 
     const allCategories = useMemo(() => Array.from(new Set(firms.flatMap(f => f.categories))).filter(cat => cat !== 'Instant Funding').sort(), [firms]);
     const allModels = useMemo(() => {
@@ -130,18 +131,66 @@ const ComparisonPage: React.FC<ComparisonPageProps> = ({ viewFirm, firms, initia
     }, [firms, comparisonList]);
 
     const filteredAndSortedFirms = useMemo(() => {
-        let filteredFirms = [...firms]
-            .filter(firm => firm.name.toLowerCase().includes(debouncedSearchTerm.toLowerCase()))
-            .filter(firm => selectedCategories.length === 0 ? true : selectedCategories.some(cat => firm.categories.includes(cat)))
-            .filter(firm => selectedModels.length === 0 ? true : selectedModels.some(model => firm.fundingModels.includes(model)))
-            .filter(firm => selectedDrawdownTypes.length === 0 ? true : selectedDrawdownTypes.includes(firm.drawdownType))
-            .filter(firm => selectedPlatforms.length === 0 ? true : selectedPlatforms.some(platform => firm.platforms?.includes(platform)))
-            .filter(firm => usFriendlyOnly ? firm.isUSFriendly : true)
-            .filter(firm => weekendHoldingFilter ? firm.features.weekendHolding : true)
-            .filter(firm => eaFilter ? firm.features.expertAdvisors : true)
-            .filter(firm => scalingPlanFilter ? firm.features.scalingPlan : true)
-            .filter(firm => newsTradingFilter ? firm.features.newsTrading : true)
-            .filter(firm => noTimeLimitFilter ? firm.features.noTimeLimit : true);
+        let filteredFirms = [...firms];
+        
+        // Apply search filter
+        if (debouncedSearchTerm.trim()) {
+            const searchLower = debouncedSearchTerm.toLowerCase();
+            filteredFirms = filteredFirms.filter(firm => {
+                const nameMatch = firm.name.toLowerCase().includes(searchLower);
+                const shortNameMatch = firm.shortName.toLowerCase().includes(searchLower);
+                return nameMatch || shortNameMatch;
+            });
+        }
+        
+        // Apply other filters
+        if (selectedCategories.length > 0) {
+            filteredFirms = filteredFirms.filter(firm => 
+                selectedCategories.some(cat => firm.categories.includes(cat))
+            );
+        }
+        
+        if (selectedModels.length > 0) {
+            filteredFirms = filteredFirms.filter(firm => 
+                selectedModels.some(model => firm.fundingModels.includes(model))
+            );
+        }
+        
+        if (selectedDrawdownTypes.length > 0) {
+            filteredFirms = filteredFirms.filter(firm => 
+                selectedDrawdownTypes.includes(firm.drawdownType)
+            );
+        }
+        
+        if (selectedPlatforms.length > 0) {
+            filteredFirms = filteredFirms.filter(firm => 
+                selectedPlatforms.some(platform => firm.platforms?.includes(platform))
+            );
+        }
+        
+        if (usFriendlyOnly) {
+            filteredFirms = filteredFirms.filter(firm => firm.isUSFriendly);
+        }
+        
+        if (weekendHoldingFilter) {
+            filteredFirms = filteredFirms.filter(firm => firm.features.weekendHolding);
+        }
+        
+        if (eaFilter) {
+            filteredFirms = filteredFirms.filter(firm => firm.features.expertAdvisors);
+        }
+        
+        if (scalingPlanFilter) {
+            filteredFirms = filteredFirms.filter(firm => firm.features.scalingPlan);
+        }
+        
+        if (newsTradingFilter) {
+            filteredFirms = filteredFirms.filter(firm => firm.features.newsTrading);
+        }
+        
+        if (noTimeLimitFilter) {
+            filteredFirms = filteredFirms.filter(firm => firm.features.noTimeLimit);
+        }
 
         if (sortConfig !== null) {
             filteredFirms.sort((a, b) => {
@@ -180,7 +229,7 @@ const ComparisonPage: React.FC<ComparisonPageProps> = ({ viewFirm, firms, initia
             });
         }
         return filteredFirms;
-    }, [sortConfig, debouncedSearchTerm, selectedCategories, selectedModels, usFriendlyOnly, weekendHoldingFilter, eaFilter, scalingPlanFilter, newsTradingFilter, noTimeLimitFilter, firms]);
+    }, [sortConfig, debouncedSearchTerm, selectedCategories, selectedModels, selectedDrawdownTypes, selectedPlatforms, usFriendlyOnly, weekendHoldingFilter, eaFilter, scalingPlanFilter, newsTradingFilter, noTimeLimitFilter, firms]);
 
     const requestSort = (key: SortKey) => {
         let direction: SortDirection = 'asc';
@@ -217,13 +266,30 @@ const ComparisonPage: React.FC<ComparisonPageProps> = ({ viewFirm, firms, initia
         <div className="space-y-4">
           {/* Search */}
           <div className="max-w-md mx-auto">
-            <input 
-              type="text" 
-              value={searchTerm} 
-              onChange={(e) => setSearchTerm(e.target.value)} 
-              placeholder="Search firms (e.g., FTMO, Apex...)" 
-              className="w-full border border-slate-300 rounded-lg shadow-sm py-3 px-4 text-slate-900 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-teal-500" 
-            />
+            <div className="relative">
+              <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                <svg className="h-5 w-5 text-slate-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                  <path fillRule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clipRule="evenodd" />
+                </svg>
+              </div>
+              <input 
+                type="text" 
+                value={searchTerm} 
+                onChange={(e) => setSearchTerm(e.target.value)} 
+                placeholder="Search firms (e.g., FTMO, Apex, Fundora...)" 
+                className="w-full border border-slate-300 rounded-lg shadow-sm py-3 pl-10 pr-4 text-slate-900 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-teal-500" 
+              />
+              {searchTerm && (
+                <button 
+                  onClick={() => setSearchTerm('')}
+                  className="absolute inset-y-0 right-0 pr-3 flex items-center"
+                >
+                  <svg className="h-5 w-5 text-slate-400 hover:text-slate-600" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clipRule="evenodd" />
+                  </svg>
+                </button>
+              )}
+            </div>
           </div>
 
           {/* Category Filters */}
@@ -309,70 +375,73 @@ const ComparisonPage: React.FC<ComparisonPageProps> = ({ viewFirm, firms, initia
           {/* Quick Filters */}
           <div>
             <h4 className="text-sm font-semibold text-slate-700 mb-3 text-center">Quick Filters</h4>
-            <div className="flex flex-wrap justify-center gap-4">
-              <label className="flex items-center cursor-pointer">
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3 justify-center">
+              <label className="flex items-center cursor-pointer bg-white p-3 rounded-lg shadow-sm border border-slate-200 hover:bg-slate-50 transition-colors">
                 <input 
                   type="checkbox" 
                   checked={usFriendlyOnly} 
                   onChange={(e) => setUsFriendlyOnly(e.target.checked)} 
                   className="h-4 w-4 text-teal-600 border-gray-300 rounded focus:ring-teal-500" 
                 />
-                <span className="ml-2 text-sm text-slate-700">US Friendly</span>
+                <span className="ml-2 text-sm text-slate-700 font-medium">US Friendly</span>
               </label>
-              <label className="flex items-center cursor-pointer">
+              <label className="flex items-center cursor-pointer bg-white p-3 rounded-lg shadow-sm border border-slate-200 hover:bg-slate-50 transition-colors">
                 <input 
                   type="checkbox" 
                   checked={eaFilter} 
                   onChange={(e) => setEaFilter(e.target.checked)} 
                   className="h-4 w-4 text-teal-600 border-gray-300 rounded focus:ring-teal-500" 
                 />
-                <span className="ml-2 text-sm text-slate-700">EAs Allowed</span>
+                <span className="ml-2 text-sm text-slate-700 font-medium">EAs Allowed</span>
               </label>
-              <label className="flex items-center cursor-pointer">
+              <label className="flex items-center cursor-pointer bg-white p-3 rounded-lg shadow-sm border border-slate-200 hover:bg-slate-50 transition-colors">
                 <input 
                   type="checkbox" 
                   checked={newsTradingFilter} 
                   onChange={(e) => setNewsTradingFilter(e.target.checked)} 
                   className="h-4 w-4 text-teal-600 border-gray-300 rounded focus:ring-teal-500" 
                 />
-                <span className="ml-2 text-sm text-slate-700">News Trading</span>
+                <span className="ml-2 text-sm text-slate-700 font-medium">News Trading</span>
               </label>
-              <label className="flex items-center cursor-pointer">
+              <label className="flex items-center cursor-pointer bg-white p-3 rounded-lg shadow-sm border border-slate-200 hover:bg-slate-50 transition-colors">
                 <input 
                   type="checkbox" 
                   checked={weekendHoldingFilter} 
                   onChange={(e) => setWeekendHoldingFilter(e.target.checked)} 
                   className="h-4 w-4 text-teal-600 border-gray-300 rounded focus:ring-teal-500" 
                 />
-                <span className="ml-2 text-sm text-slate-700">Weekend Holding</span>
+                <span className="ml-2 text-sm text-slate-700 font-medium">Weekend Holding</span>
               </label>
-              <label className="flex items-center cursor-pointer">
+              <label className="flex items-center cursor-pointer bg-white p-3 rounded-lg shadow-sm border border-slate-200 hover:bg-slate-50 transition-colors">
                 <input 
                   type="checkbox" 
                   checked={noTimeLimitFilter} 
                   onChange={(e) => setNoTimeLimitFilter(e.target.checked)} 
                   className="h-4 w-4 text-teal-600 border-gray-300 rounded focus:ring-teal-500" 
                 />
-                <span className="ml-2 text-sm text-slate-700">No Time Limit</span>
+                <span className="ml-2 text-sm text-slate-700 font-medium">No Time Limit</span>
               </label>
-              <label className="flex items-center cursor-pointer">
+              <label className="flex items-center cursor-pointer bg-white p-3 rounded-lg shadow-sm border border-slate-200 hover:bg-slate-50 transition-colors">
                 <input 
                   type="checkbox" 
                   checked={scalingPlanFilter} 
                   onChange={(e) => setScalingPlanFilter(e.target.checked)} 
                   className="h-4 w-4 text-teal-600 border-gray-300 rounded focus:ring-teal-500" 
                 />
-                <span className="ml-2 text-sm text-slate-700">Scaling Plan</span>
+                <span className="ml-2 text-sm text-slate-700 font-medium">Scaling Plan</span>
               </label>
             </div>
           </div>
 
           {/* Clear Filters Button */}
-          <div className="text-center">
+          <div className="text-center mt-6">
             <button 
               onClick={handleClearFilters} 
-              className="px-6 py-2 text-sm font-semibold rounded-lg transition-colors duration-200 bg-slate-200 text-slate-700 hover:bg-slate-300"
+              className="px-6 py-3 text-sm font-semibold rounded-lg transition-all duration-200 bg-slate-200 text-slate-700 hover:bg-slate-300 shadow-sm hover:shadow flex items-center mx-auto"
             >
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              </svg>
               Clear All Filters
             </button>
           </div>
@@ -381,10 +450,10 @@ const ComparisonPage: React.FC<ComparisonPageProps> = ({ viewFirm, firms, initia
 
       <div className="w-full">
         <main className="w-full">
-          <div className="overflow-x-auto">
+          <div className="overflow-x-auto shadow-md rounded-lg">
             <div className="align-middle inline-block min-w-full">
               <div className="shadow overflow-hidden border border-slate-200 rounded-lg">
-                <table className="min-w-full divide-y divide-slate-200">
+                <table className="min-w-full divide-y divide-slate-200 table-fixed">
                   <thead className="bg-gray-100">
                     <tr>
                       <th className="px-4 py-3 text-center text-xs font-medium text-slate-500 uppercase tracking-wider">Compare</th>
@@ -409,12 +478,19 @@ const ComparisonPage: React.FC<ComparisonPageProps> = ({ viewFirm, firms, initia
                           <input type="checkbox" checked={comparisonList.includes(firm.id)} onChange={() => handleToggleCompare(firm.id)} disabled={comparisonList.length >= MAX_COMPARE && !comparisonList.includes(firm.id)} className="h-5 w-5 text-teal-600 border-gray-300 rounded focus:ring-teal-500 disabled:opacity-50" aria-label={`Compare ${firm.name}`} />
                         </td>
                         <td className="px-4 py-4 whitespace-nowrap">
-                          <button onClick={() => viewFirm(firm.id)} className="flex items-center group">
+                          <button 
+                            onClick={() => {
+                              trackPropFirmClick(firm.id, firm.name);
+                              viewFirm(firm.id);
+                            }} 
+                            className="flex items-center group"
+                          >
                             <div className="flex-shrink-0 h-10 w-10 bg-white rounded-full p-1 flex items-center justify-center border border-slate-200">
                                <Logo firmName={firm.name} logoUrl={firm.logoUrl} className="object-contain h-full w-full" />
                             </div>
                             <div className="ml-4 text-left">
                               <div className="text-sm font-medium text-slate-900 group-hover:text-teal-500 transition-colors">{firm.name}</div>
+                              {firm.isFeatured && <span className="inline-block px-2 py-0.5 text-xs bg-amber-100 text-amber-800 rounded-full">Featured</span>}
                             </div>
                           </button>
                         </td>
@@ -424,11 +500,14 @@ const ComparisonPage: React.FC<ComparisonPageProps> = ({ viewFirm, firms, initia
                         <td className="px-4 py-4 whitespace-nowrap text-sm text-slate-600 font-medium">{firm.payoutFrequency}</td>
                         <td className="px-4 py-4 whitespace-nowrap text-sm text-slate-600">
                           <div className="flex flex-wrap gap-1">
-                            {firm.platforms?.map((platform, index) => (
-                              <span key={index} className="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
-                                {platform}
-                              </span>
-                            )) || <span className="text-slate-400">N/A</span>}
+                            {firm.platforms && firm.platforms.length > 0 ? 
+                              firm.platforms.map((platform) => (
+                                <span key={`platform-${platform}`} className="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-blue-100 text-blue-800 border border-blue-200">
+                                  {platform}
+                                </span>
+                              )) : 
+                              <span className="text-slate-400">N/A</span>
+                            }
                           </div>
                         </td>
                         <td className="px-4 py-4 whitespace-nowrap text-center">
@@ -447,7 +526,15 @@ const ComparisonPage: React.FC<ComparisonPageProps> = ({ viewFirm, firms, initia
                             {firm.features.noTimeLimit ? <CheckIcon className="w-6 h-6 text-green-500 mx-auto" /> : <XIcon className="w-6 h-6 text-red-500 mx-auto" />}
                         </td>
                         <td className="px-4 py-4 whitespace-nowrap text-right text-sm font-medium">
-                           <a href={firm.affiliateUrl} target="_blank" rel="noopener noreferrer" className="text-teal-600 hover:text-teal-500 font-bold py-2 px-4 rounded-md bg-teal-500/10 hover:bg-teal-500/20 transition-colors">Visit Site</a>
+                           <a 
+                             href={firm.affiliateUrl} 
+                             target="_blank" 
+                             rel="noopener noreferrer" 
+                             onClick={() => trackPropFirmClick(firm.id, firm.name, 'affiliate_link')}
+                             className="text-teal-600 hover:text-teal-500 font-bold py-2 px-4 rounded-md bg-teal-500/10 hover:bg-teal-500/20 transition-colors shadow-sm hover:shadow"
+                           >
+                             Visit Site
+                           </a>
                         </td>
                       </tr>
                     ))}

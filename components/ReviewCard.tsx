@@ -42,19 +42,19 @@ const ReviewCard: React.FC<ReviewCardProps> = ({ review }) => {
   };
 
   return (
-    <div className="bg-white border border-slate-200 rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow duration-200 h-full flex flex-col">
+    <div className="bg-white border border-slate-200 rounded-xl p-5 shadow-sm hover:shadow-md transition-shadow duration-200 h-full grid grid-rows-[auto,1fr,auto] max-w-[520px] mx-auto">
       {/* Header */}
-      <div className="flex items-start justify-between mb-4">
+      <div className="flex items-start justify-between mb-2">
         <div className="flex items-center space-x-3">
           {/* Avatar */}
-          <div className="w-10 h-10 bg-gradient-to-r from-teal-500 to-slate-900 rounded-full flex items-center justify-center text-white font-semibold text-sm">
+          <div className="w-10 h-10 bg-gradient-to-r from-teal-500 to-slate-900 rounded-full flex items-center justify-center text-white font-semibold text-xs">
             {getInitials(review.userName)}
           </div>
           
           {/* User Info */}
           <div>
             <div className="flex items-center space-x-2">
-              <h4 className="font-semibold text-slate-900">{review.userName}</h4>
+              <h4 className="font-semibold text-slate-900 text-sm">{review.userName}</h4>
               {review.verified && (
                 <div className="flex items-center">
                   <svg className="w-4 h-4 text-green-500" fill="currentColor" viewBox="0 0 20 20">
@@ -75,24 +75,24 @@ const ReviewCard: React.FC<ReviewCardProps> = ({ review }) => {
 
         {/* Rating and Date */}
         <div className="text-right">
-          <div className="flex items-center space-x-1 mb-1">
+          <div className="flex items-center space-x-1 mb-0.5">
             {renderStars(review.rating)}
           </div>
-          <span className="text-sm text-slate-500">{formatDate(review.date)}</span>
+          <span className="text-xs text-slate-500 whitespace-nowrap leading-tight">{formatDate(review.date)}</span>
         </div>
       </div>
 
       {/* Review Content */}
-      <div className="mb-4 flex-grow">
-        <h5 className="font-semibold text-slate-900 mb-2">{review.title}</h5>
-        <p className="text-slate-700 leading-relaxed line-clamp-4">{review.content}</p>
+      <div className="mb-3">
+        <h5 className="font-semibold text-slate-900 mb-2 text-sm">{review.title}</h5>
+        <p className="text-slate-700 leading-relaxed line-clamp-4 text-sm">{review.content}</p>
       </div>
 
       {/* Trading Details */}
       {(review.accountSize || review.profitMade || review.payoutReceived !== undefined) && (
-        <div className="bg-slate-50 rounded-lg p-4 mb-4">
-          <h6 className="font-medium text-slate-900 mb-2">Trading Details</h6>
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 text-sm">
+        <div className="bg-slate-50 rounded-lg p-3 mb-2">
+          <h6 className="font-medium text-slate-900 mb-2 text-sm">Trading Details</h6>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 text-xs">
             {review.accountSize && (
               <div>
                 <span className="text-slate-500">Account Size:</span>
@@ -118,12 +118,12 @@ const ReviewCard: React.FC<ReviewCardProps> = ({ review }) => {
       )}
 
       {/* Footer */}
-      <div className="flex items-center justify-end pt-4 border-t border-slate-100 mt-auto">
+      <div className="flex items-center justify-end pt-3 border-t border-slate-100">
         <button className="flex items-center space-x-2 text-slate-500 hover:text-slate-700 transition-colors duration-200">
           <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 11l5-5m0 0l5 5m-5-5v12" />
           </svg>
-          <span className="text-sm font-medium">{review.helpful}</span>
+          <span className="text-xs font-medium">{review.helpful}</span>
         </button>
       </div>
     </div>

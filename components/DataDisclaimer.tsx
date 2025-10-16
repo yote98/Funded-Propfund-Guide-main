@@ -20,7 +20,7 @@ const DataDisclaimer: React.FC = () => {
             </p>
             <p className="mt-2">
               <strong>Our Commitment:</strong> We only display data we can verify through reliable sources like 
-              TradingPilot.net, Payout Junction, Finance Magnates, and direct firm verification. When in doubt, we err on the side of caution.
+              TradingPilot.net, Payout Junction, and direct firm verification. When in doubt, we err on the side of caution.
             </p>
           </div>
         </div>

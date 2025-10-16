@@ -13,12 +13,9 @@ import InfinityIcon from '../components/icons/InfinityIcon';
 import ReviewSummary from '../components/ReviewSummary';
 import PlatformIcon from '../components/PlatformIcon';
 import PayoutTimeline from '../components/PayoutTimeline';
-import SuccessMetrics from '../components/SuccessMetrics';
 import CostCalculator from '../components/CostCalculator';
 import DataDisclaimer from '../components/DataDisclaimer';
 import DataSources from '../components/DataSources';
-import RiskAssessment from '../components/RiskAssessment';
-import SuccessProbability from '../components/SuccessProbability';
 import TradingPilotData from '../components/TradingPilotData';
 import DataVerification from '../components/DataVerification';
 import VerificationGuide from '../components/VerificationGuide';
@@ -53,75 +50,6 @@ const FirmReviewPage: React.FC<FirmReviewPageProps> = ({ firm }) => {
   const [showAllReviews, setShowAllReviews] = useState(false);
   return (
     <div className="max-w-4xl mx-auto">
-      <DataDisclaimer />
-      <DataVerification />
-      <VerificationGuide />
-      
-      {/* TradingPilot Live Data for specific firms */}
-      {firm.id === 'funding-pips' && (
-        <TradingPilotData
-          firmName={firm.name}
-          totalPayouts="23,570,503.94"
-          numberOfPayouts={9849}
-          averagePayout="2,393.19"
-          largestPayout="43,190.00"
-          last24Hours="153,559.00"
-          last7Days="723,754.00"
-          last30Days="3,457,237.66"
-        />
-      )}
-      
-      {firm.id === 'fxify' && (
-        <TradingPilotData
-          firmName={firm.name}
-          totalPayouts="26,983,885.33"
-          numberOfPayouts={9741}
-          averagePayout="2,770.14"
-          largestPayout="81,000.00"
-          last24Hours="5,682.34"
-          last7Days="51,170.61"
-          last30Days="302,854.36"
-        />
-      )}
-      
-      {firm.id === 'the-5ers' && (
-        <TradingPilotData
-          firmName={firm.name}
-          totalPayouts="21,627,887.08"
-          numberOfPayouts={9873}
-          averagePayout="2,190.61"
-          largestPayout="56,322.45"
-          last24Hours="129,146.98"
-          last7Days="820,460.18"
-          last30Days="3,386,720.01"
-        />
-      )}
-      
-      {firm.id === 'funded-next' && (
-        <TradingPilotData
-          firmName={firm.name}
-          totalPayouts="23,851,448.44"
-          numberOfPayouts={9903}
-          averagePayout="2,408.51"
-          largestPayout="99,918.01"
-          last24Hours="524,214.29"
-          last7Days="2,835,978.37"
-          last30Days="10,131,828.84"
-        />
-      )}
-      
-      {firm.id === 'blue-guardian' && (
-        <TradingPilotData
-          firmName={firm.name}
-          totalPayouts="10,512,641.25"
-          numberOfPayouts={4754}
-          averagePayout="2,211.33"
-          largestPayout="40,343.00"
-          last24Hours="285.73"
-          last7Days="109,941.93"
-          last30Days="306,488.62"
-        />
-      )}
       
       <header className="mb-8">
         <div className="flex flex-col sm:flex-row items-start sm:items-center gap-6 p-6 bg-white border border-slate-200 rounded-xl shadow-md">
@@ -159,8 +87,8 @@ const FirmReviewPage: React.FC<FirmReviewPageProps> = ({ firm }) => {
             <section className="bg-white border border-slate-200 p-6 rounded-xl shadow-md">
                 <h2 className="text-2xl font-bold text-slate-900 mb-4">Trading Platforms</h2>
                 <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
-                    {firm.platforms.map((platform, index) => (
-                        <PlatformIcon key={index} platform={platform} showLabel={true} />
+                    {firm.platforms.map((platform) => (
+                        <PlatformIcon key={`platform-${platform}`} platform={platform} showLabel={true} />
                     ))}
                 </div>
             </section>
@@ -182,8 +110,8 @@ const FirmReviewPage: React.FC<FirmReviewPageProps> = ({ firm }) => {
                     <div>
                         <h3 className="text-lg font-semibold text-green-600 mb-3">Pros</h3>
                         <ul className="space-y-2">
-                            {firm.pros.map((pro, index) => (
-                                <li key={index} className="flex items-start">
+                            {firm.pros.map((pro) => (
+                                <li key={`pro-${pro.substring(0, 20)}`} className="flex items-start">
                                     <CheckIcon className="w-5 h-5 text-green-500 mr-2 mt-1 flex-shrink-0" />
                                     <span className="text-slate-700">{pro}</span>
                                 </li>
@@ -193,8 +121,8 @@ const FirmReviewPage: React.FC<FirmReviewPageProps> = ({ firm }) => {
                      <div>
                         <h3 className="text-lg font-semibold text-red-600 mb-3">Cons</h3>
                         <ul className="space-y-2">
-                            {firm.cons.map((con, index) => (
-                                <li key={index} className="flex items-start">
+                            {firm.cons.map((con) => (
+                                <li key={`con-${con.substring(0, 20)}`} className="flex items-start">
                                     <XIcon className="w-5 h-5 text-red-500 mr-2 mt-1 flex-shrink-0" />
                                     <span className="text-slate-700">{con}</span>
                                 </li>
@@ -211,26 +139,44 @@ const FirmReviewPage: React.FC<FirmReviewPageProps> = ({ firm }) => {
                 </div>
             </section>
 
-            {/* Risk Assessment - Horizontal Card */}
-            <div className="mt-6">
-              <RiskAssessment
-                maxDrawdown={firm.details.maxDrawdown}
-                dailyDrawdown={firm.details.dailyDrawdown}
-                profitTarget={firm.details.profitTarget}
-                minTradingDays={firm.details.minTradingDays}
-                accountSize={firm.details.minFunding}
-              />
-            </div>
-
-            {/* Success Probability - Full Width */}
-            <div className="mt-6">
-              <SuccessProbability
-                evaluationPassRate={firm.successMetrics?.evaluationPassRate || 0}
-                averageTimeToPass={firm.successMetrics?.averageTimeToPass || '3-4 weeks'}
-                traderRetentionRate={firm.successMetrics?.traderRetentionRate || 0}
-                scalingSuccessRate={firm.successMetrics?.scalingSuccessRate || 0}
-              />
-            </div>
+            {/* Trading Requirements Section */}
+            <section className="bg-white border border-slate-200 p-6 rounded-xl shadow-md">
+                <h2 className="text-2xl font-bold text-slate-900 mb-4">Trading Requirements</h2>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                    <div className="bg-slate-50 p-4 rounded-lg border border-slate-200">
+                        <h3 className="text-lg font-semibold text-slate-900 mb-2">Profit Target</h3>
+                        <p className="text-slate-700">Traders need to reach a {firm.details.profitTarget}% profit target to pass the evaluation.</p>
+                    </div>
+                    <div className="bg-slate-50 p-4 rounded-lg border border-slate-200">
+                        <h3 className="text-lg font-semibold text-slate-900 mb-2">Trading Period</h3>
+                        <p className="text-slate-700">{firm.details.minTradingDays > 0 ? `Minimum ${firm.details.minTradingDays} trading days required.` : 'No minimum trading days required.'}</p>
+                    </div>
+                </div>
+            </section>
+            
+            {/* Risk Management Section */}
+            <section className="bg-white border border-slate-200 p-6 rounded-xl shadow-md">
+                <h2 className="text-2xl font-bold text-slate-900 mb-4">Risk Management Rules</h2>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                    <div className="bg-slate-50 p-4 rounded-lg border border-slate-200">
+                        <h3 className="text-lg font-semibold text-slate-900 mb-2">Maximum Drawdown</h3>
+                        <p className="text-slate-700">Maximum allowed drawdown is {firm.details.maxDrawdown}% of account balance.</p>
+                    </div>
+                    <div className="bg-slate-50 p-4 rounded-lg border border-slate-200">
+                        <h3 className="text-lg font-semibold text-slate-900 mb-2">Daily Drawdown</h3>
+                        <p className="text-slate-700">{firm.details.dailyDrawdown > 0 ? `Daily drawdown limit is ${firm.details.dailyDrawdown}%.` : 'No daily drawdown limit specified.'}</p>
+                    </div>
+                    <div className="bg-slate-50 p-4 rounded-lg border border-slate-200 sm:col-span-2">
+                        <h3 className="text-lg font-semibold text-slate-900 mb-2">Drawdown Type</h3>
+                        <p className="text-slate-700">
+                            {firm.drawdownType === 'Static' ? 'Static drawdown is calculated from the starting balance.' : 
+                             firm.drawdownType === 'Trailing' ? 'Trailing drawdown is calculated from the highest equity point reached.' : 
+                             firm.drawdownType === 'EOD' ? 'End-of-day drawdown is calculated at the close of each trading day.' : 
+                             `${firm.drawdownType} drawdown calculation.`}
+                        </p>
+                    </div>
+                </div>
+            </section>
         </div>
         <aside className="lg:col-span-1">
           <div className="sticky top-24 bg-white border border-slate-200 p-6 rounded-xl shadow-md">
@@ -276,14 +222,6 @@ const FirmReviewPage: React.FC<FirmReviewPageProps> = ({ firm }) => {
                 />
               )}
 
-              {firm.successMetrics && (
-                <SuccessMetrics
-                  evaluationPassRate={firm.successMetrics.evaluationPassRate}
-                  averageTimeToPass={firm.successMetrics.averageTimeToPass}
-                  traderRetentionRate={firm.successMetrics.traderRetentionRate}
-                  scalingSuccessRate={firm.successMetrics.scalingSuccessRate}
-                />
-              )}
 
               <CostCalculator
                 minStartingCost={firm.minStartingCost}
@@ -328,7 +266,7 @@ const FirmReviewPage: React.FC<FirmReviewPageProps> = ({ firm }) => {
                     </div>
                     <div className="flex items-center space-x-1">
                       {[1,2,3,4,5].map((star) => (
-                        <svg key={star} className="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                        <svg key={`star-rating-${Math.random()}-${star}`} className="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
                           <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
                         </svg>
                       ))}
@@ -353,7 +291,7 @@ const FirmReviewPage: React.FC<FirmReviewPageProps> = ({ firm }) => {
                     </div>
                     <div className="flex items-center space-x-1">
                       {[1,2,3,4,5].map((star) => (
-                        <svg key={star} className="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                        <svg key={`star-rating-${Math.random()}-${star}`} className="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
                           <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
                         </svg>
                       ))}
@@ -378,7 +316,7 @@ const FirmReviewPage: React.FC<FirmReviewPageProps> = ({ firm }) => {
                     </div>
                     <div className="flex items-center space-x-1">
                       {[1,2,3,4].map((star) => (
-                        <svg key={star} className="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                        <svg key={`star-rating-${Math.random()}-${star}`} className="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
                           <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
                         </svg>
                       ))}
@@ -409,7 +347,7 @@ const FirmReviewPage: React.FC<FirmReviewPageProps> = ({ firm }) => {
                         </div>
                         <div className="flex items-center space-x-1">
                           {[1,2,3,4,5].map((star) => (
-                            <svg key={star} className="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                            <svg key={`star-rating-${Math.random()}-${star}`} className="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
                               <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
                             </svg>
                           ))}
@@ -434,7 +372,7 @@ const FirmReviewPage: React.FC<FirmReviewPageProps> = ({ firm }) => {
                         </div>
                         <div className="flex items-center space-x-1">
                           {[1,2,3,4].map((star) => (
-                            <svg key={star} className="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                            <svg key={`star-rating-${Math.random()}-${star}`} className="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
                               <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
                             </svg>
                           ))}
@@ -462,7 +400,7 @@ const FirmReviewPage: React.FC<FirmReviewPageProps> = ({ firm }) => {
                         </div>
                         <div className="flex items-center space-x-1">
                           {[1,2,3,4,5].map((star) => (
-                            <svg key={star} className="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                            <svg key={`star-rating-${Math.random()}-${star}`} className="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
                               <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
                             </svg>
                           ))}
@@ -544,6 +482,89 @@ const FirmReviewPage: React.FC<FirmReviewPageProps> = ({ firm }) => {
               </div>
             </div>
           </div>
+        </div>
+      </div>
+
+      {/* Data Sources & Verification Section - Moved to Bottom */}
+      <div className="mt-12 space-y-6">
+        <h2 className="text-2xl font-bold text-slate-900 mb-6 text-center">Data Sources & Verification</h2>
+        <DataSources />
+        
+        {/* Live Payout Data */}
+        {(firm.id === 'funding-pips' || firm.id === 'fxify' || firm.id === 'the-5ers' || firm.id === 'funded-next' || firm.id === 'blue-guardian') && (
+          <div className="mt-8 bg-white border border-slate-200 rounded-xl p-6 shadow-sm">
+            <h3 className="text-lg font-semibold text-slate-900 mb-4 hidden">Live Payout Data</h3>
+            {firm.id === 'funding-pips' && (
+              <TradingPilotData
+                firmName={firm.name}
+                totalPayouts="23,570,503.94"
+                numberOfPayouts={9849}
+                averagePayout="2,393.19"
+                largestPayout="43,190.00"
+                last24Hours="153,559.00"
+                last7Days="723,754.00"
+                last30Days="3,457,237.66"
+              />
+            )}
+            
+            {firm.id === 'fxify' && (
+              <TradingPilotData
+                firmName={firm.name}
+                totalPayouts="26,983,885.33"
+                numberOfPayouts={9741}
+                averagePayout="2,770.14"
+                largestPayout="81,000.00"
+                last24Hours="5,682.34"
+                last7Days="51,170.61"
+                last30Days="302,854.36"
+              />
+            )}
+            
+            {firm.id === 'the-5ers' && (
+              <TradingPilotData
+                firmName={firm.name}
+                totalPayouts="21,627,887.08"
+                numberOfPayouts={9873}
+                averagePayout="2,190.61"
+                largestPayout="56,322.45"
+                last24Hours="129,146.98"
+                last7Days="820,460.18"
+                last30Days="3,386,720.01"
+              />
+            )}
+            
+            {firm.id === 'funded-next' && (
+              <TradingPilotData
+                firmName={firm.name}
+                totalPayouts="23,851,448.44"
+                numberOfPayouts={9903}
+                averagePayout="2,408.51"
+                largestPayout="99,918.01"
+                last24Hours="524,214.29"
+                last7Days="2,835,978.37"
+                last30Days="10,131,828.84"
+              />
+            )}
+            
+            {firm.id === 'blue-guardian' && (
+              <TradingPilotData
+                firmName={firm.name}
+                totalPayouts="10,512,641.25"
+                numberOfPayouts={4754}
+                averagePayout="2,211.33"
+                largestPayout="40,343.00"
+                last24Hours="285.73"
+                last7Days="109,941.93"
+                last30Days="306,488.62"
+              />
+            )}
+          </div>
+        )}
+        
+        <div className="mt-8 space-y-6">
+          <DataDisclaimer />
+          <DataVerification />
+          <VerificationGuide />
         </div>
       </div>
     </div>

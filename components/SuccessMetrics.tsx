@@ -36,10 +36,6 @@ const SuccessMetrics: React.FC<SuccessMetricsProps> = ({
         <a href="https://payoutjunction.com" target="_blank" rel="noopener noreferrer" className="text-xs text-blue-600 hover:text-blue-800 underline">
           PJ
         </a>
-        <span className="text-xs text-slate-400">•</span>
-        <a href="https://financemagnates.com" target="_blank" rel="noopener noreferrer" className="text-xs text-blue-600 hover:text-blue-800 underline">
-          FM
-        </a>
       </div>
       </div>
       

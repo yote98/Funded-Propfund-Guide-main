@@ -47,7 +47,9 @@ const ReviewCarousel: React.FC<ReviewCarouselProps> = ({
     setCurrentIndex(index);
   };
 
-  const visibleReviews = reviews.slice(currentIndex, currentIndex + showCount);
+  const maxStart = Math.max(0, reviews.length - showCount);
+  const clampedIndex = Math.min(currentIndex, maxStart);
+  const visibleReviews = reviews.slice(clampedIndex, clampedIndex + showCount);
   const totalSlides = Math.ceil(reviews.length / showCount);
 
   return (
@@ -60,17 +62,14 @@ const ReviewCarousel: React.FC<ReviewCarouselProps> = ({
         onMouseLeave={() => setIsHovered(false)}
       >
         <div 
-          className="flex transition-transform duration-500 ease-in-out"
-          style={{ 
-            transform: `translateX(-${currentIndex * (100 / showCount)}%)`,
-            width: `${(reviews.length / showCount) * 100}%`
-          }}
+          className="flex items-stretch"
+          style={{ width: '100%' }}
         >
-          {reviews.map((review, index) => (
+          {visibleReviews.map((review) => (
             <div 
               key={review.id} 
               className="flex-shrink-0 px-3 h-full"
-              style={{ width: `${100 / reviews.length}%` }}
+              style={{ width: `${100 / showCount}%` }}
             >
               <div className="h-full flex flex-col">
                 <ReviewCard review={review} />

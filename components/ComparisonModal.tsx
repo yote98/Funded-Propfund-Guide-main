@@ -23,11 +23,13 @@ const featuresToCompare: { key: FeatureKey; label: string; isDetails?: boolean; 
     { key: 'drawdownType', label: 'Drawdown Type', best: 'none' },
     { key: 'payoutFrequency', label: 'Payout Frequency', best: 'none' },
     { key: 'platforms', label: 'Trading Platforms', best: 'none' },
+    { key: 'tradingInstruments', label: 'Trading Instruments', best: 'none' },
     { key: 'minTradingDays', label: 'Min Trading Days', isDetails: true, best: 'min', format: v => v > 0 ? v : 'None' },
     { key: 'weekendHolding', label: 'Weekend Holding', isFeatures: true, best: 'boolean' },
     { key: 'expertAdvisors', label: 'EAs Allowed', isFeatures: true, best: 'boolean' },
     { key: 'newsTrading', label: 'News Trading', isFeatures: true, best: 'boolean' },
     { key: 'noTimeLimit', label: 'No Time Limit', isFeatures: true, best: 'boolean' },
+    { key: 'scalingPlan', label: 'Scaling Plan', isFeatures: true, best: 'boolean' },
 ];
 
 const getBestValue = (firms: PropFirm[], feature: typeof featuresToCompare[0]) => {
@@ -49,7 +51,7 @@ const getBestValue = (firms: PropFirm[], feature: typeof featuresToCompare[0]) =
         return values.some(v => v === true);
     }
     return null;
-}
+};
 
 const ComparisonModal: React.FC<ComparisonModalProps> = ({ firms, onClose }) => {
     const bestValues = useMemo(() => {
@@ -69,19 +71,28 @@ const ComparisonModal: React.FC<ComparisonModalProps> = ({ firms, onClose }) => 
             return value ? <CheckIcon className="w-6 h-6 text-green-500 mx-auto" /> : <XIcon className="w-6 h-6 text-red-500 mx-auto" />;
         }
 
-        // Special handling for platforms array
-        if (feature.key === 'platforms' && Array.isArray(value)) {
-            return (
-                <div className={`${baseClasses} ${isBest ? bestClasses : normalClasses}`}>
-                    <div className="flex flex-wrap gap-1 justify-center">
-                        {value.map((platform, index) => (
-                            <span key={index} className="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
-                                {platform}
-                            </span>
-                        ))}
+        // Special handling for platforms and tradingInstruments arrays
+        if (feature.key === 'platforms' || feature.key === 'tradingInstruments') {
+            if (Array.isArray(value) && value.length > 0) {
+                const bgColor = feature.key === 'platforms' ? 'bg-blue-100 text-blue-800' : 'bg-purple-100 text-purple-800';
+                return (
+                    <div className={`${baseClasses} ${isBest ? bestClasses : normalClasses}`}>
+                        <div className="flex flex-wrap gap-1 justify-center">
+                            {value.map((item) => (
+                                <span key={`${feature.key}-${item}`} className={`inline-flex items-center px-2 py-1 rounded-full text-xs font-medium ${bgColor}`}>
+                                    {item}
+                                </span>
+                            ))}
+                        </div>
                     </div>
-                </div>
-            );
+                );
+            } else {
+                return (
+                    <div className={`${baseClasses} text-slate-500`}>
+                        N/A
+                    </div>
+                );
+            }
         }
         
         const formattedValue = feature.format ? feature.format(value) : value;
@@ -157,9 +168,24 @@ const ComparisonModal: React.FC<ComparisonModalProps> = ({ firms, onClose }) => 
                                 <td></td>
                                 {firms.map(firm => (
                                     <td key={firm.id} className="p-4 text-center">
-                                         <a href={firm.affiliateUrl} target="_blank" rel="noopener noreferrer" className="inline-block bg-gradient-to-r from-teal-500 to-slate-900 text-white font-bold py-2 px-6 rounded-lg hover:from-teal-600 hover:to-slate-800 transition-all duration-300 w-full text-center">
-                                            Visit Site
-                                        </a>
+                                         <a 
+                                           href={firm.affiliateUrl} 
+                                           target="_blank" 
+                                           rel="noopener noreferrer" 
+                                           onClick={() => {
+                                             // Import this at the top of the file if needed
+                                             // import { trackPropFirmClick } from '../utils/analytics';
+                                             try {
+                                               // @ts-ignore - Assuming trackPropFirmClick is available globally
+                                               window.trackPropFirmClick?.(firm.id, firm.name, 'comparison_modal');
+                                             } catch (e) {
+                                               console.error('Error tracking click:', e);
+                                             }
+                                           }}
+                                           className="inline-block bg-gradient-to-r from-teal-500 to-slate-900 text-white font-bold py-2 px-6 rounded-lg hover:from-teal-600 hover:to-slate-800 transition-all duration-300 w-full text-center shadow-md hover:shadow-lg"
+                                         >
+                                           Visit Site
+                                         </a>
                                     </td>
                                 ))}
                             </tr>

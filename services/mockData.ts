@@ -1752,7 +1752,7 @@ export const propFirms: PropFirm[] = [
     shortDescription: 'A new 2025 UK-based firm offering 1-Step and 2-Step evaluations with an industry-first 100% profit split on your first payout.',
     rating: 4.7,
     reviewCount: 850,
-    isFeatured: true,
+    isFeatured: false,
     affiliateUrl: 'https://soar-funding.com/en/?ref=FPG',
     fpgAffiliateCode: 'FPG',
     hasInstantFunding: false,

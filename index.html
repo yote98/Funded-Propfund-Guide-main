@@ -1,33 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="icon" href="/logos/fpg-favicon.png" type="image/png">
+    <link rel="apple-touch-icon" href="/logos/fpg-favicon.png">
+    <meta name="mobile-web-app-capable" content="yes">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Funded Program Guide</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        body { font-family: 'Inter', sans-serif; }
+        :root {
+            --bg-start: #f8fafc; /* slate-50 */
+            --bg-mid:   #e2e8f0; /* slate-200 */
+            --bg-end:   #cbd5e1; /* slate-300 */
+            --blob-a:   120, 119, 198; /* indigo-ish */
+            --blob-b:   20, 184, 166;  /* teal */
+            --blob-c:   99, 102, 241;  /* indigo-500 */
+        }
+
+        body { 
+            font-family: 'Plus Jakarta Sans', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; 
+        }
+        .heading-font {
+            font-family: 'Space Grotesk', 'Plus Jakarta Sans', sans-serif;
+        }
         .gradient-text {
             background: linear-gradient(to right, #14b8a6, #0f172a);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
+        
+        /* Clean vertical gradient background matching MoniUp Finance UI Kit */
+        body {
+            background: linear-gradient(180deg, #f8fafc 0%, #e2e8f0 30%, #cbd5e1 70%, #94a3b8 100%);
+            background-attachment: fixed;
+            position: relative;
+        }
+        
+        /* Glass morphism effect for cards */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.28);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.22);
+            box-shadow: 0 8px 30px rgba(15, 23, 42, 0.10);
+        }
+        
+        /* Enhanced shadows for 3D effect */
+        .card-3d {
+            box-shadow: 
+                0 6px 14px -6px rgba(15, 23, 42, 0.12),
+                0 8px 24px -4px rgba(15, 23, 42, 0.10),
+                0 0 0 1px rgba(2, 6, 23, 0.04);
+        }
     </style>
 </head>
-<body class="bg-gray-50 text-slate-700">
+<body class="text-slate-700">
     <div class="min-h-screen flex flex-col">
         <!-- Header -->
-        <header class="bg-white shadow-sm sticky top-0 z-50">
+        <header class="glass-card sticky top-0 z-50">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="flex items-center justify-between h-16">
                     <div class="flex items-center">
                         <button class="flex items-center space-x-3">
                             <div class="h-8 w-8 bg-gradient-to-r from-teal-500 to-slate-900 rounded"></div>
-                            <span class="font-bold text-lg text-slate-800">Funded Program Guide</span>
+                            <span class="heading-font font-bold text-lg text-slate-800">Funded Program Guide</span>
                         </button>
                     </div>
                     <nav class="hidden md:flex items-center space-x-1">
@@ -53,7 +93,7 @@
             <div class="space-y-16">
                 <!-- Hero Section -->
                 <section class="text-center py-16">
-                    <h1 class="text-5xl md:text-6xl font-extrabold text-slate-900 tracking-tight">
+                    <h1 class="heading-font text-5xl md:text-6xl font-extrabold text-slate-900 tracking-tight">
                         <span class="block gradient-text">
                             We Research. You Profit.
                         </span>
@@ -70,10 +110,10 @@
 
                 <!-- Featured Firms Section -->
                 <section id="featured-firms">
-                    <h2 class="text-3xl font-bold text-slate-900 text-center mb-8">Featured Firms</h2>
+                    <h2 class="heading-font text-3xl font-bold text-slate-900 text-center mb-8">Featured Firms</h2>
                     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                         <!-- Firm Card 1 - The 5%ers -->
-                        <div class="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow cursor-pointer">
+                        <div class="glass-card card-3d rounded-lg p-6 hover:shadow-lg transition-all duration-300 cursor-pointer">
                             <div class="flex items-center mb-4">
                                 <img src="https://logo.clearbit.com/the5ers.com" alt="The 5%ers" class="h-12 w-12 rounded-lg mr-4">
                                 <div>
@@ -94,7 +134,7 @@
                         </div>
 
                         <!-- Firm Card 2 - Apex Trader Funding -->
-                        <div class="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow cursor-pointer">
+                        <div class="glass-card card-3d rounded-lg p-6 hover:shadow-lg transition-all duration-300 cursor-pointer">
                             <div class="flex items-center mb-4">
                                 <img src="https://apextraderfunding.com/logos" alt="Apex Trader Funding" class="h-12 w-12 rounded-lg mr-4">
                                 <div>
@@ -115,7 +155,7 @@
                         </div>
 
                         <!-- Firm Card 3 - Audacity Capital -->
-                        <div class="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow cursor-pointer">
+                        <div class="glass-card card-3d rounded-lg p-6 hover:shadow-lg transition-all duration-300 cursor-pointer">
                             <div class="flex items-center mb-4">
                                 <img src="https://logo.clearbit.com/audacitycapital.co.uk" alt="Audacity Capital" class="h-12 w-12 rounded-lg mr-4">
                                 <div>
@@ -139,9 +179,9 @@
 
                 <!-- Top Deals Section -->
                 <section id="top-deals">
-                    <h2 class="text-3xl font-bold text-slate-900 text-center mb-2">Top October Deals</h2>
+                    <h2 class="heading-font text-3xl font-bold text-slate-900 text-center mb-2">Top October Deals</h2>
                     <p class="text-center text-slate-600 mb-8">Verified firms, top discounts.</p>
-                    <div class="bg-white rounded-lg shadow-md p-6">
+                    <div class="glass-card card-3d rounded-lg p-6">
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                             <div class="border-l-4 border-teal-500 pl-4">
                                 <h3 class="font-bold text-lg text-slate-900">The 5%ers - 20% Off</h3>

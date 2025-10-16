@@ -40,21 +40,21 @@ export interface PropFirm {
 
   // Enhanced Data Fields
   
-  payoutHistory: {
+  payoutHistory?: {
     totalPayouts: number;
     averagePayoutTime: string;
     payoutReliability: 'Excellent' | 'Good' | 'Fair' | 'Poor';
     lastUpdated: string;
   };
   
-  successMetrics: {
+  successMetrics?: {
     evaluationPassRate: number; // percentage
     averageTimeToPass: string;
     traderRetentionRate: number; // percentage
     scalingSuccessRate: number; // percentage
   };
   
-  platformDetails: {
+  platformDetails?: {
     name: string;
     type: 'MT4' | 'MT5' | 'cTrader' | 'DXTrade' | 'Tradovate' | 'NinjaTrader' | 'Rithmic' | 'ProjectX' | 'TradingView' | 'ThinkTrader' | 'Bookmap' | 'Quantower' | 'R | Trader' | 'ATAS' | 'Proprietary';
     features: string[];
@@ -186,5 +186,4 @@ export interface TradingTool {
   deal?: {
     description: string;
     isTopDeal: boolean;
-  };
-}
+  };}

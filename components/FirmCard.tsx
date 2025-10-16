@@ -34,7 +34,7 @@ const FirmCard: React.FC<FirmCardProps> = ({ firm, viewFirm }) => {
 
   return (
     <div 
-      className="bg-white border border-slate-200 rounded-xl shadow-md hover:shadow-lg hover:shadow-cyan-500/10 hover:border-cyan-400 transition-all duration-300 flex flex-col focus-within:ring-2 focus-within:ring-teal-500 focus-within:ring-offset-2"
+      className="glass-card card-3d rounded-xl hover:shadow-lg hover:shadow-cyan-500/10 hover:border-cyan-400 transition-all duration-300 flex flex-col focus-within:ring-2 focus-within:ring-teal-500 focus-within:ring-offset-2"
       role="article"
       aria-labelledby={`firm-${firm.id}-title`}
     >
@@ -45,7 +45,7 @@ const FirmCard: React.FC<FirmCardProps> = ({ firm, viewFirm }) => {
                     <Logo firmName={name} logoUrl={firm.logoUrl} className="object-contain max-h-full max-w-full" />
                 </div>
               <div>
-                <h3 id={`firm-${firm.id}-title`} className="text-xl font-bold text-slate-900">{name}</h3>
+                <h3 id={`firm-${firm.id}-title`} className="heading-font text-xl font-bold text-slate-900">{name}</h3>
                 <div className="flex items-center mt-1" aria-label={`Rating: ${rating} out of 5 stars`}>
                   <StarRating rating={rating} />
                   <span className="text-xs text-slate-500 ml-2">({reviewCount} reviews)</span>

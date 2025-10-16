@@ -44,7 +44,7 @@ const Header: React.FC<HeaderProps> = ({ navigateTo, currentPage }) => {
     };
 
     return (
-        <header className="bg-white shadow-sm sticky top-0 z-50" role="banner">
+        <header className="glass-card sticky top-0 z-50" role="banner">
             <div className="container mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex items-center justify-between h-16">
                     <div className="flex items-center">
@@ -54,7 +54,7 @@ const Header: React.FC<HeaderProps> = ({ navigateTo, currentPage }) => {
                             aria-label="Go to homepage"
                         >
                            <FpgLogoIcon className="h-8 w-8" />
-                           <span className="font-bold text-lg text-slate-800">Funded Program Guide</span>
+                            <span className="heading-font font-bold text-lg text-slate-800">Funded Program Guide</span>
                         </button>
                     </div>
                     <nav className="hidden md:flex items-center space-x-1" role="navigation" aria-label="Main navigation">

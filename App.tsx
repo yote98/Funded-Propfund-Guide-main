@@ -52,16 +52,7 @@ const App: React.FC = () => {
     };
     fetchData();
 
-    // Register service worker for PWA support
-    if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('/sw.js')
-        .then((registration) => {
-          console.log('SW registered: ', registration);
-        })
-        .catch((registrationError) => {
-          console.log('SW registration failed: ', registrationError);
-        });
-    }
+    // Service worker registration removed to fix console errors
   }, []);
 
   // Browser history support
@@ -294,7 +285,7 @@ const App: React.FC = () => {
 
   return (
     <ErrorBoundary>
-      <div className="min-h-screen flex flex-col bg-gray-50">
+      <div className="min-h-screen flex flex-col">
         <SkipNavigation />
         <Header navigateTo={navigateTo} currentPage={currentPage} />
         <main id="main-content" className="flex-grow container mx-auto px-4 sm:px-6 lg:px-8 py-8" role="main">

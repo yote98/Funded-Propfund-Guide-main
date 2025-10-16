@@ -159,34 +159,20 @@ const Logo: React.FC<LogoProps> = ({ firmName, logoUrl, className = "" }) => {
   };
 
   const handleError = () => {
-    console.log(`Logo failed to load for ${firmName}, trying next URL...`);
     const officialUrls = getOfficialLogoUrls(firmName);
     const localFirst = getLocalCandidates(firmName);
     const total = localFirst.length + officialUrls.length + (logoUrl ? 1 : 0);
     if (currentUrlIndex < total - 1) {
       setCurrentUrlIndex(currentUrlIndex + 1);
     } else {
-      console.log(`All logo URLs failed for ${firmName}, showing fallback`);
       setError(true);
     }
   };
 
   if (error || !logoUrl) {
-    // Generate a consistent color based on the firm name
-    const colors = [
-      'bg-gradient-to-br from-blue-500 to-blue-700',
-      'bg-gradient-to-br from-teal-500 to-teal-700',
-      'bg-gradient-to-br from-purple-500 to-purple-700',
-      'bg-gradient-to-br from-indigo-500 to-indigo-700',
-      'bg-gradient-to-br from-green-500 to-green-700',
-      'bg-gradient-to-br from-orange-500 to-orange-700',
-    ];
-    const colorIndex = firmName.charCodeAt(0) % colors.length;
-    const bgColor = colors[colorIndex];
-    
     return (
-      <div className={`${className} flex items-center justify-center ${bgColor} text-white font-bold rounded-lg shadow-sm`}>
-        <span className="text-lg">{firmName.substring(0, 2).toUpperCase()}</span>
+      <div className={`${className} flex items-center justify-center bg-slate-200 border-2 border-slate-300 rounded-lg shadow-sm`}>
+        <span className="text-slate-500 font-bold text-lg tracking-wider">{firmName.substring(0, 2).toUpperCase()}</span>
       </div>
     );
   }
@@ -198,7 +184,6 @@ const Logo: React.FC<LogoProps> = ({ firmName, logoUrl, className = "" }) => {
   const candidates = [...localFirst, ...officialUrls, ...(logoUrl ? [logoUrl] : [])];
   const currentUrl = currentUrlIndex < candidates.length ? candidates[currentUrlIndex] : '';
 
-  console.log(`Loading logo for ${firmName}: ${currentUrl}`);
 
   // Apply special styling for Fundora logo which needs resizing
   const specialStyles = firmName === 'Fundora' ? { maxWidth: '80%', maxHeight: '80%' } : {};
@@ -211,7 +196,7 @@ const Logo: React.FC<LogoProps> = ({ firmName, logoUrl, className = "" }) => {
       style={specialStyles}
       referrerPolicy="no-referrer"
       onError={handleError}
-      onLoad={() => console.log(`Logo loaded successfully for ${firmName}`)}
+      onLoad={() => { /* no-op to keep console clean */ }}
     />
   );
 };

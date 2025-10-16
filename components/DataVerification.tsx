@@ -23,20 +23,6 @@ const DataVerification: React.FC = () => {
                 </div>
                 <div className="flex items-center justify-between">
                   <div className="flex items-center">
-                    <span className="w-2 h-2 bg-blue-500 rounded-full mr-2"></span>
-                    <strong>The Trusted Prop:</strong> 400+ firms audited
-                  </div>
-                  <span className="bg-blue-100 text-blue-800 px-2 py-1 rounded text-xs font-semibold">8/10</span>
-                </div>
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center">
-                    <span className="w-2 h-2 bg-blue-500 rounded-full mr-2"></span>
-                    <strong>Finance Magnates:</strong> Industry publication
-                  </div>
-                  <span className="bg-blue-100 text-blue-800 px-2 py-1 rounded text-xs font-semibold">8/10</span>
-                </div>
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center">
                     <span className="w-2 h-2 bg-yellow-500 rounded-full mr-2"></span>
                     <strong>Payout Junction:</strong> Blockchain transparency
                   </div>
@@ -45,7 +31,7 @@ const DataVerification: React.FC = () => {
               </div>
           <div className="mt-3 text-xs text-green-600 bg-green-100 p-2 rounded">
             <strong>Verification Methods:</strong> TradingPilot (blockchain verification), 
-            The Trusted Prop (400+ firms audited), Finance Magnates (industry publication), Payout Junction (blockchain transparency). 
+            Payout Junction (blockchain transparency). 
             We cross-reference all sources with official firm data and community verification.
           </div>
         </div>
