@@ -119,13 +119,6 @@ const ComparisonPage: React.FC<ComparisonPageProps> = ({ viewFirm, firms, initia
         setSelectedCategories([]);
         setSelectedModels([]);
         setSelectedDrawdownTypes([]);
-        setSelectedPlatforms([]);
-        setUsFriendlyOnly(false);
-        setWeekendHoldingFilter(false);
-        setEaFilter(false);
-        setScalingPlanFilter(false);
-        setNewsTradingFilter(false);
-        setNoTimeLimitFilter(false);
     };
 
     const handleToggleCompare = (firmId: FirmId) => {
@@ -175,36 +168,6 @@ const ComparisonPage: React.FC<ComparisonPageProps> = ({ viewFirm, firms, initia
                 selectedDrawdownTypes.includes(firm.drawdownType)
             );
         }
-        
-        if (selectedPlatforms.length > 0) {
-            filteredFirms = filteredFirms.filter(firm => 
-                selectedPlatforms.some(platform => firm.platforms?.includes(platform))
-            );
-        }
-        
-        if (usFriendlyOnly) {
-            filteredFirms = filteredFirms.filter(firm => firm.isUSFriendly);
-        }
-        
-        if (weekendHoldingFilter) {
-            filteredFirms = filteredFirms.filter(firm => firm.features.weekendHolding);
-        }
-        
-        if (eaFilter) {
-            filteredFirms = filteredFirms.filter(firm => firm.features.expertAdvisors);
-        }
-        
-        if (scalingPlanFilter) {
-            filteredFirms = filteredFirms.filter(firm => firm.features.scalingPlan);
-        }
-        
-        if (newsTradingFilter) {
-            filteredFirms = filteredFirms.filter(firm => firm.features.newsTrading);
-        }
-        
-        if (noTimeLimitFilter) {
-            filteredFirms = filteredFirms.filter(firm => firm.features.noTimeLimit);
-        }
 
         if (sortConfig !== null) {
             filteredFirms.sort((a, b) => {
@@ -243,7 +206,7 @@ const ComparisonPage: React.FC<ComparisonPageProps> = ({ viewFirm, firms, initia
             });
         }
         return filteredFirms;
-    }, [sortConfig, debouncedSearchTerm, selectedCategories, selectedModels, selectedDrawdownTypes, selectedPlatforms, usFriendlyOnly, weekendHoldingFilter, eaFilter, scalingPlanFilter, newsTradingFilter, noTimeLimitFilter, firms]);
+    }, [sortConfig, debouncedSearchTerm, selectedCategories, selectedModels, selectedDrawdownTypes, firms]);
 
     const requestSort = (key: SortKey) => {
         let direction: SortDirection = 'asc';
@@ -392,87 +355,6 @@ const ComparisonPage: React.FC<ComparisonPageProps> = ({ viewFirm, firms, initia
                   {type}
                 </button>
               ))}
-            </div>
-          </div>
-
-          {/* Platform Filters */}
-          <div>
-            <h4 className="text-sm font-semibold text-slate-700 mb-3 text-center">Trading Platforms</h4>
-            <div className="flex flex-wrap justify-center gap-2">
-              {allPlatforms.map(platform => (
-                <button 
-                  key={platform} 
-                  onClick={() => handlePlatformToggle(platform)} 
-                  className={`px-4 py-2 text-sm font-semibold rounded-full transition-colors duration-200 ${
-                    selectedPlatforms.includes(platform) 
-                      ? 'bg-gradient-to-r from-teal-500 to-slate-900 text-white' 
-                      : 'bg-slate-200 text-slate-700 hover:bg-slate-300'
-                  }`}
-                >
-                  {platform}
-                </button>
-              ))}
-            </div>
-          </div>
-
-          {/* Quick Filters */}
-          <div>
-            <h4 className="text-sm font-semibold text-slate-700 mb-3 text-center">Quick Filters</h4>
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3 justify-center">
-              <label className="flex items-center cursor-pointer bg-white p-3 rounded-lg shadow-sm border border-slate-200 hover:bg-slate-50 transition-colors">
-                <input 
-                  type="checkbox" 
-                  checked={usFriendlyOnly} 
-                  onChange={(e) => setUsFriendlyOnly(e.target.checked)} 
-                  className="h-4 w-4 text-teal-600 border-gray-300 rounded focus:ring-teal-500" 
-                />
-                <span className="ml-2 text-sm text-slate-700 font-medium">US Friendly</span>
-              </label>
-              <label className="flex items-center cursor-pointer bg-white p-3 rounded-lg shadow-sm border border-slate-200 hover:bg-slate-50 transition-colors">
-                <input 
-                  type="checkbox" 
-                  checked={eaFilter} 
-                  onChange={(e) => setEaFilter(e.target.checked)} 
-                  className="h-4 w-4 text-teal-600 border-gray-300 rounded focus:ring-teal-500" 
-                />
-                <span className="ml-2 text-sm text-slate-700 font-medium">EAs Allowed</span>
-              </label>
-              <label className="flex items-center cursor-pointer bg-white p-3 rounded-lg shadow-sm border border-slate-200 hover:bg-slate-50 transition-colors">
-                <input 
-                  type="checkbox" 
-                  checked={newsTradingFilter} 
-                  onChange={(e) => setNewsTradingFilter(e.target.checked)} 
-                  className="h-4 w-4 text-teal-600 border-gray-300 rounded focus:ring-teal-500" 
-                />
-                <span className="ml-2 text-sm text-slate-700 font-medium">News Trading</span>
-              </label>
-              <label className="flex items-center cursor-pointer bg-white p-3 rounded-lg shadow-sm border border-slate-200 hover:bg-slate-50 transition-colors">
-                <input 
-                  type="checkbox" 
-                  checked={weekendHoldingFilter} 
-                  onChange={(e) => setWeekendHoldingFilter(e.target.checked)} 
-                  className="h-4 w-4 text-teal-600 border-gray-300 rounded focus:ring-teal-500" 
-                />
-                <span className="ml-2 text-sm text-slate-700 font-medium">Weekend Holding</span>
-              </label>
-              <label className="flex items-center cursor-pointer bg-white p-3 rounded-lg shadow-sm border border-slate-200 hover:bg-slate-50 transition-colors">
-                <input 
-                  type="checkbox" 
-                  checked={noTimeLimitFilter} 
-                  onChange={(e) => setNoTimeLimitFilter(e.target.checked)} 
-                  className="h-4 w-4 text-teal-600 border-gray-300 rounded focus:ring-teal-500" 
-                />
-                <span className="ml-2 text-sm text-slate-700 font-medium">No Time Limit</span>
-              </label>
-              <label className="flex items-center cursor-pointer bg-white p-3 rounded-lg shadow-sm border border-slate-200 hover:bg-slate-50 transition-colors">
-                <input 
-                  type="checkbox" 
-                  checked={scalingPlanFilter} 
-                  onChange={(e) => setScalingPlanFilter(e.target.checked)} 
-                  className="h-4 w-4 text-teal-600 border-gray-300 rounded focus:ring-teal-500" 
-                />
-                <span className="ml-2 text-sm text-slate-700 font-medium">Scaling Plan</span>
-              </label>
             </div>
           </div>
 
