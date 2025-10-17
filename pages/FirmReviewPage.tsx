@@ -13,6 +13,7 @@ import InfinityIcon from '../components/icons/InfinityIcon';
 import ReviewSummary from '../components/ReviewSummary';
 import PlatformIcon from '../components/PlatformIcon';
 import PayoutTimeline from '../components/PayoutTimeline';
+import PayoutInfo from '../components/PayoutInfo';
 import DataDisclaimer from '../components/DataDisclaimer';
 import DataSources from '../components/DataSources';
 import TradingPilotData from '../components/TradingPilotData';
@@ -47,6 +48,34 @@ const MetricItem: React.FC<{ label: string; value: React.ReactNode }> = ({ label
 
 const FirmReviewPage: React.FC<FirmReviewPageProps> = ({ firm }) => {
   const [showAllReviews, setShowAllReviews] = useState(false);
+  
+  // Helper to determine if firm has TradingPilot data
+  const hasVerifiedPayoutData = ['fxify', 'the-5-percenters', 'funded-next', 'ftmo', 'apex-trader-funding', 'topstep', 'e8-funding', 'lux-trading-firm'].includes(firm.id);
+  
+  // Helper to get payout methods based on firm type
+  const getPayoutMethods = () => {
+    const methods = ['Bank Transfer', 'Wire'];
+    if (firm.categories.includes('Crypto')) {
+      methods.push('Cryptocurrency', 'USDT');
+    }
+    if (firm.categories.includes('Futures')) {
+      methods.push('Rise', 'Deel');
+    }
+    if (firm.isUSFriendly) {
+      methods.push('ACH', 'PayPal');
+    }
+    return methods.slice(0, 4); // Limit to 4 methods
+  };
+  
+  // Helper to get processing time based on frequency
+  const getProcessingTime = () => {
+    if (firm.payoutFrequency.toLowerCase().includes('daily')) return '24 hours';
+    if (firm.payoutFrequency.toLowerCase().includes('8 days')) return '1-2 business days';
+    if (firm.payoutFrequency.toLowerCase().includes('bi-weekly')) return '24-48 hours';
+    if (firm.payoutFrequency.toLowerCase().includes('weekly')) return '1-3 business days';
+    if (firm.payoutFrequency.toLowerCase().includes('monthly')) return '3-5 business days';
+    return '24-72 hours';
+  };
   return (
     <div className="max-w-4xl mx-auto">
       
@@ -218,6 +247,16 @@ const FirmReviewPage: React.FC<FirmReviewPageProps> = ({ firm }) => {
                   averageTime={firm.payoutHistory.averagePayoutTime}
                   reliability={firm.payoutHistory.payoutReliability}
                   totalPayouts={firm.payoutHistory.totalPayouts}
+                />
+              )}
+              
+              {/* Add basic payout info for firms without verified data */}
+              {!hasVerifiedPayoutData && (
+                <PayoutInfo
+                  frequency={firm.payoutFrequency}
+                  processingTime={getProcessingTime()}
+                  methods={getPayoutMethods()}
+                  minPayout="$50"
                 />
               )}
             </div>
