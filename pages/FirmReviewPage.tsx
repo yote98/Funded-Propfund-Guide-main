@@ -264,11 +264,6 @@ const FirmReviewPage: React.FC<FirmReviewPageProps> = ({ firm }) => {
         </aside>
       </div>
 
-      {/* Data Sources Section */}
-      <div className="mt-8">
-        <DataSources />
-      </div>
-
       {/* Reviews Section */}
       <div className="mt-8">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
