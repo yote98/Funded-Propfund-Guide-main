@@ -13,7 +13,6 @@ import InfinityIcon from '../components/icons/InfinityIcon';
 import ReviewSummary from '../components/ReviewSummary';
 import PlatformIcon from '../components/PlatformIcon';
 import PayoutTimeline from '../components/PayoutTimeline';
-import CostCalculator from '../components/CostCalculator';
 import DataDisclaimer from '../components/DataDisclaimer';
 import DataSources from '../components/DataSources';
 import TradingPilotData from '../components/TradingPilotData';
@@ -221,13 +220,6 @@ const FirmReviewPage: React.FC<FirmReviewPageProps> = ({ firm }) => {
                   totalPayouts={firm.payoutHistory.totalPayouts}
                 />
               )}
-
-
-              <CostCalculator
-                minStartingCost={firm.minStartingCost}
-                profitSplit={firm.details.profitSplit}
-                maxFunding={firm.details.maxFunding}
-              />
             </div>
           </div>
         </aside>
