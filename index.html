@@ -1,9 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="icon" href="/logos/fpg-favicon.png" type="image/png">
-    <link rel="apple-touch-icon" href="/logos/fpg-favicon.png">
-    <meta name="mobile-web-app-capable" content="yes">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Funded Program Guide</title>
@@ -11,60 +8,213 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        :root {
-            --bg-start: #f8fafc; /* slate-50 */
-            --bg-mid:   #e2e8f0; /* slate-200 */
-            --bg-end:   #cbd5e1; /* slate-300 */
-            --blob-a:   120, 119, 198; /* indigo-ish */
-            --blob-b:   20, 184, 166;  /* teal */
-            --blob-c:   99, 102, 241;  /* indigo-500 */
-        }
-
         * {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif !important;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
-        body { 
-            font-weight: 400 !important;
-            letter-spacing: -0.01em !important;
+        
+        body {
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            min-height: 100vh;
+            font-weight: 400;
+            line-height: 1.6;
         }
-        .heading-font {
-            font-weight: 600 !important;
-            letter-spacing: -0.02em !important;
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
         }
-        .gradient-text {
-            background: linear-gradient(to right, #14b8a6, #0f172a);
+        
+        header {
+            background: white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            padding: 20px 0;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: #0f172a;
+        }
+        
+        nav {
+            display: flex;
+            gap: 30px;
+        }
+        
+        nav a {
+            text-decoration: none;
+            color: #64748b;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        nav a:hover {
+            color: #14b8a6;
+        }
+        
+        .hero {
+            text-align: center;
+            padding: 80px 0;
+        }
+        
+        .hero h1 {
+            font-size: 4rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #14b8a6, #0f172a);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
         
-        /* Clean vertical gradient background matching MoniUp Finance UI Kit */
-        body {
-            background: linear-gradient(180deg, #f8fafc 0%, #e2e8f0 30%, #cbd5e1 70%, #94a3b8 100%);
-            background-attachment: fixed;
-            position: relative;
+        .hero p {
+            font-size: 1.2rem;
+            color: #64748b;
+            margin-bottom: 40px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
         }
         
-        /* Glass morphism effect for cards */
-        .glass-card {
-            background: rgba(255, 255, 255, 0.28);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.22);
-            box-shadow: 0 8px 30px rgba(15, 23, 42, 0.10);
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 40px;
+            margin: 60px 0;
         }
         
-        /* Enhanced shadows for 3D effect */
-        .card-3d {
-            box-shadow: 
-                0 6px 14px -6px rgba(15, 23, 42, 0.12),
-                0 8px 24px -4px rgba(15, 23, 42, 0.10),
-                0 0 0 1px rgba(2, 6, 23, 0.04);
+        .stat {
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 700;
+            color: #14b8a6;
+            display: block;
+        }
+        
+        .stat-label {
+            font-size: 1rem;
+            color: #64748b;
+            margin-top: 10px;
+        }
+        
+        .buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 40px;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, #14b8a6, #0f172a);
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+        }
+        
+        .btn-secondary {
+            background: white;
+            color: #64748b;
+            padding: 15px 30px;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .btn-secondary:hover {
+            border-color: #14b8a6;
+            color: #14b8a6;
+        }
+        
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .buttons {
+                flex-direction: column;
+                align-items: center;
+            }
         }
     </style>
-  <script type="module" crossorigin src="/assets/index-DwReVlXd.js"></script>
 </head>
-<body class="text-slate-700">
-    <div id="root"></div>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">Funded Program Guide</div>
+                <nav>
+                    <a href="#" style="color: #14b8a6; font-weight: 600;">Home</a>
+                    <a href="#">Compare Firms</a>
+                    <a href="#">Trading Tools</a>
+                    <a href="#">Education</a>
+                    <a href="#">Analytics</a>
+                    <a href="#">Glossary</a>
+                    <a href="#">About</a>
+                </nav>
+            </div>
+        </div>
+    </header>
 
+    <main>
+        <div class="container">
+            <div class="hero">
+                <h1>We Research. You Profit.</h1>
+                <p>The most comprehensive resource for proprietary trading firms. Compare, analyze, and choose the perfect firm for your trading journey.</p>
+                
+                <div class="stats">
+                    <div class="stat">
+                        <span class="stat-number">53+</span>
+                        <div class="stat-label">Prop Firms</div>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">196+</span>
+                        <div class="stat-label">Reviews</div>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">4.5</span>
+                        <div class="stat-label">Avg Rating</div>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">$2M+</span>
+                        <div class="stat-label">Max Funding</div>
+                    </div>
+                </div>
+                
+                <div class="buttons">
+                    <button class="btn-primary">Compare All Firms</button>
+                    <button class="btn-secondary">View Top Firms</button>
+                </div>
+            </div>
+        </div>
+    </main>
 </body>
 </html>
