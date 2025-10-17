@@ -4,507 +4,295 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Funded Program Guide</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: 'Inter', sans-serif;
-            background: linear-gradient(180deg, #f8fafc 0%, #e2e8f0 50%, #cbd5e1 100%);
-            min-height: 100vh;
-            line-height: 1.6;
-        }
-        
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-        
-        header {
-            background: white;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-            padding: 20px 0;
-        }
-        
-        .header-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-size: 24px;
-            font-weight: 700;
-            color: #0f172a;
-        }
-        
-        .logo-icon {
-            width: 24px;
-            height: 24px;
-            background: linear-gradient(135deg, #14b8a6, #0f172a);
-            border-radius: 4px;
-        }
-        
-        nav {
-            display: flex;
-            gap: 30px;
-        }
-        
-        nav a {
-            text-decoration: none;
-            color: #64748b;
-            font-weight: 500;
-            transition: color 0.3s;
-        }
-        
-        nav a:hover {
-            color: #14b8a6;
-        }
-        
-        .main-content {
-            padding: 40px 0;
-        }
-        
-        .hero-section {
-            text-align: center;
-            margin-bottom: 60px;
-        }
-        
-        .hero-title {
-            font-size: 3rem;
-            font-weight: 700;
-            color: #14b8a6;
-            margin-bottom: 20px;
-        }
-        
-        .hero-subtitle {
-            font-size: 1.2rem;
-            color: #64748b;
-            margin-bottom: 40px;
-        }
-        
-        .stats {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 30px;
-            margin-bottom: 40px;
-        }
-        
-        .stat-item {
-            text-align: center;
-        }
-        
-        .stat-number {
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: #14b8a6;
-            margin-bottom: 5px;
-        }
-        
-        .stat-label {
-            color: #64748b;
-            font-weight: 500;
-        }
-        
-        .buttons {
-            display: flex;
-            gap: 20px;
-            justify-content: center;
-        }
-        
-        .btn-primary {
-            background: linear-gradient(135deg, #14b8a6, #0f172a);
-            color: white;
-            padding: 15px 30px;
-            border: none;
-            border-radius: 8px;
-            font-weight: 600;
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-        }
-        
-        .btn-secondary {
-            background: white;
-            color: #64748b;
-            padding: 15px 30px;
-            border: 1px solid #e2e8f0;
-            border-radius: 8px;
-            font-weight: 600;
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-        }
-        
-        .firms-section {
-            margin-bottom: 60px;
-        }
-        
-        .section-title {
-            font-size: 2rem;
-            font-weight: 700;
-            color: #0f172a;
-            text-align: center;
-            margin-bottom: 40px;
-        }
-        
-        .firms-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 30px;
-        }
-        
-        .firm-card {
-            background: white;
-            border-radius: 12px;
-            padding: 30px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            position: relative;
-        }
-        
-        .shortlist-badge {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            background: #14b8a6;
-            color: white;
-            padding: 5px 10px;
-            border-radius: 4px;
-            font-size: 12px;
-            font-weight: 600;
-        }
-        
-        .firm-header {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            margin-bottom: 20px;
-        }
-        
-        .firm-logo {
-            width: 60px;
-            height: 60px;
-            border-radius: 8px;
-            object-fit: contain;
-            background: white;
-            padding: 8px;
-            border: 1px solid #e2e8f0;
-        }
-        
-        .firm-info h3 {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: #0f172a;
-            margin-bottom: 5px;
-        }
-        
-        .rating {
-            display: flex;
-            align-items: center;
-            gap: 5px;
-            margin-bottom: 15px;
-        }
-        
-        .stars {
-            color: #fbbf24;
-        }
-        
-        .review-count {
-            color: #64748b;
-            font-size: 14px;
-        }
-        
-        .firm-description {
-            color: #64748b;
-            margin-bottom: 20px;
-            line-height: 1.5;
-        }
-        
-        .firm-details {
-            margin-bottom: 20px;
-        }
-        
-        .detail-item {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 8px;
-            font-size: 14px;
-        }
-        
-        .detail-label {
-            color: #64748b;
-        }
-        
-        .detail-value {
-            color: #0f172a;
-            font-weight: 500;
-        }
-        
-        .metrics {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 10px;
-            margin-bottom: 20px;
-        }
-        
-        .metric {
-            background: #f8fafc;
-            padding: 10px;
-            border-radius: 6px;
-            text-align: center;
-        }
-        
-        .metric-label {
-            font-size: 12px;
-            color: #64748b;
-            margin-bottom: 5px;
-        }
-        
-        .metric-value {
-            font-size: 16px;
-            font-weight: 700;
-            color: #0f172a;
-        }
-        
-        .firm-actions {
-            display: flex;
-            gap: 10px;
-        }
-        
-        .btn-visit {
-            background: #14b8a6;
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 6px;
-            font-weight: 600;
-            cursor: pointer;
-            flex: 1;
-        }
-        
-        .btn-review {
-            background: #f8fafc;
-            color: #64748b;
-            padding: 10px 20px;
-            border: 1px solid #e2e8f0;
-            border-radius: 6px;
-            font-weight: 600;
-            cursor: pointer;
-            flex: 1;
-        }
-        
-        @media (max-width: 768px) {
-            .firms-grid {
-                grid-template-columns: 1fr;
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['Inter', 'system-ui', 'sans-serif'],
             }
-            
-            .stats {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            
-            .buttons {
-                flex-direction: column;
-            }
+          }
         }
-    </style>
+      }
+    </script>
   </head>
-<body>
-    <header>
-        <div class="container">
-            <div class="header-content">
-                <div class="logo">
-                    <div class="logo-icon"></div>
-                    Funded Program Guide
+<body class="bg-gradient-to-br from-slate-100 to-slate-200 font-sans antialiased">
+    <!-- Header -->
+    <header class="bg-white shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-6">
+                <div class="flex items-center">
+                    <div class="w-8 h-8 bg-gradient-to-r from-teal-500 to-blue-900 rounded-lg flex items-center justify-center mr-3">
+                        <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M2 11a1 1 0 011-1h2a1 1 0 011 1v5a1 1 0 01-1 1H3a1 1 0 01-1-1v-5zM8 7a1 1 0 011-1h2a1 1 0 011 1v9a1 1 0 01-1 1H9a1 1 0 01-1-1V7zM14 4a1 1 0 011-1h2a1 1 0 011 1v12a1 1 0 01-1 1h-2a1 1 0 01-1-1V4z"></path>
+                        </svg>
+                    </div>
+                    <h1 class="text-2xl font-bold text-gray-900">Funded Program Guide</h1>
                 </div>
-                <nav>
-                    <a href="#" style="color: #14b8a6; font-weight: 600;">Home</a>
-                    <a href="#">Compare Firms</a>
-                    <a href="#">Trading Tools</a>
-                    <a href="#">Education</a>
-                    <a href="#">Analytics</a>
-                    <a href="#">Glossary</a>
-                    <a href="#">About</a>
+                <nav class="hidden md:flex space-x-8">
+                    <a href="#" class="text-gray-600 hover:text-gray-900 bg-green-100 px-3 py-1 rounded-md">Home</a>
+                    <a href="#" class="text-gray-600 hover:text-gray-900">Compare Firms</a>
+                    <a href="#" class="text-gray-600 hover:text-gray-900">Trading Tools</a>
+                    <a href="#" class="text-gray-600 hover:text-gray-900">Education</a>
+                    <a href="#" class="text-gray-600 hover:text-gray-900">Analytics</a>
+                    <a href="#" class="text-gray-600 hover:text-gray-900">Glossary</a>
+                    <a href="#" class="text-gray-600 hover:text-gray-900">About</a>
                 </nav>
             </div>
         </div>
     </header>
 
-    <main class="main-content">
-        <div class="container">
-            <div class="hero-section">
-                <h1 class="hero-title">We Research. You Profit.</h1>
-                <p class="hero-subtitle">The most comprehensive resource for proprietary trading firms. Compare, analyze, and choose the perfect firm for your trading journey.</p>
-                
-                <div class="stats">
-                    <div class="stat-item">
-                        <div class="stat-number">53+</div>
-                        <div class="stat-label">Prop Firms</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-number">196+</div>
-                        <div class="stat-label">Reviews</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-number">4.5</div>
-                        <div class="stat-label">Avg Rating</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-number">$2M+</div>
-                        <div class="stat-label">Max Funding</div>
-                    </div>
+    <!-- Hero Section -->
+    <section class="py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h1 class="text-5xl md:text-6xl font-extrabold tracking-tight mb-4">
+                <span class="bg-gradient-to-r from-teal-500 to-blue-900 text-transparent bg-clip-text">We Research. You Profit.</span>
+            </h1>
+            <p class="mt-4 max-w-2xl mx-auto text-lg text-gray-600 mb-8">
+                The most comprehensive resource for proprietary trading firms. Compare, analyze, and choose the perfect firm for your trading journey.
+            </p>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mb-8">
+                <div class="text-center">
+                    <div class="text-3xl font-bold text-blue-600">53+</div>
+                    <div class="text-sm text-gray-600">Prop Firms</div>
                 </div>
-                
-                <div class="buttons">
-                    <a href="#" class="btn-primary">📊 Compare All Firms</a>
-                    <a href="#" class="btn-secondary">📈 View Top Firms</a>
+                <div class="text-center">
+                    <div class="text-3xl font-bold text-blue-700">196+</div>
+                    <div class="text-sm text-gray-600">Reviews</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-3xl font-bold text-blue-500">4.5</div>
+                    <div class="text-sm text-gray-600">Avg Rating</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-3xl font-bold text-purple-600">$2M+</div>
+                    <div class="text-sm text-gray-600">Max Funding</div>
                 </div>
             </div>
+            <div class="space-x-4">
+                <button class="bg-gradient-to-r from-teal-500 to-blue-900 text-white px-6 py-3 rounded-lg font-semibold flex items-center mx-auto md:mx-0">
+                    <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    </svg>
+                    Compare All Firms
+                </button>
+                <button class="bg-white border border-gray-300 text-gray-700 px-6 py-3 rounded-lg font-semibold flex items-center mx-auto md:mx-0">
+                    <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 12H4l4-8 3 6 2-4 3 6z" clip-rule="evenodd"></path>
+                    </svg>
+                    View Top Firms
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Firms Section -->
+    <section class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-center text-gray-900 mb-4">Featured Firms</h2>
+            <p class="text-center text-gray-600 mb-12">Hand-picked top-performing prop trading firms based on our comprehensive analysis</p>
             
-            <div class="firms-section">
-                <h2 class="section-title">Hand-picked top-performing prop trading firms</h2>
-                
-                <div class="firms-grid">
-                    <div class="firm-card">
-                        <div class="shortlist-badge">Shortlist</div>
-                        <div class="firm-header">
-                            <div class="firm-logo" style="background: #1e40af; color: white; display: flex; align-items: center; justify-content: center; font-weight: bold;">5%</div>
-                            <div class="firm-info">
-                                <h3>The 5%ers</h3>
-                                <div class="rating">
-                                    <span class="stars">★★★★★</span>
-                                    <span class="review-count">(18000 reviews)</span>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- The 5%ers Card -->
+                <div class="bg-white border border-gray-200 rounded-lg p-6 shadow-sm hover:shadow-md transition-shadow">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-blue-900 rounded-lg flex items-center justify-center mr-4">
+                            <span class="text-white font-bold text-sm">5%</span>
+                        </div>
+                        <div class="flex-1">
+                            <h3 class="text-lg font-semibold text-gray-900">The 5%ers</h3>
+                            <div class="flex items-center">
+                                <div class="flex text-yellow-400">
+                                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
                                 </div>
+                                <span class="text-sm text-gray-600 ml-2">(18000 reviews)</span>
                             </div>
                         </div>
-                        <p class="firm-description">Offers up to $4M in funding with unique evaluation models and profit splits up to 100%.</p>
-                        <div class="firm-details">
-                            <div class="detail-item">
-                                <span class="detail-label">Models:</span>
-                                <span class="detail-value">Bootcamp, Hyper Growth, High Stakes</span>
+                        <button class="bg-purple-600 text-white px-3 py-1 rounded-full text-sm flex items-center">
+                            <svg class="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M5 4a2 2 0 012-2h6a2 2 0 012 2v14l-5-2.5L5 18V4z"></path>
+                            </svg>
+                            Shortlist
+                        </button>
+                    </div>
+                    <p class="text-gray-600 text-sm mb-4">Offers up to $4M in funding with unique evaluation models and profit splits up to 100%.</p>
+                    <div class="text-xs text-gray-500 mb-4">
+                        <div>Models: Bootcamp, Hyper Growth, High Stakes</div>
+                        <div>Category: Forex/CFD</div>
+                    </div>
+                    <div class="bg-gray-100 p-3 rounded-lg mb-4">
+                        <div class="grid grid-cols-3 gap-4 text-center">
+                            <div>
+                                <div class="text-xs text-gray-500">MAX FUNDING</div>
+                                <div class="font-bold text-sm">$4M</div>
                             </div>
-                            <div class="detail-item">
-                                <span class="detail-label">Category:</span>
-                                <span class="detail-value">Forex/CFD</span>
+                            <div>
+                                <div class="text-xs text-gray-500">PROFIT SPLIT</div>
+                                <div class="font-bold text-sm">100%</div>
                             </div>
-                        </div>
-                        <div class="metrics">
-                            <div class="metric">
-                                <div class="metric-label">MAX FUNDING</div>
-                                <div class="metric-value">$4M</div>
+                            <div>
+                                <div class="text-xs text-gray-500">STARTS FROM</div>
+                                <div class="font-bold text-sm">$39</div>
                             </div>
-                            <div class="metric">
-                                <div class="metric-label">PROFIT SPLIT</div>
-                                <div class="metric-value">100%</div>
-                            </div>
-                            <div class="metric">
-                                <div class="metric-label">STARTS FROM</div>
-                                <div class="metric-value">$39</div>
-                            </div>
-                        </div>
-                        <div class="firm-actions">
-                            <button class="btn-visit">Visit Site</button>
-                            <button class="btn-review">Read Review</button>
                         </div>
                     </div>
-                    
-                    <div class="firm-card">
-                        <div class="shortlist-badge">Shortlist</div>
-                        <div class="firm-header">
-                            <div class="firm-logo" style="background: #1f2937; color: white; display: flex; align-items: center; justify-content: center; font-weight: bold;">F</div>
-                            <div class="firm-info">
-                                <h3>FTMO</h3>
-                                <div class="rating">
-                                    <span class="stars">★★★★★</span>
-                                    <span class="review-count">(28000 reviews)</span>
+                    <div class="flex space-x-2">
+                        <button class="flex-1 bg-gradient-to-r from-teal-500 to-blue-900 text-white py-2 px-4 rounded-lg text-sm font-medium">
+                            Visit Site
+                        </button>
+                        <button class="flex-1 border border-gray-300 text-gray-700 py-2 px-4 rounded-lg text-sm font-medium">
+                            Read Review
+                        </button>
+                    </div>
+                </div>
+
+                <!-- FTMO Card -->
+                <div class="bg-white border border-gray-200 rounded-lg p-6 shadow-sm hover:shadow-md transition-shadow">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-gray-800 rounded-lg flex items-center justify-center mr-4">
+                            <span class="text-white font-bold text-lg">F</span>
+                        </div>
+                        <div class="flex-1">
+                            <h3 class="text-lg font-semibold text-gray-900">FTMO</h3>
+                            <div class="flex items-center">
+                                <div class="flex text-yellow-400">
+                                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
                                 </div>
+                                <span class="text-sm text-gray-600 ml-2">(28000 reviews)</span>
                             </div>
                         </div>
-                        <p class="firm-description">One of the most recognized firms with a 2-step evaluation, scaling up to $2M and 80-90% profit splits.</p>
-                        <div class="firm-details">
-                            <div class="detail-item">
-                                <span class="detail-label">Models:</span>
-                                <span class="detail-value">2-Step Challenge</span>
+                        <button class="bg-purple-600 text-white px-3 py-1 rounded-full text-sm flex items-center">
+                            <svg class="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M5 4a2 2 0 012-2h6a2 2 0 012 2v14l-5-2.5L5 18V4z"></path>
+                            </svg>
+                            Shortlist
+                        </button>
+                    </div>
+                    <p class="text-gray-600 text-sm mb-4">One of the most recognized firms with a 2-step evaluation, scaling up to $2M and 80-90% profit splits.</p>
+                    <div class="text-xs text-gray-500 mb-4">
+                        <div>Models: 2-Step Challenge</div>
+                        <div>Category: Forex/CFD</div>
+                    </div>
+                    <div class="bg-gray-100 p-3 rounded-lg mb-4">
+                        <div class="grid grid-cols-3 gap-4 text-center">
+                            <div>
+                                <div class="text-xs text-gray-500">MAX FUNDING</div>
+                                <div class="font-bold text-sm">$2M</div>
                             </div>
-                            <div class="detail-item">
-                                <span class="detail-label">Category:</span>
-                                <span class="detail-value">Forex/CFD</span>
+                            <div>
+                                <div class="text-xs text-gray-500">PROFIT SPLIT</div>
+                                <div class="font-bold text-sm">90%</div>
                             </div>
-                        </div>
-                        <div class="metrics">
-                            <div class="metric">
-                                <div class="metric-label">MAX FUNDING</div>
-                                <div class="metric-value">$2M</div>
+                            <div>
+                                <div class="text-xs text-gray-500">STARTS FROM</div>
+                                <div class="font-bold text-sm">$155</div>
                             </div>
-                            <div class="metric">
-                                <div class="metric-label">PROFIT SPLIT</div>
-                                <div class="metric-value">90%</div>
-                            </div>
-                            <div class="metric">
-                                <div class="metric-label">STARTS FROM</div>
-                                <div class="metric-value">$155</div>
-                            </div>
-                        </div>
-                        <div class="firm-actions">
-                            <button class="btn-visit">Visit Site</button>
-                            <button class="btn-review">Read Review</button>
                         </div>
                     </div>
-                    
-                    <div class="firm-card">
-                        <div class="shortlist-badge">Shortlist</div>
-                        <div class="firm-header">
-                            <img src="apex-logo.jpg" alt="Apex Trader Funding" class="firm-logo" style="width: 60px; height: 60px; object-fit: contain; background: white; border-radius: 8px; padding: 4px;">
-                            <div class="firm-info">
-                                <h3>Apex Trader Funding</h3>
-                                <div class="rating">
-                                    <span class="stars">★★★★★</span>
-                                    <span class="review-count">(13000 reviews)</span>
+                    <div class="flex space-x-2">
+                        <button class="flex-1 bg-gradient-to-r from-teal-500 to-blue-900 text-white py-2 px-4 rounded-lg text-sm font-medium">
+                            Visit Site
+                        </button>
+                        <button class="flex-1 border border-gray-300 text-gray-700 py-2 px-4 rounded-lg text-sm font-medium">
+                            Read Review
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Apex Trader Funding Card -->
+                <div class="bg-white border border-gray-200 rounded-lg p-6 shadow-sm hover:shadow-md transition-shadow">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-blue-900 rounded-lg flex items-center justify-center mr-4">
+                            <span class="text-white font-bold text-lg">A</span>
+                        </div>
+                        <div class="flex-1">
+                            <h3 class="text-lg font-semibold text-gray-900">Apex Trader Funding</h3>
+                            <div class="flex items-center">
+                                <div class="flex text-yellow-400">
+                                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
                                 </div>
+                                <span class="text-sm text-gray-600 ml-2">(13000 reviews)</span>
                             </div>
                         </div>
-                        <p class="firm-description">Premier futures prop firm with a simple one-step evaluation, no daily drawdown, and up to 20 accounts.</p>
-                        <div class="firm-details">
-                            <div class="detail-item">
-                                <span class="detail-label">Models:</span>
-                                <span class="detail-value">1-Step Challenge</span>
+                        <button class="bg-purple-600 text-white px-3 py-1 rounded-full text-sm flex items-center">
+                            <svg class="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M5 4a2 2 0 012-2h6a2 2 0 012 2v14l-5-2.5L5 18V4z"></path>
+                            </svg>
+                            Shortlist
+                        </button>
+                    </div>
+                    <p class="text-gray-600 text-sm mb-4">Premier futures prop firm with a simple one-step evaluation, no daily drawdown, and up to 20 accounts.</p>
+                    <div class="text-xs text-gray-500 mb-4">
+                        <div>Models: 1-Step Challenge</div>
+                        <div>Category: Futures</div>
+                    </div>
+                    <div class="bg-gray-100 p-3 rounded-lg mb-4">
+                        <div class="grid grid-cols-3 gap-4 text-center">
+                            <div>
+                                <div class="text-xs text-gray-500">MAX FUNDING</div>
+                                <div class="font-bold text-sm">$6M</div>
                             </div>
-                            <div class="detail-item">
-                                <span class="detail-label">Category:</span>
-                                <span class="detail-value">Futures</span>
+                            <div>
+                                <div class="text-xs text-gray-500">PROFIT SPLIT</div>
+                                <div class="font-bold text-sm">90%</div>
+                            </div>
+                            <div>
+                                <div class="text-xs text-gray-500">STARTS FROM</div>
+                                <div class="font-bold text-sm">$147</div>
                             </div>
                         </div>
-                        <div class="metrics">
-                            <div class="metric">
-                                <div class="metric-label">MAX FUNDING</div>
-                                <div class="metric-value">$6M</div>
-                            </div>
-                            <div class="metric">
-                                <div class="metric-label">PROFIT SPLIT</div>
-                                <div class="metric-value">90%</div>
-                            </div>
-                            <div class="metric">
-                                <div class="metric-label">STARTS FROM</div>
-                                <div class="metric-value">$147</div>
-                            </div>
-                        </div>
-                        <div class="firm-actions">
-                            <button class="btn-visit">Visit Site</button>
-                            <button class="btn-review">Read Review</button>
-                        </div>
+                    </div>
+                    <div class="flex space-x-2">
+                        <button class="flex-1 bg-gradient-to-r from-teal-500 to-blue-900 text-white py-2 px-4 rounded-lg text-sm font-medium">
+                            Visit Site
+                        </button>
+                        <button class="flex-1 border border-gray-300 text-gray-700 py-2 px-4 rounded-lg text-sm font-medium">
+                            Read Review
+                        </button>
                     </div>
                 </div>
             </div>
         </div>
-    </main>
+    </section>
+
+    <!-- Top Deals Section -->
+    <section class="py-16 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-center text-gray-900 mb-4">🔥 Top October Deals</h2>
+            <p class="text-center text-gray-600 mb-12">Verified firms, top discounts.</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <h3 class="text-2xl font-bold mb-4">Funded Program Guide</h3>
+                <p class="text-gray-400 mb-4">Your trusted resource for prop trading success</p>
+                <div class="flex justify-center space-x-6">
+                    <a href="#" class="text-gray-400 hover:text-white">About</a>
+                    <a href="#" class="text-gray-400 hover:text-white">Contact</a>
+                    <a href="#" class="text-gray-400 hover:text-white">Privacy</a>
+                    <a href="#" class="text-gray-400 hover:text-white">Terms</a>
+                </div>
+            </div>
+        </div>
+    </footer>
   </body>
 </html>
