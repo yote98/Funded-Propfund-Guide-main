@@ -1737,7 +1737,7 @@ export const userReviews: UserReview[] = [
     userAvatar: '/avatars/david-martinez-lark.jpg',
     rating: 4,
     title: 'Innovative with room to grow',
-    content: 'Lark Funding offers interesting innovations. The evaluation process is straightforward and the dashboard is excellent. Passed in 7 weeks. Trading conditions are competitive. Had one minor issue with payout processing (resolved quickly). The 85% profit split is excellent. As a newer firm, they're still building long-term track record, but all signs are positive. Good choice for traders wanting innovation and high profit splits.',
+    content: 'Lark Funding offers interesting innovations. The evaluation process is straightforward and the dashboard is excellent. Passed in 7 weeks. Trading conditions are competitive. Had one minor issue with payout processing (resolved quickly). The 85% profit split is excellent. As a newer firm, they are still building long-term track record, but all signs are positive. Good choice for traders wanting innovation and high profit splits.',
     date: '2024-08-26',
     verified: true,
     helpful: 76,
