@@ -1684,7 +1684,7 @@ export const userReviews: UserReview[] = [
     userAvatar: '/avatars/michael-turner.jpg',
     rating: 4,
     title: 'Good starter prop firm',
-    content: 'Fund Your FX provides a good entry into prop trading. Evaluation is fair and not overly restrictive. Passed in 7 weeks with steady trading. Trading conditions are decent, though spreads aren't the absolute tightest. Payouts processed as promised. Support is helpful. Good choice if you want accessible funding without complex rules. The scaling plan is achievable for consistent traders.',
+    content: 'Fund Your FX provides a good entry into prop trading. Evaluation is fair and not overly restrictive. Passed in 7 weeks with steady trading. Trading conditions are decent, though spreads are not the absolute tightest. Payouts processed as promised. Support is helpful. Good choice if you want accessible funding without complex rules. The scaling plan is achievable for consistent traders.',
     date: '2024-08-23',
     verified: true,
     helpful: 68,
