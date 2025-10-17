@@ -537,19 +537,6 @@ const FirmReviewPage: React.FC<FirmReviewPageProps> = ({ firm }) => {
                 last30Days="10,131,828.84"
               />
             )}
-            
-            {firm.id === 'blue-guardian' && (
-              <TradingPilotData
-                firmName={firm.name}
-                totalPayouts="10,512,641.25"
-                numberOfPayouts={4754}
-                averagePayout="2,211.33"
-                largestPayout="40,343.00"
-                last24Hours="285.73"
-                last7Days="109,941.93"
-                last30Days="306,488.62"
-              />
-            )}
           </div>
         )}
         
