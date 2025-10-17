@@ -383,6 +383,8 @@ const ComparisonPage: React.FC<ComparisonPageProps> = ({ viewFirm, firms, initia
                     <tr>
                       <th className="px-4 py-3 text-center text-xs font-medium text-slate-500 uppercase tracking-wider">Compare</th>
                       <SortableHeader sortKey="name">Firm</SortableHeader>
+                      <th className="px-4 py-3 text-left text-xs font-medium text-slate-500 uppercase tracking-wider">Country</th>
+                      <th className="px-4 py-3 text-left text-xs font-medium text-slate-500 uppercase tracking-wider">Est.</th>
                       <SortableHeader sortKey="rating">Rating</SortableHeader>
                       <SortableHeader sortKey="maxFunding">Max Funding</SortableHeader>
                       <SortableHeader sortKey="profitSplit">Profit Split</SortableHeader>
@@ -419,6 +421,8 @@ const ComparisonPage: React.FC<ComparisonPageProps> = ({ viewFirm, firms, initia
                             </div>
                           </button>
                         </td>
+                        <td className="px-4 py-4 whitespace-nowrap text-sm text-slate-600">{firm.country || 'N/A'}</td>
+                        <td className="px-4 py-4 whitespace-nowrap text-sm text-slate-600">{firm.yearEstablished || 'N/A'}</td>
                         <td className="px-4 py-4 whitespace-nowrap text-sm text-slate-600 font-medium">{firm.rating.toFixed(1)} <span className="text-amber-400">★</span></td>
                         <td className="px-4 py-4 whitespace-nowrap text-sm text-slate-600 font-medium">${firm.details.maxFunding.toLocaleString()}</td>
                         <td className="px-4 py-4 whitespace-nowrap text-sm font-bold text-green-600">{firm.details.profitSplit}%</td>
