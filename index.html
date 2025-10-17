@@ -1,24 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Funded Program Guide</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         * {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif !important;
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
         
         body {
+            font-family: 'Inter', sans-serif;
             background: linear-gradient(180deg, #f8fafc 0%, #e2e8f0 50%, #cbd5e1 100%);
             min-height: 100vh;
-            font-weight: 400;
             line-height: 1.6;
         }
         
@@ -76,189 +73,251 @@
             padding: 40px 0;
         }
         
-        .deals-section {
+        .hero-section {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .hero-title {
+            font-size: 3rem;
+            font-weight: 700;
+            color: #14b8a6;
+            margin-bottom: 20px;
+        }
+        
+        .hero-subtitle {
+            font-size: 1.2rem;
+            color: #64748b;
+            margin-bottom: 40px;
+        }
+        
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .stat-item {
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #14b8a6;
+            margin-bottom: 5px;
+        }
+        
+        .stat-label {
+            color: #64748b;
+            font-weight: 500;
+        }
+        
+        .buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, #14b8a6, #0f172a);
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .btn-secondary {
+            background: white;
+            color: #64748b;
+            padding: 15px 30px;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .firms-section {
+            margin-bottom: 60px;
+        }
+        
+        .section-title {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #0f172a;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .firms-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+        
+        .firm-card {
             background: white;
             border-radius: 12px;
             padding: 30px;
             box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            margin-bottom: 40px;
+            position: relative;
         }
         
-        .deals-header {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin-bottom: 20px;
-        }
-        
-        .hot-icon {
-            background: #ff6b6b;
+        .shortlist-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: #14b8a6;
             color: white;
-            padding: 4px 8px;
+            padding: 5px 10px;
             border-radius: 4px;
             font-size: 12px;
             font-weight: 600;
         }
         
-        .deals-title {
-            font-size: 2rem;
-            font-weight: 700;
-            color: #0f172a;
-        }
-        
-        .deals-subtitle {
-            color: #64748b;
-            margin-bottom: 30px;
-        }
-        
-        .deal-item {
+        .firm-header {
             display: flex;
             align-items: center;
-            padding: 20px 0;
-            border-bottom: 1px solid #e2e8f0;
+            gap: 15px;
+            margin-bottom: 20px;
         }
         
-        .deal-item:last-child {
-            border-bottom: none;
-        }
-        
-        .deal-logo {
-            width: 48px;
-            height: 48px;
+        .firm-logo {
+            width: 60px;
+            height: 60px;
             border-radius: 8px;
-            margin-right: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
+            object-fit: contain;
+            background: white;
+            padding: 8px;
+            border: 1px solid #e2e8f0;
+        }
+        
+        .firm-info h3 {
+            font-size: 1.5rem;
             font-weight: 700;
-        }
-        
-        .deal-content {
-            flex: 1;
-        }
-        
-        .deal-name {
-            font-size: 1.2rem;
-            font-weight: 600;
             color: #0f172a;
             margin-bottom: 5px;
         }
         
-        .deal-description {
-            color: #64748b;
-            font-size: 0.9rem;
+        .rating {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            margin-bottom: 15px;
         }
         
-        .deal-button {
+        .stars {
+            color: #fbbf24;
+        }
+        
+        .review-count {
+            color: #64748b;
+            font-size: 14px;
+        }
+        
+        .firm-description {
+            color: #64748b;
+            margin-bottom: 20px;
+            line-height: 1.5;
+        }
+        
+        .firm-details {
+            margin-bottom: 20px;
+        }
+        
+        .detail-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+        
+        .detail-label {
+            color: #64748b;
+        }
+        
+        .detail-value {
+            color: #0f172a;
+            font-weight: 500;
+        }
+        
+        .metrics {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .metric {
+            background: #f8fafc;
+            padding: 10px;
+            border-radius: 6px;
+            text-align: center;
+        }
+        
+        .metric-label {
+            font-size: 12px;
+            color: #64748b;
+            margin-bottom: 5px;
+        }
+        
+        .metric-value {
+            font-size: 16px;
+            font-weight: 700;
+            color: #0f172a;
+        }
+        
+        .firm-actions {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .btn-visit {
             background: #14b8a6;
             color: white;
-            border: none;
             padding: 10px 20px;
+            border: none;
             border-radius: 6px;
             font-weight: 600;
             cursor: pointer;
-            transition: background 0.3s;
+            flex: 1;
         }
         
-        .deal-button:hover {
-            background: #0d9488;
-        }
-        
-        .discount-code {
-            background: #f0f9ff;
-            border: 1px solid #0ea5e9;
-            border-radius: 6px;
-            padding: 15px;
-            margin-top: 20px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        
-        .code-box {
-            background: #14b8a6;
-            color: white;
-            padding: 8px 12px;
-            border-radius: 4px;
-            font-weight: 600;
-            font-family: monospace;
-        }
-        
-        .testimonials {
-            text-align: center;
-            margin-top: 60px;
-        }
-        
-        .testimonials h2 {
-            font-size: 2rem;
-            font-weight: 700;
-            color: #0f172a;
-            margin-bottom: 10px;
-        }
-        
-        .testimonials p {
+        .btn-review {
+            background: #f8fafc;
             color: #64748b;
-            margin-bottom: 40px;
-        }
-        
-        .testimonial-cards {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-        }
-        
-        .testimonial-card {
-            background: white;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-        
-        .testimonial-header {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin-bottom: 10px;
-        }
-        
-        .testimonial-avatar {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background: #e2e8f0;
-        }
-        
-        .testimonial-name {
+            padding: 10px 20px;
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
             font-weight: 600;
-            color: #0f172a;
-        }
-        
-        .verified-badge {
-            background: #14b8a6;
-            color: white;
-            padding: 2px 6px;
-            border-radius: 4px;
-            font-size: 10px;
-            font-weight: 600;
+            cursor: pointer;
+            flex: 1;
         }
         
         @media (max-width: 768px) {
-            .testimonial-cards {
+            .firms-grid {
                 grid-template-columns: 1fr;
             }
             
-            .deal-item {
-                flex-direction: column;
-                align-items: flex-start;
+            .stats {
+                grid-template-columns: repeat(2, 1fr);
             }
             
-            .deal-button {
-                margin-top: 10px;
+            .buttons {
+                flex-direction: column;
             }
         }
     </style>
-</head>
+  </head>
 <body>
     <header>
         <div class="container">
@@ -282,102 +341,170 @@
 
     <main class="main-content">
         <div class="container">
-            <div class="deals-section">
-                <div class="deals-header">
-                    <div class="hot-icon">Hot</div>
-                    <h1 class="deals-title">Top October Deals</h1>
-                </div>
-                <p class="deals-subtitle">Verified firms, top discounts.</p>
+            <div class="hero-section">
+                <h1 class="hero-title">We Research. You Profit.</h1>
+                <p class="hero-subtitle">The most comprehensive resource for proprietary trading firms. Compare, analyze, and choose the perfect firm for your trading journey.</p>
                 
-                <div class="deal-item">
-                    <div class="deal-logo" style="background: #1e40af; color: white; font-weight: bold;">5%</div>
-                    <div class="deal-content">
-                        <div class="deal-name">The 5%ers</div>
-                        <div class="deal-description">Join the popular Bootcamp program with special offers.</div>
+                <div class="stats">
+                    <div class="stat-item">
+                        <div class="stat-number">53+</div>
+                        <div class="stat-label">Prop Firms</div>
                     </div>
-                    <button class="deal-button">Buy 5%ers</button>
-                </div>
-                
-                <div class="deal-item">
-                    <div class="deal-logo" style="background: #1f2937; color: white; font-weight: bold;">F</div>
-                    <div class="deal-content">
-                        <div class="deal-name">FTMO</div>
-                        <div class="deal-description">The industry standard challenge at a competitive price.</div>
+                    <div class="stat-item">
+                        <div class="stat-number">196+</div>
+                        <div class="stat-label">Reviews</div>
                     </div>
-                    <button class="deal-button">Buy FTMO</button>
-                </div>
-                
-                <div class="deal-item">
-                    <img src="public/logos/apex-trader-funding.jpeg" alt="Apex Trader Funding" class="deal-logo" style="width: 48px; height: 48px; object-fit: contain; background: white; border-radius: 8px; padding: 4px;">
-                    <div class="deal-content">
-                        <div class="deal-name">Apex Trader Funding</div>
-                        <div class="deal-description">Get up to 80% off on all evaluation accounts.</div>
+                    <div class="stat-item">
+                        <div class="stat-number">4.5</div>
+                        <div class="stat-label">Avg Rating</div>
                     </div>
-                    <button class="deal-button">Buy Apex</button>
-                </div>
-                
-                <div class="deal-item">
-                    <div class="deal-logo" style="background: #1f2937; color: white; font-weight: bold;">T</div>
-                    <div class="deal-content">
-                        <div class="deal-name">Topstep</div>
-                        <div class="deal-description">Special pricing on the Trading Combine evaluations.</div>
+                    <div class="stat-item">
+                        <div class="stat-number">$2M+</div>
+                        <div class="stat-label">Max Funding</div>
                     </div>
-                    <button class="deal-button">Buy Topstep</button>
                 </div>
                 
-                <div class="deal-item">
-                    <div class="deal-logo" style="background: #1e40af; color: white; font-weight: bold;">b</div>
-                    <div class="deal-content">
-                        <div class="deal-name">Bulenox</div>
-                        <div class="deal-description">Massive 91% off deals on qualification accounts.</div>
-                    </div>
-                    <button class="deal-button">Buy Bulenox</button>
-                </div>
-                
-                <div class="discount-code">
-                    <span>Use code</span>
-                    <div class="code-box">FPG10</div>
-                    <span>for the best available discount.</span>
+                <div class="buttons">
+                    <a href="#" class="btn-primary">📊 Compare All Firms</a>
+                    <a href="#" class="btn-secondary">📈 View Top Firms</a>
                 </div>
             </div>
             
-            <div class="testimonials">
-                <h2>What Our Users Say</h2>
-                <p>Real reviews from successful funded traders who found their perfect firm through our platform.</p>
+            <div class="firms-section">
+                <h2 class="section-title">Hand-picked top-performing prop trading firms</h2>
                 
-                <div class="testimonial-cards">
-                    <div class="testimonial-card">
-                        <div class="testimonial-header">
-                            <div class="testimonial-avatar"></div>
-                            <div>
-                                <div class="testimonial-name">Michael Chen</div>
-                                <div class="verified-badge">Verified</div>
+                <div class="firms-grid">
+                    <div class="firm-card">
+                        <div class="shortlist-badge">Shortlist</div>
+                        <div class="firm-header">
+                            <div class="firm-logo" style="background: #1e40af; color: white; display: flex; align-items: center; justify-content: center; font-weight: bold;">5%</div>
+                            <div class="firm-info">
+                                <h3>The 5%ers</h3>
+                                <div class="rating">
+                                    <span class="stars">★★★★★</span>
+                                    <span class="review-count">(18000 reviews)</span>
+                                </div>
                             </div>
+                        </div>
+                        <p class="firm-description">Offers up to $4M in funding with unique evaluation models and profit splits up to 100%.</p>
+                        <div class="firm-details">
+                            <div class="detail-item">
+                                <span class="detail-label">Models:</span>
+                                <span class="detail-value">Bootcamp, Hyper Growth, High Stakes</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Category:</span>
+                                <span class="detail-value">Forex/CFD</span>
+                            </div>
+                        </div>
+                        <div class="metrics">
+                            <div class="metric">
+                                <div class="metric-label">MAX FUNDING</div>
+                                <div class="metric-value">$4M</div>
+                            </div>
+                            <div class="metric">
+                                <div class="metric-label">PROFIT SPLIT</div>
+                                <div class="metric-value">100%</div>
+                            </div>
+                            <div class="metric">
+                                <div class="metric-label">STARTS FROM</div>
+                                <div class="metric-value">$39</div>
+                            </div>
+                        </div>
+                        <div class="firm-actions">
+                            <button class="btn-visit">Visit Site</button>
+                            <button class="btn-review">Read Review</button>
                         </div>
                     </div>
                     
-                    <div class="testimonial-card">
-                        <div class="testimonial-header">
-                            <div class="testimonial-avatar"></div>
-                            <div>
-                                <div class="testimonial-name">Emma Rodriguez</div>
-                                <div class="verified-badge">Verified</div>
+                    <div class="firm-card">
+                        <div class="shortlist-badge">Shortlist</div>
+                        <div class="firm-header">
+                            <div class="firm-logo" style="background: #1f2937; color: white; display: flex; align-items: center; justify-content: center; font-weight: bold;">F</div>
+                            <div class="firm-info">
+                                <h3>FTMO</h3>
+                                <div class="rating">
+                                    <span class="stars">★★★★★</span>
+                                    <span class="review-count">(28000 reviews)</span>
+                                </div>
                             </div>
+                        </div>
+                        <p class="firm-description">One of the most recognized firms with a 2-step evaluation, scaling up to $2M and 80-90% profit splits.</p>
+                        <div class="firm-details">
+                            <div class="detail-item">
+                                <span class="detail-label">Models:</span>
+                                <span class="detail-value">2-Step Challenge</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Category:</span>
+                                <span class="detail-value">Forex/CFD</span>
+                            </div>
+                        </div>
+                        <div class="metrics">
+                            <div class="metric">
+                                <div class="metric-label">MAX FUNDING</div>
+                                <div class="metric-value">$2M</div>
+                            </div>
+                            <div class="metric">
+                                <div class="metric-label">PROFIT SPLIT</div>
+                                <div class="metric-value">90%</div>
+                            </div>
+                            <div class="metric">
+                                <div class="metric-label">STARTS FROM</div>
+                                <div class="metric-value">$155</div>
+                            </div>
+                        </div>
+                        <div class="firm-actions">
+                            <button class="btn-visit">Visit Site</button>
+                            <button class="btn-review">Read Review</button>
                         </div>
                     </div>
                     
-                    <div class="testimonial-card">
-                        <div class="testimonial-header">
-                            <div class="testimonial-avatar"></div>
-                            <div>
-                                <div class="testimonial-name">David Williams</div>
-                                <div class="verified-badge">Verified</div>
+                    <div class="firm-card">
+                        <div class="shortlist-badge">Shortlist</div>
+                        <div class="firm-header">
+                            <img src="public/logos/apex-trader-funding.jpeg" alt="Apex Trader Funding" class="firm-logo">
+                            <div class="firm-info">
+                                <h3>Apex Trader Funding</h3>
+                                <div class="rating">
+                                    <span class="stars">★★★★★</span>
+                                    <span class="review-count">(13000 reviews)</span>
+                                </div>
                             </div>
+                        </div>
+                        <p class="firm-description">Premier futures prop firm with a simple one-step evaluation, no daily drawdown, and up to 20 accounts.</p>
+                        <div class="firm-details">
+                            <div class="detail-item">
+                                <span class="detail-label">Models:</span>
+                                <span class="detail-value">1-Step Challenge</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Category:</span>
+                                <span class="detail-value">Futures</span>
+                            </div>
+                        </div>
+                        <div class="metrics">
+                            <div class="metric">
+                                <div class="metric-label">MAX FUNDING</div>
+                                <div class="metric-value">$6M</div>
+                            </div>
+                            <div class="metric">
+                                <div class="metric-label">PROFIT SPLIT</div>
+                                <div class="metric-value">90%</div>
+                            </div>
+                            <div class="metric">
+                                <div class="metric-label">STARTS FROM</div>
+                                <div class="metric-value">$147</div>
+                            </div>
+                        </div>
+                        <div class="firm-actions">
+                            <button class="btn-visit">Visit Site</button>
+                            <button class="btn-review">Read Review</button>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </main>
-</body>
+  </body>
 </html>
