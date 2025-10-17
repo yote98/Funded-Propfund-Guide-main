@@ -9,6 +9,7 @@ interface LogoProps {
 const Logo: React.FC<LogoProps> = ({ firmName, logoUrl, className = "" }) => {
   const [error, setError] = useState(false);
   const [currentUrlIndex, setCurrentUrlIndex] = useState(0);
+  const [isLoading, setIsLoading] = useState(true);
 
   // Official logo URLs for specific firms
   const getOfficialLogoUrls = (firmName: string): string[] => {
@@ -158,21 +159,57 @@ const Logo: React.FC<LogoProps> = ({ firmName, logoUrl, className = "" }) => {
     return local;
   };
 
+  // Generate a consistent gradient based on firm name
+  const getGradientForFirm = (name: string): string => {
+    const gradients = [
+      'from-blue-500 to-cyan-500',
+      'from-purple-500 to-pink-500',
+      'from-green-500 to-teal-500',
+      'from-orange-500 to-red-500',
+      'from-indigo-500 to-blue-500',
+      'from-pink-500 to-rose-500',
+      'from-teal-500 to-emerald-500',
+      'from-violet-500 to-purple-500',
+      'from-amber-500 to-orange-500',
+      'from-cyan-500 to-blue-500',
+    ];
+    // Generate consistent index based on name
+    const hash = name.split('').reduce((acc, char) => acc + char.charCodeAt(0), 0);
+    return gradients[hash % gradients.length];
+  };
+
   const handleError = () => {
     const officialUrls = getOfficialLogoUrls(firmName);
     const localFirst = getLocalCandidates(firmName);
     const total = localFirst.length + officialUrls.length + (logoUrl ? 1 : 0);
     if (currentUrlIndex < total - 1) {
       setCurrentUrlIndex(currentUrlIndex + 1);
+      setIsLoading(true);
     } else {
       setError(true);
+      setIsLoading(false);
     }
   };
 
+  // Enhanced fallback badge with gradient
   if (error || !logoUrl) {
+    const initials = firmName
+      .split(' ')
+      .map(word => word[0])
+      .join('')
+      .toUpperCase()
+      .substring(0, 2);
+    
+    const gradient = getGradientForFirm(firmName);
+    
     return (
-      <div className={`${className} flex items-center justify-center bg-slate-200 border-2 border-slate-300 rounded-lg shadow-sm`}>
-        <span className="text-slate-500 font-bold text-lg tracking-wider">{firmName.substring(0, 2).toUpperCase()}</span>
+      <div 
+        className={`${className} flex items-center justify-center bg-gradient-to-br ${gradient} rounded-lg shadow-lg transform transition-all duration-300 hover:scale-110 hover:shadow-2xl hover:rotate-2`}
+        title={firmName}
+      >
+        <span className="text-white font-bold text-2xl tracking-wider drop-shadow-lg">
+          {initials}
+        </span>
       </div>
     );
   }
@@ -189,15 +226,23 @@ const Logo: React.FC<LogoProps> = ({ firmName, logoUrl, className = "" }) => {
   const specialStyles = firmName === 'Fundora' ? { maxWidth: '80%', maxHeight: '80%' } : {};
   
   return (
-    <img
-      src={currentUrl}
-      alt={`${firmName} Logo`}
-      className={className}
-      style={specialStyles}
-      referrerPolicy="no-referrer"
-      onError={handleError}
-      onLoad={() => { /* no-op to keep console clean */ }}
-    />
+    <div className={`${className} relative overflow-hidden rounded-lg`}>
+      {/* Loading skeleton */}
+      {isLoading && (
+        <div className="absolute inset-0 bg-gradient-to-r from-slate-200 via-slate-300 to-slate-200 animate-pulse rounded-lg" />
+      )}
+      
+      {/* Actual logo image */}
+      <img
+        src={currentUrl}
+        alt={`${firmName} Logo`}
+        className={`${className} transition-all duration-300 hover:scale-110 hover:brightness-110 ${isLoading ? 'opacity-0' : 'opacity-100'}`}
+        style={specialStyles}
+        referrerPolicy="no-referrer"
+        onError={handleError}
+        onLoad={() => setIsLoading(false)}
+      />
+    </div>
   );
 };
 
