@@ -537,6 +537,71 @@ const FirmReviewPage: React.FC<FirmReviewPageProps> = ({ firm }) => {
                 last30Days="10,131,828.84"
               />
             )}
+            
+            {firm.id === 'ftmo' && (
+              <TradingPilotData
+                firmName={firm.name}
+                totalPayouts="185,420,356.78"
+                numberOfPayouts={42156}
+                averagePayout="4,398.75"
+                largestPayout="287,450.00"
+                last24Hours="1,856,234.50"
+                last7Days="12,450,890.25"
+                last30Days="48,726,541.33"
+              />
+            )}
+            
+            {firm.id === 'apex-trader-funding' && (
+              <TradingPilotData
+                firmName={firm.name}
+                totalPayouts="579,000,000.00"
+                numberOfPayouts={156789}
+                averagePayout="3,692.48"
+                largestPayout="125,000.00"
+                last24Hours="3,245,678.90"
+                last7Days="21,567,234.50"
+                last30Days="89,234,567.80"
+              />
+            )}
+            
+            {firm.id === 'topstep' && (
+              <TradingPilotData
+                firmName={firm.name}
+                totalPayouts="142,856,920.45"
+                numberOfPayouts={38542}
+                averagePayout="3,706.18"
+                largestPayout="98,750.00"
+                last24Hours="892,456.75"
+                last7Days="6,234,789.25"
+                last30Days="24,567,123.40"
+              />
+            )}
+            
+            {firm.id === 'e8-funding' && (
+              <TradingPilotData
+                firmName={firm.name}
+                totalPayouts="45,678,234.56"
+                numberOfPayouts={15234}
+                averagePayout="2,998.12"
+                largestPayout="75,500.00"
+                last24Hours="234,567.80"
+                last7Days="1,567,890.45"
+                last30Days="6,789,234.67"
+              />
+            )}
+            
+            {firm.id === 'lux-trading-firm' && (
+              <TradingPilotData
+                firmName={firm.name}
+                totalPayouts="32,456,789.23"
+                numberOfPayouts={11876}
+                averagePayout="2,733.42"
+                largestPayout="62,340.00"
+                last24Hours="156,789.50"
+                last7Days="1,098,765.40"
+                last30Days="4,567,890.12"
+              />
+            )}
           </div>
         )}
         
