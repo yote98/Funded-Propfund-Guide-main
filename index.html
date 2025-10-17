@@ -41,9 +41,19 @@
         }
         
         .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
             font-size: 24px;
             font-weight: 700;
             color: #0f172a;
+        }
+        
+        .logo-icon {
+            width: 24px;
+            height: 24px;
+            background: linear-gradient(135deg, #14b8a6, #0f172a);
+            border-radius: 4px;
         }
         
         nav {
@@ -62,106 +72,189 @@
             color: #14b8a6;
         }
         
-        .hero {
-            text-align: center;
-            padding: 80px 0;
+        .main-content {
+            padding: 40px 0;
         }
         
-        .hero h1 {
-            font-size: 4rem;
-            font-weight: 800;
+        .deals-section {
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            margin-bottom: 40px;
+        }
+        
+        .deals-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
             margin-bottom: 20px;
-            background: linear-gradient(135deg, #14b8a6, #0f172a);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
         }
         
-        .hero p {
+        .hot-icon {
+            background: #ff6b6b;
+            color: white;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        
+        .deals-title {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #0f172a;
+        }
+        
+        .deals-subtitle {
+            color: #64748b;
+            margin-bottom: 30px;
+        }
+        
+        .deal-item {
+            display: flex;
+            align-items: center;
+            padding: 20px 0;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        
+        .deal-item:last-child {
+            border-bottom: none;
+        }
+        
+        .deal-logo {
+            width: 48px;
+            height: 48px;
+            border-radius: 8px;
+            margin-right: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+        }
+        
+        .deal-content {
+            flex: 1;
+        }
+        
+        .deal-name {
             font-size: 1.2rem;
+            font-weight: 600;
+            color: #0f172a;
+            margin-bottom: 5px;
+        }
+        
+        .deal-description {
+            color: #64748b;
+            font-size: 0.9rem;
+        }
+        
+        .deal-button {
+            background: #14b8a6;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        
+        .deal-button:hover {
+            background: #0d9488;
+        }
+        
+        .discount-code {
+            background: #f0f9ff;
+            border: 1px solid #0ea5e9;
+            border-radius: 6px;
+            padding: 15px;
+            margin-top: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .code-box {
+            background: #14b8a6;
+            color: white;
+            padding: 8px 12px;
+            border-radius: 4px;
+            font-weight: 600;
+            font-family: monospace;
+        }
+        
+        .testimonials {
+            text-align: center;
+            margin-top: 60px;
+        }
+        
+        .testimonials h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #0f172a;
+            margin-bottom: 10px;
+        }
+        
+        .testimonials p {
             color: #64748b;
             margin-bottom: 40px;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
         }
         
-        .stats {
+        .testimonial-cards {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 40px;
-            margin: 60px 0;
-        }
-        
-        .stat {
-            text-align: center;
-        }
-        
-        .stat-number {
-            font-size: 3rem;
-            font-weight: 700;
-            color: #14b8a6;
-            display: block;
-        }
-        
-        .stat-label {
-            font-size: 1rem;
-            color: #64748b;
-            margin-top: 10px;
-        }
-        
-        .buttons {
-            display: flex;
+            grid-template-columns: repeat(3, 1fr);
             gap: 20px;
-            justify-content: center;
-            margin-top: 40px;
         }
         
-        .btn-primary {
-            background: linear-gradient(135deg, #14b8a6, #0f172a);
-            color: white;
-            padding: 15px 30px;
-            border: none;
-            border-radius: 8px;
-            font-size: 1.1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: transform 0.3s;
-        }
-        
-        .btn-primary:hover {
-            transform: translateY(-2px);
-        }
-        
-        .btn-secondary {
+        .testimonial-card {
             background: white;
-            color: #64748b;
-            padding: 15px 30px;
-            border: 2px solid #e2e8f0;
+            padding: 20px;
             border-radius: 8px;
-            font-size: 1.1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
         
-        .btn-secondary:hover {
-            border-color: #14b8a6;
-            color: #14b8a6;
+        .testimonial-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+        
+        .testimonial-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: #e2e8f0;
+        }
+        
+        .testimonial-name {
+            font-weight: 600;
+            color: #0f172a;
+        }
+        
+        .verified-badge {
+            background: #14b8a6;
+            color: white;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 10px;
+            font-weight: 600;
         }
         
         @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2.5rem;
+            .testimonial-cards {
+                grid-template-columns: 1fr;
             }
             
-            .stats {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            
-            .buttons {
+            .deal-item {
                 flex-direction: column;
-                align-items: center;
+                align-items: flex-start;
+            }
+            
+            .deal-button {
+                margin-top: 10px;
             }
         }
     </style>
@@ -170,7 +263,10 @@
     <header>
         <div class="container">
             <div class="header-content">
-                <div class="logo">Funded Program Guide</div>
+                <div class="logo">
+                    <div class="logo-icon"></div>
+                    Funded Program Guide
+                </div>
                 <nav>
                     <a href="#" style="color: #14b8a6; font-weight: 600;">Home</a>
                     <a href="#">Compare Firms</a>
@@ -184,34 +280,101 @@
         </div>
     </header>
 
-    <main>
+    <main class="main-content">
         <div class="container">
-            <div class="hero">
-                <h1>We Research. You Profit.</h1>
-                <p>The most comprehensive resource for proprietary trading firms. Compare, analyze, and choose the perfect firm for your trading journey.</p>
+            <div class="deals-section">
+                <div class="deals-header">
+                    <div class="hot-icon">Hot</div>
+                    <h1 class="deals-title">Top October Deals</h1>
+                </div>
+                <p class="deals-subtitle">Verified firms, top discounts.</p>
                 
-                <div class="stats">
-                    <div class="stat">
-                        <span class="stat-number">53+</span>
-                        <div class="stat-label">Prop Firms</div>
+                <div class="deal-item">
+                    <div class="deal-logo" style="background: #1e40af;">5%</div>
+                    <div class="deal-content">
+                        <div class="deal-name">The 5%ers</div>
+                        <div class="deal-description">Join the popular Bootcamp program with special offers.</div>
                     </div>
-                    <div class="stat">
-                        <span class="stat-number">196+</span>
-                        <div class="stat-label">Reviews</div>
-                    </div>
-                    <div class="stat">
-                        <span class="stat-number">4.5</span>
-                        <div class="stat-label">Avg Rating</div>
-                    </div>
-                    <div class="stat">
-                        <span class="stat-number">$2M+</span>
-                        <div class="stat-label">Max Funding</div>
-                    </div>
+                    <button class="deal-button">Buy 5%ers</button>
                 </div>
                 
-                <div class="buttons">
-                    <button class="btn-primary">Compare All Firms</button>
-                    <button class="btn-secondary">View Top Firms</button>
+                <div class="deal-item">
+                    <div class="deal-logo" style="background: #1f2937;">F</div>
+                    <div class="deal-content">
+                        <div class="deal-name">FTMO</div>
+                        <div class="deal-description">The industry standard challenge at a competitive price.</div>
+                    </div>
+                    <button class="deal-button">Buy FTMO</button>
+                </div>
+                
+                <div class="deal-item">
+                    <div class="deal-logo" style="background: #1e40af;">A</div>
+                    <div class="deal-content">
+                        <div class="deal-name">Apex Trader Funding</div>
+                        <div class="deal-description">Get up to 80% off on all evaluation accounts.</div>
+                    </div>
+                    <button class="deal-button">Buy Apex</button>
+                </div>
+                
+                <div class="deal-item">
+                    <div class="deal-logo" style="background: #1f2937;">T</div>
+                    <div class="deal-content">
+                        <div class="deal-name">Topstep</div>
+                        <div class="deal-description">Special pricing on the Trading Combine evaluations.</div>
+                    </div>
+                    <button class="deal-button">Buy Topstep</button>
+                </div>
+                
+                <div class="deal-item">
+                    <div class="deal-logo" style="background: #1e40af;">b</div>
+                    <div class="deal-content">
+                        <div class="deal-name">Bulenox</div>
+                        <div class="deal-description">Massive 91% off deals on qualification accounts.</div>
+                    </div>
+                    <button class="deal-button">Buy Bulenox</button>
+                </div>
+                
+                <div class="discount-code">
+                    <span>Use code</span>
+                    <div class="code-box">FPG10</div>
+                    <span>for the best available discount.</span>
+                </div>
+            </div>
+            
+            <div class="testimonials">
+                <h2>What Our Users Say</h2>
+                <p>Real reviews from successful funded traders who found their perfect firm through our platform.</p>
+                
+                <div class="testimonial-cards">
+                    <div class="testimonial-card">
+                        <div class="testimonial-header">
+                            <div class="testimonial-avatar"></div>
+                            <div>
+                                <div class="testimonial-name">Michael Chen</div>
+                                <div class="verified-badge">Verified</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="testimonial-card">
+                        <div class="testimonial-header">
+                            <div class="testimonial-avatar"></div>
+                            <div>
+                                <div class="testimonial-name">Emma Rodriguez</div>
+                                <div class="verified-badge">Verified</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="testimonial-card">
+                        <div class="testimonial-header">
+                            <div class="testimonial-avatar"></div>
+                            <div>
+                                <div class="testimonial-name">David Williams</div>
+                                <div class="verified-badge">Verified</div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
