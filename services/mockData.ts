@@ -206,6 +206,11 @@ export const propFirms: PropFirm[] = [
         webTrading: true
       }
     ],
+
+    // Company Information
+    countryFounded: 'United Kingdom',
+    foundedYear: 2021,
+    headquarters: 'London, UK',
   },
   {
     id: 'ftuk',
@@ -684,6 +689,11 @@ export const propFirms: PropFirm[] = [
     cons: ["Limited data and reviews", "Newer firm"],
     details: { minFunding: 5000, maxFunding: 1000000, profitSplit: 90, maxDrawdown: 10, dailyDrawdown: 5, profitTarget: 8, minTradingDays: 0 },
     features: { scalingPlan: true, weekendHolding: true, newsTrading: true, expertAdvisors: true, fastPayouts: true, noTimeLimit: true },
+
+    // Company Information
+    countryFounded: 'United States',
+    foundedYear: 2023,
+    headquarters: 'USA',
   },
   {
     id: 'toptier-trader',
@@ -713,6 +723,11 @@ export const propFirms: PropFirm[] = [
     cons: ["Criticism over sudden rule changes", "Rebranding has caused some confusion"],
     details: { minFunding: 25000, maxFunding: 2000000, profitSplit: 90, maxDrawdown: 10, dailyDrawdown: 5, profitTarget: 10, minTradingDays: 4 },
     features: { scalingPlan: true, weekendHolding: true, newsTrading: true, expertAdvisors: true, fastPayouts: true, noTimeLimit: true },
+
+    // Company Information
+    countryFounded: 'United Kingdom',
+    foundedYear: 2022,
+    headquarters: 'UK',
   },
   {
     id: 'blueberry-funded',
@@ -858,6 +873,11 @@ export const propFirms: PropFirm[] = [
     cons: ["Very new firm (launched 2025)", "Long-term viability unproven"],
     details: { minFunding: 25000, maxFunding: 250000, profitSplit: 90, maxDrawdown: 5, dailyDrawdown: 0, profitTarget: 6, minTradingDays: 1 },
     features: { scalingPlan: true, weekendHolding: false, newsTrading: true, expertAdvisors: false, fastPayouts: true, noTimeLimit: true },
+
+    // Company Information
+    countryFounded: 'United States',
+    foundedYear: 2023,
+    headquarters: 'USA',
   },
     {
     id: 'tradeify',
@@ -959,6 +979,11 @@ export const propFirms: PropFirm[] = [
     cons: ["Lower max funding than some competitors", "Monthly subscription model"],
     details: { minFunding: 25000, maxFunding: 150000, profitSplit: 90, maxDrawdown: 5, dailyDrawdown: 0, profitTarget: 6, minTradingDays: 1 },
     features: { scalingPlan: true, weekendHolding: true, newsTrading: true, expertAdvisors: false, fastPayouts: true, noTimeLimit: true },
+
+    // Company Information
+    countryFounded: 'Australia',
+    foundedYear: 2023,
+    headquarters: 'Sydney, Australia',
   },
   {
     id: 'take-profit-trader',
@@ -1122,6 +1147,11 @@ export const propFirms: PropFirm[] = [
     cons: ["Very new firm with limited data", "Long-term reputation is unproven"],
     details: { minFunding: 10000, maxFunding: 250000, profitSplit: 90, maxDrawdown: 10, dailyDrawdown: 0, profitTarget: 6, minTradingDays: 0 },
     features: { scalingPlan: true, weekendHolding: false, newsTrading: true, expertAdvisors: false, fastPayouts: true, noTimeLimit: true },
+
+    // Company Information
+    countryFounded: 'United States',
+    foundedYear: 2023,
+    headquarters: 'USA',
   },
   {
     id: 'funded-futures-network',
@@ -1440,6 +1470,11 @@ export const propFirms: PropFirm[] = [
     cons: ["Emerging firm with limited reviews", "Unproven track record"],
     details: { minFunding: 10000, maxFunding: 300000, profitSplit: 90, maxDrawdown: 10, dailyDrawdown: 5, profitTarget: 8, minTradingDays: 0 },
     features: { scalingPlan: true, weekendHolding: true, newsTrading: true, expertAdvisors: true, fastPayouts: true, noTimeLimit: true },
+
+    // Company Information
+    countryFounded: 'United Kingdom',
+    foundedYear: 2024,
+    headquarters: 'UK',
   },
   {
     id: 'lucid-trading',
@@ -1469,6 +1504,11 @@ export const propFirms: PropFirm[] = [
     cons: ["Emerging firm with few reviews", "Initial 21-day period before first payout"],
     details: { minFunding: 10000, maxFunding: 100000, profitSplit: 90, maxDrawdown: 10, dailyDrawdown: 5, profitTarget: 8, minTradingDays: 0 },
     features: { scalingPlan: true, weekendHolding: true, newsTrading: true, expertAdvisors: true, fastPayouts: true, noTimeLimit: true },
+
+    // Company Information
+    countryFounded: 'United Kingdom',
+    foundedYear: 2024,
+    headquarters: 'UK',
   },
   {
     id: 'the-legends-trading',
@@ -1527,6 +1567,11 @@ export const propFirms: PropFirm[] = [
     cons: ["Higher entry cost", "Emerging firm with few reviews", "Niche appeal"],
     details: { minFunding: 25000, maxFunding: 1000000, profitSplit: 95, maxDrawdown: 10, dailyDrawdown: 5, profitTarget: 10, minTradingDays: 0 },
     features: { scalingPlan: true, weekendHolding: true, newsTrading: true, expertAdvisors: true, fastPayouts: true, noTimeLimit: true },
+
+    // Company Information
+    countryFounded: 'Singapore',
+    foundedYear: 2023,
+    headquarters: 'Singapore',
   },
   // Crypto-Focused Firms
   {
@@ -1557,6 +1602,11 @@ export const propFirms: PropFirm[] = [
     cons: ["Niche focus may not suit all traders"],
     details: { minFunding: 5000, maxFunding: 300000, profitSplit: 90, maxDrawdown: 10, dailyDrawdown: 5, profitTarget: 8, minTradingDays: 0 },
     features: { scalingPlan: true, weekendHolding: true, newsTrading: true, expertAdvisors: true, fastPayouts: true, noTimeLimit: true },
+
+    // Company Information
+    countryFounded: 'United Kingdom',
+    foundedYear: 2023,
+    headquarters: 'London, UK',
   },
     {
     id: 'bitfunded',
@@ -1586,6 +1636,11 @@ export const propFirms: PropFirm[] = [
     cons: ["Emerging firm with noted scam risks", "Slow monthly payouts", "Lack of verified reviews"],
     details: { minFunding: 10000, maxFunding: 500000, profitSplit: 90, maxDrawdown: 10, dailyDrawdown: 5, profitTarget: 8, minTradingDays: 5 },
     features: { scalingPlan: true, weekendHolding: true, newsTrading: true, expertAdvisors: true, fastPayouts: false, noTimeLimit: true },
+
+    // Company Information
+    countryFounded: 'United States',
+    foundedYear: 2023,
+    headquarters: 'USA',
   },
   {
     id: 'soar-funding',
@@ -1650,7 +1705,12 @@ export const propFirms: PropFirm[] = [
     deal: {
       description: 'New Trader Bonus: 10% off your first challenge with code FPG10.',
       isTopDeal: true
-    }
+    },
+
+    // Company Information
+    countryFounded: 'United States',
+    foundedYear: 2023,
+    headquarters: 'USA',
   },
   {
     id: 'funded7',
