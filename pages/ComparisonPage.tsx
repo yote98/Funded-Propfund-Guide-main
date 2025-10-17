@@ -44,6 +44,7 @@ const ComparisonPage: React.FC<ComparisonPageProps> = ({ viewFirm, firms, initia
     
     const [comparisonList, setComparisonList] = useState<FirmId[]>([]);
     const [isModalOpen, setIsModalOpen] = useState(false);
+    const [showSuggestions, setShowSuggestions] = useState(false);
     const MAX_COMPARE = 4;
 
     useEffect(() => {
@@ -54,6 +55,19 @@ const ComparisonPage: React.FC<ComparisonPageProps> = ({ viewFirm, firms, initia
     }, [initialSearchTerm, onSearchHandled]);
 
     const debouncedSearchTerm = useDebounce(searchTerm, 300);
+    
+    // Get matching suggestions based on search term
+    const suggestions = useMemo(() => {
+        if (!searchTerm.trim()) return [];
+        const searchLower = searchTerm.toLowerCase();
+        return firms
+            .filter(firm => 
+                firm.name.toLowerCase().includes(searchLower) || 
+                firm.shortName.toLowerCase().includes(searchLower)
+            )
+            .slice(0, 5) // Show max 5 suggestions
+            .map(firm => firm.name);
+    }, [searchTerm, firms]);
     
 
     const allCategories = useMemo(() => Array.from(new Set(firms.flatMap(f => f.categories))).filter(cat => cat !== 'Instant Funding').sort(), [firms]);
@@ -275,19 +289,48 @@ const ComparisonPage: React.FC<ComparisonPageProps> = ({ viewFirm, firms, initia
               <input 
                 type="text" 
                 value={searchTerm} 
-                onChange={(e) => setSearchTerm(e.target.value)} 
+                onChange={(e) => {
+                  setSearchTerm(e.target.value);
+                  setShowSuggestions(true);
+                }}
+                onFocus={() => setShowSuggestions(true)}
+                onBlur={() => setTimeout(() => setShowSuggestions(false), 200)}
                 placeholder="Search firms (e.g., FTMO, Apex, Fundora...)" 
-                className="w-full border border-slate-300 rounded-lg shadow-sm py-3 pl-10 pr-4 text-slate-900 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-teal-500" 
+                className="w-full border border-slate-300 rounded-lg shadow-sm py-3 pl-10 pr-10 text-slate-900 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-teal-500" 
               />
               {searchTerm && (
                 <button 
-                  onClick={() => setSearchTerm('')}
+                  onClick={() => {
+                    setSearchTerm('');
+                    setShowSuggestions(false);
+                  }}
                   className="absolute inset-y-0 right-0 pr-3 flex items-center"
                 >
                   <svg className="h-5 w-5 text-slate-400 hover:text-slate-600" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
                     <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clipRule="evenodd" />
                   </svg>
                 </button>
+              )}
+              
+              {/* Autocomplete Suggestions Dropdown */}
+              {showSuggestions && suggestions.length > 0 && (
+                <div className="absolute z-50 w-full mt-1 bg-white border border-slate-300 rounded-lg shadow-lg max-h-60 overflow-auto">
+                  {suggestions.map((suggestion, index) => (
+                    <button
+                      key={index}
+                      onClick={() => {
+                        setSearchTerm(suggestion);
+                        setShowSuggestions(false);
+                      }}
+                      className="w-full text-left px-4 py-3 hover:bg-teal-50 transition-colors duration-150 flex items-center border-b border-slate-100 last:border-0"
+                    >
+                      <svg className="h-4 w-4 text-teal-500 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                      </svg>
+                      <span className="text-sm text-slate-900 font-medium">{suggestion}</span>
+                    </button>
+                  ))}
+                </div>
               )}
             </div>
           </div>
