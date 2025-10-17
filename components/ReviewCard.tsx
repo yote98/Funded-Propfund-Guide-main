@@ -85,7 +85,7 @@ const ReviewCard: React.FC<ReviewCardProps> = ({ review }) => {
       {/* Review Content */}
       <div className="mb-3">
         <h5 className="font-semibold text-slate-900 mb-2 text-sm">{review.title}</h5>
-        <p className="text-slate-700 leading-relaxed line-clamp-4 text-sm">{review.content}</p>
+        <p className="text-slate-700 leading-relaxed line-clamp-4 text-sm italic">{review.content}</p>
       </div>
 
       {/* Trading Details */}

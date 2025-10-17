@@ -272,7 +272,7 @@ const FirmReviewPage: React.FC<FirmReviewPageProps> = ({ firm }) => {
                       ))}
                     </div>
                   </div>
-                  <p className="text-slate-700 text-sm">
+                  <p className="text-slate-700 text-sm italic">
                     "Great firm with excellent support. The evaluation process was fair and the payouts are reliable. Highly recommend for serious traders."
                   </p>
                   <div className="text-xs text-slate-500 mt-2">2 days ago</div>
@@ -297,7 +297,7 @@ const FirmReviewPage: React.FC<FirmReviewPageProps> = ({ firm }) => {
                       ))}
                     </div>
                   </div>
-                  <p className="text-slate-700 text-sm">
+                  <p className="text-slate-700 text-sm italic">
                     "Fast payouts and good customer service. The rules are clear and the platform is stable. Would definitely trade with them again."
                   </p>
                   <div className="text-xs text-slate-500 mt-2">1 week ago</div>
@@ -325,7 +325,7 @@ const FirmReviewPage: React.FC<FirmReviewPageProps> = ({ firm }) => {
                       </svg>
                     </div>
                   </div>
-                  <p className="text-slate-700 text-sm">
+                  <p className="text-slate-700 text-sm italic">
                     "Good overall experience. Some minor issues with customer support response time, but the trading conditions are solid."
                   </p>
                   <div className="text-xs text-slate-500 mt-2">2 weeks ago</div>
