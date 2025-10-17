@@ -118,12 +118,28 @@ const ReviewCard: React.FC<ReviewCardProps> = ({ review }) => {
       )}
 
       {/* Footer */}
-      <div className="flex items-center justify-end pt-3 border-t border-slate-100">
-        <button className="flex items-center space-x-2 text-slate-500 hover:text-slate-700 transition-colors duration-200">
-          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 11l5-5m0 0l5 5m-5-5v12" />
+      <div className="flex items-center justify-between pt-3 border-t border-slate-100">
+        <span className="text-xs text-slate-500">Was this review helpful?</span>
+        <button 
+          className="group flex items-center gap-1.5 px-3 py-1.5 rounded-md bg-slate-50 hover:bg-teal-50 border border-slate-200 hover:border-teal-300 transition-all duration-200"
+          title="Mark as helpful"
+        >
+          <svg 
+            className="w-4 h-4 text-slate-500 group-hover:text-teal-600 transition-colors duration-200" 
+            fill="none" 
+            stroke="currentColor" 
+            viewBox="0 0 24 24"
+          >
+            <path 
+              strokeLinecap="round" 
+              strokeLinejoin="round" 
+              strokeWidth={2} 
+              d="M14 10h4.764a2 2 0 011.789 2.894l-3.5 7A2 2 0 0115.263 21h-4.017c-.163 0-.326-.02-.485-.06L7 20m7-10V5a2 2 0 00-2-2h-.095c-.5 0-.905.405-.905.905 0 .714-.211 1.412-.608 2.006L7 11v9m7-10h-2M7 20H5a2 2 0 01-2-2v-6a2 2 0 012-2h2.5" 
+            />
           </svg>
-          <span className="text-xs font-medium">{review.helpful}</span>
+          <span className="text-xs font-semibold text-slate-600 group-hover:text-teal-700 transition-colors duration-200">
+            {review.helpful}
+          </span>
         </button>
       </div>
     </div>
