@@ -1172,6 +1172,12 @@ export const propFirms: PropFirm[] = [
     payoutFrequency: 'Weekly',
     drawdownType: 'Static',
     platforms: ['MT4', 'MT5', 'cTrader'],
+    
+    // Company Information
+    countryFounded: 'Australia',
+    foundedYear: 2023,
+    headquarters: 'Sydney, Australia',
+    
     evaluationProcessSummary: 'Offers a one-step evaluation and a "Rapid" model with a focus on forex and indices trading. Backed by an ASIC-regulated broker.',
     minStartingCost: 99,
     geoRestrictions: 'US-friendly.',
