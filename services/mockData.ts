@@ -60,6 +60,11 @@ export const propFirms: PropFirm[] = [
         webTrading: true
       }
     ],
+
+    // Company Information
+    countryFounded: 'United Kingdom',
+    foundedYear: 2012,
+    headquarters: 'London, UK',
   },
   {
     id: 'the-5-percenters',
@@ -134,6 +139,11 @@ export const propFirms: PropFirm[] = [
       description: 'Join the popular Bootcamp program with special offers.',
       isTopDeal: true,
     },
+
+    // Company Information
+    countryFounded: 'Israel',
+    foundedYear: 2016,
+    headquarters: 'Tel Aviv, Israel',
   },
     {
     id: 'city-traders-imperium',
@@ -401,6 +411,11 @@ export const propFirms: PropFirm[] = [
       description: 'The industry standard challenge at a competitive price.',
       isTopDeal: true,
     },
+
+    // Company Information
+    countryFounded: 'Czech Republic',
+    foundedYear: 2015,
+    headquarters: 'Prague, Czech Republic',
   },
   {
     id: 'funding-pips',
@@ -463,6 +478,11 @@ export const propFirms: PropFirm[] = [
         webTrading: true
       }
     ],
+
+    // Company Information
+    countryFounded: 'United Kingdom',
+    foundedYear: 2020,
+    headquarters: 'London, UK',
   },
     {
     id: 'funded-trading-plus',
@@ -527,6 +547,11 @@ export const propFirms: PropFirm[] = [
     cons: ["Some consistency rules can be challenging"],
     details: { minFunding: 2500, maxFunding: 4000000, profitSplit: 95, maxDrawdown: 10, dailyDrawdown: 5, profitTarget: 10, minTradingDays: 0 },
     features: { scalingPlan: true, weekendHolding: true, newsTrading: true, expertAdvisors: true, fastPayouts: true, noTimeLimit: true },
+
+    // Company Information
+    countryFounded: 'United Kingdom',
+    foundedYear: 2021,
+    headquarters: 'London, UK',
   },
   {
     id: 'funded-prime',
@@ -591,6 +616,11 @@ export const propFirms: PropFirm[] = [
     cons: ["Past KYC rumors (though largely unsubstantiated)"],
     details: { minFunding: 6000, maxFunding: 4000000, profitSplit: 90, maxDrawdown: 10, dailyDrawdown: 5, profitTarget: 8, minTradingDays: 5 },
     features: { scalingPlan: true, weekendHolding: true, newsTrading: true, expertAdvisors: true, fastPayouts: true, noTimeLimit: true },
+
+    // Company Information
+    countryFounded: 'United Arab Emirates',
+    foundedYear: 2022,
+    headquarters: 'Dubai, UAE',
   },
     {
     id: 'fxify',
@@ -620,6 +650,11 @@ export const propFirms: PropFirm[] = [
     cons: ["Newer firm in the market"],
     details: { minFunding: 15000, maxFunding: 400000, profitSplit: 90, maxDrawdown: 10, dailyDrawdown: 5, profitTarget: 10, minTradingDays: 0 },
     features: { scalingPlan: true, weekendHolding: true, newsTrading: true, expertAdvisors: true, fastPayouts: true, noTimeLimit: true },
+
+    // Company Information
+    countryFounded: 'United Kingdom',
+    foundedYear: 2023,
+    headquarters: 'London, UK',
   },
     {
     id: 'lark-funding',
@@ -745,6 +780,11 @@ export const propFirms: PropFirm[] = [
       description: 'Get up to 80% off on all evaluation accounts.',
       isTopDeal: true,
     },
+
+    // Company Information
+    countryFounded: 'United States',
+    foundedYear: 2021,
+    headquarters: 'Austin, Texas, USA',
   },
     {
     id: 'topstep',
@@ -781,6 +821,11 @@ export const propFirms: PropFirm[] = [
       description: 'Special pricing on the Trading Combine evaluations.',
       isTopDeal: true,
     },
+
+    // Company Information
+    countryFounded: 'United States',
+    foundedYear: 2012,
+    headquarters: 'Chicago, Illinois, USA',
   },
   {
     id: 'top-one-futures',
@@ -877,6 +922,11 @@ export const propFirms: PropFirm[] = [
     cons: ["Trailing drawdown can be difficult for some traders"],
     details: { minFunding: 50000, maxFunding: 600000, profitSplit: 100, maxDrawdown: 10, dailyDrawdown: 0, profitTarget: 6, minTradingDays: 1 },
     features: { scalingPlan: true, weekendHolding: false, newsTrading: true, expertAdvisors: false, fastPayouts: true, noTimeLimit: true },
+
+    // Company Information
+    countryFounded: 'United States',
+    foundedYear: 2023,
+    headquarters: 'Florida, USA',
   },
   {
     id: 'blusky-trading',
@@ -941,6 +991,11 @@ export const propFirms: PropFirm[] = [
     cons: ["No daily loss limit only in Pro+ account", "Monthly subscription model"],
     details: { minFunding: 25000, maxFunding: 150000, profitSplit: 90, maxDrawdown: 8, dailyDrawdown: 0, profitTarget: 6, minTradingDays: 5 },
     features: { scalingPlan: true, weekendHolding: false, newsTrading: true, expertAdvisors: false, fastPayouts: true, noTimeLimit: true },
+
+    // Company Information
+    countryFounded: 'United States',
+    foundedYear: 2021,
+    headquarters: 'USA',
   },
     {
     id: 'bulenox',
@@ -993,8 +1048,13 @@ export const propFirms: PropFirm[] = [
         webTrading: false
       }
     ],
+
+    // Company Information
+    countryFounded: 'United States',
+    foundedYear: 2022,
+    headquarters: 'USA',
   },
-    {
+  {
     id: 'leeloo-trading',
     name: 'Leeloo Trading',
     shortName: 'Leeloo',
@@ -1025,6 +1085,11 @@ export const propFirms: PropFirm[] = [
     cons: ["30-day minimum before first payout", "Monthly payout frequency after first withdrawal"],
     details: { minFunding: 25000, maxFunding: 300000, profitSplit: 100, maxDrawdown: 6, dailyDrawdown: 0, profitTarget: 6, minTradingDays: 10 },
     features: { scalingPlan: true, weekendHolding: false, newsTrading: true, expertAdvisors: false, fastPayouts: false, noTimeLimit: true },
+
+    // Company Information
+    countryFounded: 'United States',
+    foundedYear: 2022,
+    headquarters: 'USA',
   },
     {
     id: 'funding-ticks',
@@ -1215,6 +1280,11 @@ export const propFirms: PropFirm[] = [
     cons: ["Slightly higher entry cost"],
     details: { minFunding: 15000, maxFunding: 2500000, profitSplit: 75, maxDrawdown: 5, dailyDrawdown: 0, profitTarget: 15, minTradingDays: 10 },
     features: { scalingPlan: true, weekendHolding: true, newsTrading: true, expertAdvisors: true, fastPayouts: true, noTimeLimit: true },
+
+    // Company Information
+    countryFounded: 'United Arab Emirates',
+    foundedYear: 2021,
+    headquarters: 'Dubai, UAE',
   },
   {
     id: 'e8-funding',
@@ -1244,6 +1314,11 @@ export const propFirms: PropFirm[] = [
     cons: ["Only offers a 2-step evaluation"],
     details: { minFunding: 25000, maxFunding: 1000000, profitSplit: 100, maxDrawdown: 8, dailyDrawdown: 5, profitTarget: 8, minTradingDays: 0 },
     features: { scalingPlan: true, weekendHolding: true, newsTrading: true, expertAdvisors: true, fastPayouts: true, noTimeLimit: true },
+
+    // Company Information
+    countryFounded: 'United States',
+    foundedYear: 2021,
+    headquarters: 'New York, USA',
   },
     {
     id: 'ment-funding',
@@ -1302,6 +1377,11 @@ export const propFirms: PropFirm[] = [
     cons: ["Newer firm with less history", "Lower max funding"],
     details: { minFunding: 5000, maxFunding: 200000, profitSplit: 90, maxDrawdown: 10, dailyDrawdown: 5, profitTarget: 8, minTradingDays: 0 },
     features: { scalingPlan: true, weekendHolding: true, newsTrading: true, expertAdvisors: true, fastPayouts: true, noTimeLimit: true },
+
+    // Company Information
+    countryFounded: 'United States',
+    foundedYear: 2023,
+    headquarters: 'USA',
   },
   {
     id: 'breakout-prop',
