@@ -593,7 +593,7 @@ const FirmReviewPage: React.FC<FirmReviewPageProps> = ({ firm }) => {
               />
             )}
             
-            {(firm.id === 'ftmo' || firm.id === 'funded-next' || firm.id === 'fxify' || firm.id === 'funding-pips' || firm.id === 'the-5ers' || firm.id === 'blue-guardian') && firm.id === 'ftmo' && (
+            {firm.id === 'ftmo' && (
               <TradingPilotData
                 firmName={firm.name}
                 totalPayouts="185,420,356.78"
@@ -606,7 +606,7 @@ const FirmReviewPage: React.FC<FirmReviewPageProps> = ({ firm }) => {
               />
             )}
             
-            {(firm.id === 'ftmo' || firm.id === 'funded-next' || firm.id === 'fxify' || firm.id === 'funding-pips' || firm.id === 'the-5ers' || firm.id === 'blue-guardian') && firm.id === 'apex-trader-funding' && (
+            {firm.id === 'apex-trader-funding' && (
               <TradingPilotData
                 firmName={firm.name}
                 totalPayouts="579,000,000.00"
@@ -619,7 +619,7 @@ const FirmReviewPage: React.FC<FirmReviewPageProps> = ({ firm }) => {
               />
             )}
             
-            {(firm.id === 'ftmo' || firm.id === 'funded-next' || firm.id === 'fxify' || firm.id === 'funding-pips' || firm.id === 'the-5ers' || firm.id === 'blue-guardian') && firm.id === 'topstep' && (
+            {firm.id === 'topstep' && (
               <TradingPilotData
                 firmName={firm.name}
                 totalPayouts="142,856,920.45"
@@ -632,7 +632,7 @@ const FirmReviewPage: React.FC<FirmReviewPageProps> = ({ firm }) => {
               />
             )}
             
-            {(firm.id === 'ftmo' || firm.id === 'funded-next' || firm.id === 'fxify' || firm.id === 'funding-pips' || firm.id === 'the-5ers' || firm.id === 'blue-guardian') && firm.id === 'e8-funding' && (
+            {firm.id === 'e8-funding' && (
               <TradingPilotData
                 firmName={firm.name}
                 totalPayouts="45,678,234.56"
@@ -645,7 +645,7 @@ const FirmReviewPage: React.FC<FirmReviewPageProps> = ({ firm }) => {
               />
             )}
             
-            {(firm.id === 'ftmo' || firm.id === 'funded-next' || firm.id === 'fxify' || firm.id === 'funding-pips' || firm.id === 'the-5ers' || firm.id === 'blue-guardian') && firm.id === 'lux-trading-firm' && (
+            {firm.id === 'lux-trading-firm' && (
               <TradingPilotData
                 firmName={firm.name}
                 totalPayouts="32,456,789.23"
