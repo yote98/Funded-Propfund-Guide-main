@@ -54,7 +54,7 @@ const Header: React.FC<HeaderProps> = ({ navigateTo, currentPage }) => {
                             aria-label="Go to homepage"
                         >
                            <FpgLogoIcon className="h-8 w-8" />
-                            <span className="heading-font font-bold text-lg text-slate-800">Funded Program Guide</span>
+                            <span className="font-heading font-bold text-lg text-slate-800">Funded Program Guide</span>
                         </button>
                     </div>
                     <nav className="hidden md:flex items-center space-x-1" role="navigation" aria-label="Main navigation">

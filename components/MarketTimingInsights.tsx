@@ -113,30 +113,42 @@ const MarketTimingInsights: React.FC = () => {
     <div className="space-y-8">
       {/* Header */}
       <div className="text-center mb-8">
-        <h2 className="text-3xl font-bold text-slate-900 mb-2">Market Timing Insights</h2>
-        <p className="text-slate-600">When to trade what markets - powered by Claude 4.5 analysis</p>
+        <h2 className="text-4xl font-bold text-slate-900 mb-2">Market Timing Insights</h2>
+        <p className="text-slate-600 text-lg">When to trade what markets - powered by Claude 4.5 analysis</p>
       </div>
 
       {/* Key Timing Insights */}
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-8">
-        <div className="bg-gradient-to-r from-green-500 to-green-600 text-white rounded-xl p-6 text-center">
-          <div className="text-3xl font-bold mb-2">16:00</div>
-          <div className="text-sm opacity-90">Best Trading Hour</div>
+      <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
+        <div className="bg-gradient-to-br from-emerald-500 to-teal-600 text-white rounded-2xl p-8 text-center shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-105">
+          <div className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-4">
+            <span className="text-2xl">⏰</span>
+          </div>
+          <div className="text-4xl font-bold mb-2">16:00</div>
+          <div className="text-sm opacity-90 font-medium">Best Trading Hour</div>
           <div className="text-xs opacity-75 mt-1">London-NY Overlap</div>
         </div>
-        <div className="bg-gradient-to-r from-blue-500 to-blue-600 text-white rounded-xl p-6 text-center">
-          <div className="text-3xl font-bold mb-2">95%</div>
-          <div className="text-sm opacity-90">Max Volatility</div>
+        <div className="bg-gradient-to-br from-blue-500 to-indigo-600 text-white rounded-2xl p-8 text-center shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-105">
+          <div className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-4">
+            <span className="text-2xl">📈</span>
+          </div>
+          <div className="text-4xl font-bold mb-2">95%</div>
+          <div className="text-sm opacity-90 font-medium">Max Volatility</div>
           <div className="text-xs opacity-75 mt-1">London-NY Overlap</div>
         </div>
-        <div className="bg-gradient-to-r from-purple-500 to-purple-600 text-white rounded-xl p-6 text-center">
-          <div className="text-3xl font-bold mb-2">Dec</div>
-          <div className="text-sm opacity-90">Best Trading Month</div>
+        <div className="bg-gradient-to-br from-purple-500 to-violet-600 text-white rounded-2xl p-8 text-center shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-105">
+          <div className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-4">
+            <span className="text-2xl">📅</span>
+          </div>
+          <div className="text-4xl font-bold mb-2">Dec</div>
+          <div className="text-sm opacity-90 font-medium">Best Trading Month</div>
           <div className="text-xs opacity-75 mt-1">85% success rate</div>
         </div>
-        <div className="bg-gradient-to-r from-orange-500 to-orange-600 text-white rounded-xl p-6 text-center">
-          <div className="text-3xl font-bold mb-2">Avoid</div>
-          <div className="text-sm opacity-90">NFP & FOMC</div>
+        <div className="bg-gradient-to-br from-orange-500 to-red-600 text-white rounded-2xl p-8 text-center shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-105">
+          <div className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-4">
+            <span className="text-2xl">⚠️</span>
+          </div>
+          <div className="text-4xl font-bold mb-2">Avoid</div>
+          <div className="text-sm opacity-90 font-medium">NFP & FOMC</div>
           <div className="text-xs opacity-75 mt-1">High volatility, low success</div>
         </div>
       </div>
@@ -144,41 +156,79 @@ const MarketTimingInsights: React.FC = () => {
       {/* Charts Grid */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
         {/* Market Timing by Session */}
-        <div className="bg-white border border-slate-200 rounded-xl p-6 shadow-sm">
-          <h3 className="text-xl font-semibold text-slate-900 mb-4">Best Trading Times by Market</h3>
-          <ResponsiveContainer width="100%" height={300}>
+        <div className="bg-gradient-to-br from-white to-slate-50 border border-slate-200 rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300">
+          <h3 className="text-2xl font-bold text-slate-900 mb-6 flex items-center">
+            <span className="w-8 h-8 bg-gradient-to-r from-emerald-500 to-teal-600 rounded-lg flex items-center justify-center text-white text-sm font-bold mr-3">📊</span>
+            Best Trading Times by Market
+          </h3>
+          <ResponsiveContainer width="100%" height={320}>
             <BarChart data={marketTiming}>
-              <CartesianGrid strokeDasharray="3 3" stroke="#e2e8f0" />
-              <XAxis dataKey="market" tick={{ fontSize: 12 }} stroke="#64748b" />
-              <YAxis tick={{ fontSize: 12 }} stroke="#64748b" />
+              <defs>
+                <linearGradient id="gradLondon" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stopColor="#14b8a6" stopOpacity={1} />
+                  <stop offset="100%" stopColor="#0d9488" stopOpacity={0.8} />
+                </linearGradient>
+                <linearGradient id="gradNewYork" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stopColor="#3b82f6" stopOpacity={1} />
+                  <stop offset="100%" stopColor="#2563eb" stopOpacity={0.8} />
+                </linearGradient>
+                <linearGradient id="gradTokyo" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stopColor="#8b5cf6" stopOpacity={1} />
+                  <stop offset="100%" stopColor="#7c3aed" stopOpacity={0.8} />
+                </linearGradient>
+                <filter id="shadowBar" x="-20%" y="-20%" width="140%" height="140%">
+                  <feDropShadow dx="0" dy="4" stdDeviation="4" floodColor="#000000" floodOpacity="0.1"/>
+                </filter>
+              </defs>
+              <CartesianGrid strokeDasharray="4 4" stroke="#cbd5e1" strokeOpacity={0.5} />
+              <XAxis 
+                dataKey="market" 
+                tick={{ fontSize: 12, fill: '#475569', fontWeight: 500 }} 
+                stroke="#cbd5e1"
+                height={90}
+              />
+              <YAxis 
+                tick={{ fontSize: 12, fill: '#475569', fontWeight: 500 }} 
+                stroke="#cbd5e1"
+              />
               <Tooltip 
                 contentStyle={{
-                  backgroundColor: '#f8fafc',
-                  border: '1px solid #e2e8f0',
-                  borderRadius: '8px',
-                  boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)'
+                  backgroundColor: '#ffffff',
+                  border: '2px solid #e2e8f0',
+                  borderRadius: '12px',
+                  boxShadow: '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)',
+                  padding: '12px'
                 }}
                 formatter={(value, name) => [`${value}%`, name.toUpperCase()]}
               />
-              <Bar dataKey="london" fill="#14b8a6" radius={[4, 4, 0, 0]} />
-              <Bar dataKey="newyork" fill="#3b82f6" radius={[4, 4, 0, 0]} />
-              <Bar dataKey="tokyo" fill="#8b5cf6" radius={[4, 4, 0, 0]} />
+              <Bar dataKey="london" fill="url(#gradLondon)" radius={[12, 12, 0, 0]} filter="url(#shadowBar)" />
+              <Bar dataKey="newyork" fill="url(#gradNewYork)" radius={[12, 12, 0, 0]} filter="url(#shadowBar)" />
+              <Bar dataKey="tokyo" fill="url(#gradTokyo)" radius={[12, 12, 0, 0]} filter="url(#shadowBar)" />
             </BarChart>
           </ResponsiveContainer>
         </div>
 
         {/* Volatility by Hour (CSS-based for reliability) */}
-        <div className="bg-white border border-slate-200 rounded-xl p-6 shadow-sm">
-          <h3 className="text-xl font-semibold text-slate-900 mb-4">Optimal Trading Times</h3>
-          <div className="space-y-3">
-            {volatilityByHour.map((row) => (
-              <div key={row.hour}>
-                <div className="flex justify-between text-xs mb-1">
-                  <span className="text-slate-700">{row.hour}</span>
-                  <span className="text-slate-500">Success {row.success}% • Volatility {row.volatility}% • Volume {row.volume}%</span>
+        <div className="bg-gradient-to-br from-white to-slate-50 border border-slate-200 rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300">
+          <h3 className="text-2xl font-bold text-slate-900 mb-6 flex items-center">
+            <span className="w-8 h-8 bg-gradient-to-r from-blue-500 to-indigo-600 rounded-lg flex items-center justify-center text-white text-sm font-bold mr-3">⏰</span>
+            Optimal Trading Times
+          </h3>
+          <div className="space-y-4">
+            {volatilityByHour.map((row, index) => (
+              <div key={row.hour} className="group">
+                <div className="flex justify-between text-sm mb-2">
+                  <span className="text-slate-700 font-medium">{row.hour}</span>
+                  <span className="text-slate-500 text-xs">Success {row.success}% • Volatility {row.volatility}% • Volume {row.volume}%</span>
                 </div>
-                <div className="w-full bg-slate-200 rounded-full h-3">
-                  <div className="bg-gradient-to-r from-emerald-500 to-teal-600 h-3 rounded-full" style={{ width: `${row.success}%` }} />
+                <div className="w-full bg-slate-200 rounded-full h-4 shadow-inner">
+                  <div 
+                    className="bg-gradient-to-r from-emerald-500 to-teal-600 h-4 rounded-full shadow-sm transition-all duration-1000 ease-out" 
+                    style={{ 
+                      width: `${row.success}%`,
+                      animationDelay: `${index * 100}ms`
+                    }} 
+                  />
                 </div>
               </div>
             ))}
@@ -186,19 +236,48 @@ const MarketTimingInsights: React.FC = () => {
         </div>
 
         {/* Seasonal Patterns */}
-        <div className="bg-white border border-slate-200 rounded-xl p-6 shadow-sm">
-          <h3 className="text-xl font-semibold text-slate-900 mb-4">Seasonal Trading Patterns</h3>
-          <ResponsiveContainer width="100%" height={300}>
+        <div className="bg-gradient-to-br from-white to-slate-50 border border-slate-200 rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300">
+          <h3 className="text-2xl font-bold text-slate-900 mb-6 flex items-center">
+            <span className="w-8 h-8 bg-gradient-to-r from-purple-500 to-violet-600 rounded-lg flex items-center justify-center text-white text-sm font-bold mr-3">📅</span>
+            Seasonal Trading Patterns
+          </h3>
+          <ResponsiveContainer width="100%" height={320}>
             <LineChart data={seasonalPatterns}>
-              <CartesianGrid strokeDasharray="3 3" stroke="#e2e8f0" />
-              <XAxis dataKey="month" tick={{ fontSize: 12 }} stroke="#64748b" />
-              <YAxis tick={{ fontSize: 12 }} stroke="#64748b" />
+              <defs>
+                <linearGradient id="gradSuccess" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stopColor="#10b981" stopOpacity={1} />
+                  <stop offset="100%" stopColor="#059669" stopOpacity={0.8} />
+                </linearGradient>
+                <linearGradient id="gradVolatility" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stopColor="#ef4444" stopOpacity={1} />
+                  <stop offset="100%" stopColor="#dc2626" stopOpacity={0.8} />
+                </linearGradient>
+                <linearGradient id="gradVolume" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stopColor="#3b82f6" stopOpacity={1} />
+                  <stop offset="100%" stopColor="#2563eb" stopOpacity={0.8} />
+                </linearGradient>
+                <filter id="shadowLine" x="-20%" y="-20%" width="140%" height="140%">
+                  <feDropShadow dx="0" dy="2" stdDeviation="2" floodColor="#000000" floodOpacity="0.1"/>
+                </filter>
+              </defs>
+              <CartesianGrid strokeDasharray="4 4" stroke="#cbd5e1" strokeOpacity={0.5} />
+              <XAxis 
+                dataKey="month" 
+                tick={{ fontSize: 12, fill: '#475569', fontWeight: 500 }} 
+                stroke="#cbd5e1"
+                height={90}
+              />
+              <YAxis 
+                tick={{ fontSize: 12, fill: '#475569', fontWeight: 500 }} 
+                stroke="#cbd5e1"
+              />
               <Tooltip 
                 contentStyle={{
-                  backgroundColor: '#f8fafc',
-                  border: '1px solid #e2e8f0',
-                  borderRadius: '8px',
-                  boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)'
+                  backgroundColor: '#ffffff',
+                  border: '2px solid #e2e8f0',
+                  borderRadius: '12px',
+                  boxShadow: '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)',
+                  padding: '12px'
                 }}
                 formatter={(value, name) => [
                   name === 'success' ? `${value}%` : 
@@ -207,28 +286,37 @@ const MarketTimingInsights: React.FC = () => {
                   name === 'volatility' ? 'Volatility' : 'Volume'
                 ]}
               />
-              <Line type="monotone" dataKey="success" stroke="#10b981" strokeWidth={3} dot={{ r: 4 }} />
-              <Line type="monotone" dataKey="volatility" stroke="#ef4444" strokeWidth={3} dot={{ r: 4 }} />
-              <Line type="monotone" dataKey="volume" stroke="#3b82f6" strokeWidth={3} dot={{ r: 4 }} />
+              <Line type="monotone" dataKey="success" stroke="url(#gradSuccess)" strokeWidth={3} dot={{ r: 6, fill: '#10b981' }} filter="url(#shadowLine)" />
+              <Line type="monotone" dataKey="volatility" stroke="url(#gradVolatility)" strokeWidth={3} dot={{ r: 6, fill: '#ef4444' }} filter="url(#shadowLine)" />
+              <Line type="monotone" dataKey="volume" stroke="url(#gradVolume)" strokeWidth={3} dot={{ r: 6, fill: '#3b82f6' }} filter="url(#shadowLine)" />
             </LineChart>
           </ResponsiveContainer>
         </div>
 
         {/* Economic Calendar Impact (CSS-based) */}
-        <div className="bg-white border border-slate-200 rounded-xl p-6 shadow-sm">
-          <div className="flex items-center justify-between mb-4">
-            <h3 className="text-xl font-semibold text-slate-900">Economic Calendar Impact</h3>
-            <span className="text-xs px-2 py-1 rounded-full bg-emerald-100 text-emerald-700">Updated ✓</span>
+        <div className="bg-gradient-to-br from-white to-slate-50 border border-slate-200 rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300">
+          <div className="flex items-center justify-between mb-6">
+            <h3 className="text-2xl font-bold text-slate-900 flex items-center">
+              <span className="w-8 h-8 bg-gradient-to-r from-orange-500 to-red-600 rounded-lg flex items-center justify-center text-white text-sm font-bold mr-3">📊</span>
+              Economic Calendar Impact
+            </h3>
+            <span className="text-xs px-3 py-1 rounded-full bg-emerald-100 text-emerald-700 font-medium">Updated ✓</span>
           </div>
-          <div className="space-y-3">
-            {economicImpact.map((e) => (
-              <div key={e.event}>
-                <div className="flex justify-between text-xs mb-1">
-                  <span className="text-slate-700">{e.event}</span>
-                  <span className="text-slate-500">Impact {e.impact}% • Volatility {e.volatility}% • Success {e.success}%</span>
+          <div className="space-y-4">
+            {economicImpact.map((e, index) => (
+              <div key={e.event} className="group">
+                <div className="flex justify-between text-sm mb-2">
+                  <span className="text-slate-700 font-medium">{e.event}</span>
+                  <span className="text-slate-500 text-xs">Impact {e.impact}% • Volatility {e.volatility}% • Success {e.success}%</span>
                 </div>
-                <div className="w-full bg-slate-200 rounded-full h-3">
-                  <div className="bg-gradient-to-r from-rose-500 to-red-600 h-3 rounded-full" style={{ width: `${e.impact}%` }} />
+                <div className="w-full bg-slate-200 rounded-full h-4 shadow-inner">
+                  <div 
+                    className="bg-gradient-to-r from-rose-500 to-red-600 h-4 rounded-full shadow-sm transition-all duration-1000 ease-out" 
+                    style={{ 
+                      width: `${e.impact}%`,
+                      animationDelay: `${index * 150}ms`
+                    }} 
+                  />
                 </div>
               </div>
             ))}
@@ -237,38 +325,41 @@ const MarketTimingInsights: React.FC = () => {
       </div>
 
       {/* Session Overlap Analysis */}
-      <div className="bg-white border border-slate-200 rounded-xl p-6">
-        <h3 className="text-xl font-semibold text-slate-900 mb-4">Market Session Overlap Analysis</h3>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+      <div className="bg-gradient-to-br from-white to-slate-50 border border-slate-200 rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300">
+        <h3 className="text-2xl font-bold text-slate-900 mb-6 flex items-center">
+          <span className="w-8 h-8 bg-gradient-to-r from-emerald-500 to-teal-600 rounded-lg flex items-center justify-center text-white text-sm font-bold mr-3">🌍</span>
+          Market Session Overlap Analysis
+        </h3>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {sessionOverlaps.map((session, index) => (
-            <div key={session.session} className={`p-4 rounded-lg ${
-              session.best ? 'bg-gradient-to-r from-green-50 to-green-100 border-2 border-green-300' : 'bg-slate-50 border border-slate-200'
+            <div key={session.session} className={`p-6 rounded-2xl shadow-md hover:shadow-lg transition-all duration-300 hover:scale-105 ${
+              session.best ? 'bg-gradient-to-br from-emerald-50 to-green-100 border-2 border-emerald-300' : 'bg-gradient-to-br from-slate-50 to-slate-100 border border-slate-200'
             }`}>
-              <div className="flex items-center justify-between mb-2">
-                <h4 className="font-semibold text-slate-900 text-sm">{session.session}</h4>
-                {session.best && <span className="text-xs bg-green-500 text-white px-2 py-1 rounded-full">BEST</span>}
+              <div className="flex items-center justify-between mb-4">
+                <h4 className="font-bold text-slate-900 text-sm">{session.session}</h4>
+                {session.best && <span className="text-xs bg-gradient-to-r from-emerald-500 to-green-600 text-white px-3 py-1 rounded-full font-medium">BEST</span>}
               </div>
-              <div className="space-y-1 text-xs">
+              <div className="space-y-2 text-sm">
                 <div className="flex justify-between">
-                  <span>Overlap:</span>
-                  <span className="font-medium">{session.overlap}h</span>
+                  <span className="text-slate-600">Overlap:</span>
+                  <span className="font-bold text-slate-900">{session.overlap}h</span>
                 </div>
                 <div className="flex justify-between">
-                  <span>Volatility:</span>
-                  <span className="font-medium">{session.volatility}%</span>
+                  <span className="text-slate-600">Volatility:</span>
+                  <span className="font-bold text-slate-900">{session.volatility}%</span>
                 </div>
                 <div className="flex justify-between">
-                  <span>Volume:</span>
-                  <span className="font-medium">{session.volume}%</span>
+                  <span className="text-slate-600">Volume:</span>
+                  <span className="font-bold text-slate-900">{session.volume}%</span>
                 </div>
                 <div className="flex justify-between">
-                  <span>Success:</span>
-                  <span className="font-medium text-green-600">{session.success}%</span>
+                  <span className="text-slate-600">Success:</span>
+                  <span className="font-bold text-emerald-600">{session.success}%</span>
                 </div>
               </div>
-              <div className="w-full bg-slate-200 rounded-full h-2 mt-2">
+              <div className="w-full bg-slate-200 rounded-full h-3 mt-4 shadow-inner">
                 <div 
-                  className="bg-gradient-to-r from-green-500 to-blue-600 h-2 rounded-full transition-all duration-1000"
+                  className="bg-gradient-to-r from-emerald-500 to-blue-600 h-3 rounded-full shadow-sm transition-all duration-1000 ease-out"
                   style={{ 
                     width: `${session.success}%`,
                     animationDelay: `${index * 200}ms`
@@ -281,32 +372,35 @@ const MarketTimingInsights: React.FC = () => {
       </div>
 
       {/* Currency Pair Timing */}
-      <div className="bg-white border border-slate-200 rounded-xl p-6">
-        <h3 className="text-xl font-semibold text-slate-900 mb-4">Currency Pair Timing</h3>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+      <div className="bg-gradient-to-br from-white to-slate-50 border border-slate-200 rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300">
+        <h3 className="text-2xl font-bold text-slate-900 mb-6 flex items-center">
+          <span className="w-8 h-8 bg-gradient-to-r from-blue-500 to-indigo-600 rounded-lg flex items-center justify-center text-white text-sm font-bold mr-3">💱</span>
+          Currency Pair Timing
+        </h3>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {currencyTiming.map((pair, index) => (
-            <div key={pair.pair} className="p-4 bg-gradient-to-r from-slate-50 to-slate-100 rounded-lg">
-              <div className="flex items-center justify-between mb-3">
-                <h4 className="font-semibold text-slate-900">{pair.pair}</h4>
-                <span className="text-xs text-blue-600 font-medium">{pair.best}</span>
+            <div key={pair.pair} className="p-6 bg-gradient-to-br from-slate-50 to-slate-100 rounded-2xl shadow-md hover:shadow-lg transition-all duration-300 hover:scale-105 border border-slate-200">
+              <div className="flex items-center justify-between mb-4">
+                <h4 className="font-bold text-slate-900 text-lg">{pair.pair}</h4>
+                <span className="text-xs text-blue-600 font-bold bg-blue-100 px-3 py-1 rounded-full">{pair.best}</span>
               </div>
-              <div className="space-y-2 text-sm">
+              <div className="space-y-3 text-sm">
                 <div className="flex justify-between">
-                  <span>London:</span>
-                  <span className="font-medium">{pair.london}%</span>
+                  <span className="text-slate-600">London:</span>
+                  <span className="font-bold text-slate-900">{pair.london}%</span>
                 </div>
                 <div className="flex justify-between">
-                  <span>New York:</span>
-                  <span className="font-medium">{pair.newyork}%</span>
+                  <span className="text-slate-600">New York:</span>
+                  <span className="font-bold text-slate-900">{pair.newyork}%</span>
                 </div>
                 <div className="flex justify-between">
-                  <span>Tokyo:</span>
-                  <span className="font-medium">{pair.tokyo}%</span>
+                  <span className="text-slate-600">Tokyo:</span>
+                  <span className="font-bold text-slate-900">{pair.tokyo}%</span>
                 </div>
               </div>
-              <div className="w-full bg-slate-200 rounded-full h-2 mt-2">
+              <div className="w-full bg-slate-200 rounded-full h-3 mt-4 shadow-inner">
                 <div 
-                  className="bg-gradient-to-r from-green-500 to-blue-600 h-2 rounded-full transition-all duration-1000"
+                  className="bg-gradient-to-r from-emerald-500 to-blue-600 h-3 rounded-full shadow-sm transition-all duration-1000 ease-out"
                   style={{ 
                     width: `${Math.max(pair.london, pair.newyork, pair.tokyo)}%`,
                     animationDelay: `${index * 150}ms`
@@ -319,51 +413,109 @@ const MarketTimingInsights: React.FC = () => {
       </div>
 
       {/* News Impact Timing */}
-      <div className="bg-white border border-slate-200 rounded-xl p-6">
-        <h3 className="text-xl font-semibold text-slate-900 mb-4">News Impact Timing</h3>
-        <ResponsiveContainer width="100%" height={300}>
+      <div className="bg-gradient-to-br from-white to-slate-50 border border-slate-200 rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300">
+        <h3 className="text-2xl font-bold text-slate-900 mb-6 flex items-center">
+          <span className="w-8 h-8 bg-gradient-to-r from-red-500 to-pink-600 rounded-lg flex items-center justify-center text-white text-sm font-bold mr-3">📰</span>
+          News Impact Timing
+        </h3>
+        <ResponsiveContainer width="100%" height={320}>
           <ComposedChart data={newsTiming}>
-            <CartesianGrid strokeDasharray="3 3" stroke="#e2e8f0" />
-            <XAxis dataKey="time" tick={{ fontSize: 10 }} stroke="#64748b" />
-            <YAxis tick={{ fontSize: 12 }} stroke="#64748b" />
+            <defs>
+              <linearGradient id="gradVolatility" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stopColor="#ef4444" stopOpacity={1} />
+                <stop offset="100%" stopColor="#dc2626" stopOpacity={0.8} />
+              </linearGradient>
+              <linearGradient id="gradSuccess" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stopColor="#10b981" stopOpacity={1} />
+                <stop offset="100%" stopColor="#059669" stopOpacity={0.8} />
+              </linearGradient>
+              <filter id="shadowNews" x="-20%" y="-20%" width="140%" height="140%">
+                <feDropShadow dx="0" dy="4" stdDeviation="4" floodColor="#000000" floodOpacity="0.1"/>
+              </filter>
+            </defs>
+            <CartesianGrid strokeDasharray="4 4" stroke="#cbd5e1" strokeOpacity={0.5} />
+            <XAxis 
+              dataKey="time" 
+              tick={{ fontSize: 10, fill: '#475569', fontWeight: 500 }} 
+              stroke="#cbd5e1"
+              height={90}
+            />
+            <YAxis 
+              tick={{ fontSize: 12, fill: '#475569', fontWeight: 500 }} 
+              stroke="#cbd5e1"
+            />
             <Tooltip 
               contentStyle={{
-                backgroundColor: '#f8fafc',
-                border: '1px solid #e2e8f0',
-                borderRadius: '8px',
-                boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)'
+                backgroundColor: '#ffffff',
+                border: '2px solid #e2e8f0',
+                borderRadius: '12px',
+                boxShadow: '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)',
+                padding: '12px'
               }}
               formatter={(value, name) => [
                 name === 'volatility' ? `${value}%` : `${value}%`,
                 name === 'volatility' ? 'Volatility' : 'Success Rate'
               ]}
             />
-            <Bar dataKey="volatility" fill="#ef4444" radius={[4, 4, 0, 0]} />
-            <Line type="monotone" dataKey="success" stroke="#10b981" strokeWidth={3} dot={{ r: 4 }} />
+            <Bar dataKey="volatility" fill="url(#gradVolatility)" radius={[12, 12, 0, 0]} filter="url(#shadowNews)" />
+            <Line type="monotone" dataKey="success" stroke="url(#gradSuccess)" strokeWidth={3} dot={{ r: 6, fill: '#10b981' }} filter="url(#shadowNews)" />
           </ComposedChart>
         </ResponsiveContainer>
       </div>
 
       {/* Timing Insights */}
-      <div className="bg-gradient-to-r from-green-50 to-blue-50 border border-slate-200 rounded-xl p-6">
-        <h3 className="text-xl font-semibold text-slate-900 mb-4">Claude 4.5 Timing Insights</h3>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div>
-            <h4 className="font-semibold text-slate-800 mb-3">Best Trading Times:</h4>
-            <ul className="space-y-2 text-sm text-slate-600">
-              <li>• <strong>16:00-20:00 GMT:</strong> London-NY overlap (95% volatility)</li>
-              <li>• <strong>08:00-12:00 GMT:</strong> London session (85% success)</li>
-              <li>• <strong>13:00-17:00 GMT:</strong> NY session (88% success)</li>
-              <li>• <strong>December:</strong> Best month (85% success rate)</li>
+      <div className="bg-gradient-to-br from-emerald-50 via-blue-50 to-indigo-50 border border-slate-200 rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300">
+        <h3 className="text-2xl font-bold text-slate-900 mb-6 flex items-center">
+          <span className="w-8 h-8 bg-gradient-to-r from-emerald-500 to-blue-600 rounded-lg flex items-center justify-center text-white text-sm font-bold mr-3">🧠</span>
+          Claude 4.5 Timing Insights
+        </h3>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="bg-white/60 backdrop-blur-sm rounded-2xl p-6 shadow-md">
+            <h4 className="font-bold text-slate-800 mb-4 flex items-center">
+              <span className="w-6 h-6 bg-gradient-to-r from-emerald-500 to-green-600 rounded-full flex items-center justify-center text-white text-xs font-bold mr-2">✓</span>
+              Best Trading Times:
+            </h4>
+            <ul className="space-y-3 text-sm text-slate-600">
+              <li className="flex items-start">
+                <span className="w-2 h-2 bg-emerald-500 rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                <span><strong>16:00-20:00 GMT:</strong> London-NY overlap (95% volatility)</span>
+              </li>
+              <li className="flex items-start">
+                <span className="w-2 h-2 bg-emerald-500 rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                <span><strong>08:00-12:00 GMT:</strong> London session (85% success)</span>
+              </li>
+              <li className="flex items-start">
+                <span className="w-2 h-2 bg-emerald-500 rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                <span><strong>13:00-17:00 GMT:</strong> NY session (88% success)</span>
+              </li>
+              <li className="flex items-start">
+                <span className="w-2 h-2 bg-emerald-500 rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                <span><strong>December:</strong> Best month (85% success rate)</span>
+              </li>
             </ul>
           </div>
-          <div>
-            <h4 className="font-semibold text-slate-800 mb-3">Avoid These Times:</h4>
-            <ul className="space-y-2 text-sm text-slate-600">
-              <li>• <strong>NFP Release:</strong> 95% impact, 45% success rate</li>
-              <li>• <strong>FOMC Meetings:</strong> 90% impact, 40% success rate</li>
-              <li>• <strong>Summer Months:</strong> Jul-Aug (70% success)</li>
-              <li>• <strong>News Events:</strong> 30min before/after release</li>
+          <div className="bg-white/60 backdrop-blur-sm rounded-2xl p-6 shadow-md">
+            <h4 className="font-bold text-slate-800 mb-4 flex items-center">
+              <span className="w-6 h-6 bg-gradient-to-r from-red-500 to-pink-600 rounded-full flex items-center justify-center text-white text-xs font-bold mr-2">⚠</span>
+              Avoid These Times:
+            </h4>
+            <ul className="space-y-3 text-sm text-slate-600">
+              <li className="flex items-start">
+                <span className="w-2 h-2 bg-red-500 rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                <span><strong>NFP Release:</strong> 95% impact, 45% success rate</span>
+              </li>
+              <li className="flex items-start">
+                <span className="w-2 h-2 bg-red-500 rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                <span><strong>FOMC Meetings:</strong> 90% impact, 40% success rate</span>
+              </li>
+              <li className="flex items-start">
+                <span className="w-2 h-2 bg-red-500 rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                <span><strong>Summer Months:</strong> Jul-Aug (70% success)</span>
+              </li>
+              <li className="flex items-start">
+                <span className="w-2 h-2 bg-red-500 rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                <span><strong>News Events:</strong> 30min before/after release</span>
+              </li>
             </ul>
           </div>
         </div>

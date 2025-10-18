@@ -179,80 +179,127 @@ const FirmDeepDives: React.FC = () => {
     <div className="space-y-8">
       {/* Header */}
       <div className="text-center mb-8">
-        <h2 className="text-3xl font-bold text-slate-900 mb-2">Firm Deep Dives</h2>
-        <p className="text-slate-600">Detailed comparisons with real data - powered by Claude 4.5 analysis</p>
+        <h2 className="text-4xl font-bold text-slate-900 mb-2">Firm Deep Dives</h2>
+        <p className="text-slate-600 text-lg">Detailed comparisons with real data - powered by Claude 4.5 analysis</p>
       </div>
 
       {/* Key Firm Insights */}
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-8">
-        <div className="bg-gradient-to-r from-green-500 to-green-600 text-white rounded-xl p-6 text-center">
-          <div className="text-3xl font-bold mb-2">91</div>
-          <div className="text-sm opacity-90">FTMO Overall Score</div>
+      <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
+        <div className="bg-gradient-to-br from-emerald-500 to-green-600 text-white rounded-2xl p-8 text-center shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-105">
+          <div className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-4">
+            <span className="text-2xl">🏆</span>
+          </div>
+          <div className="text-4xl font-bold mb-2">91</div>
+          <div className="text-sm opacity-90 font-medium">FTMO Overall Score</div>
           <div className="text-xs opacity-75 mt-1">Highest rated firm</div>
         </div>
-        <div className="bg-gradient-to-r from-blue-500 to-blue-600 text-white rounded-xl p-6 text-center">
-          <div className="text-3xl font-bold mb-2">98%</div>
-          <div className="text-sm opacity-90">FTMO Withdrawal Success</div>
+        <div className="bg-gradient-to-br from-blue-500 to-indigo-600 text-white rounded-2xl p-8 text-center shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-105">
+          <div className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-4">
+            <span className="text-2xl">💰</span>
+          </div>
+          <div className="text-4xl font-bold mb-2">98%</div>
+          <div className="text-sm opacity-90 font-medium">FTMO Withdrawal Success</div>
           <div className="text-xs opacity-75 mt-1">Most reliable payouts</div>
         </div>
-        <div className="bg-gradient-to-r from-purple-500 to-purple-600 text-white rounded-xl p-6 text-center">
-          <div className="text-3xl font-bold mb-2">2 Days</div>
-          <div className="text-sm opacity-90">Fastest Payout Time</div>
+        <div className="bg-gradient-to-br from-purple-500 to-violet-600 text-white rounded-2xl p-8 text-center shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-105">
+          <div className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-4">
+            <span className="text-2xl">⚡</span>
+          </div>
+          <div className="text-4xl font-bold mb-2">2 Days</div>
+          <div className="text-sm opacity-90 font-medium">Fastest Payout Time</div>
           <div className="text-xs opacity-75 mt-1">FTMO average</div>
         </div>
-        <div className="bg-gradient-to-r from-orange-500 to-orange-600 text-white rounded-xl p-6 text-center">
-          <div className="text-3xl font-bold mb-2">4.6</div>
-          <div className="text-sm opacity-90">Topstep Platform Rating</div>
+        <div className="bg-gradient-to-br from-orange-500 to-red-600 text-white rounded-2xl p-8 text-center shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-105">
+          <div className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-4">
+            <span className="text-2xl">⭐</span>
+          </div>
+          <div className="text-4xl font-bold mb-2">4.6</div>
+          <div className="text-sm opacity-90 font-medium">Topstep Platform Rating</div>
           <div className="text-xs opacity-75 mt-1">Best platform quality</div>
         </div>
       </div>
 
       {/* Firm Comparison Radar Chart */}
-      <div className="bg-white border border-slate-200 rounded-xl p-6">
-        <h3 className="text-xl font-semibold text-slate-900 mb-4">Firm Comparison Overview</h3>
-        <ResponsiveContainer width="100%" height={400}>
+      <div className="bg-gradient-to-br from-white to-slate-50 border border-slate-200 rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300">
+        <h3 className="text-2xl font-bold text-slate-900 mb-6 flex items-center">
+          <span className="w-8 h-8 bg-gradient-to-r from-emerald-500 to-teal-600 rounded-lg flex items-center justify-center text-white text-sm font-bold mr-3">📊</span>
+          Firm Comparison Overview
+        </h3>
+        <ResponsiveContainer width="100%" height={420}>
           <RadarChart data={firmComparison}>
-            <PolarGrid />
-            <PolarAngleAxis dataKey="firm" tick={{ fontSize: 12 }} />
-            <PolarRadiusAxis tick={{ fontSize: 10 }} domain={[0, 100]} />
+            <defs>
+              <linearGradient id="gradTrust" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stopColor="#14b8a6" stopOpacity={1} />
+                <stop offset="100%" stopColor="#0d9488" stopOpacity={0.8} />
+              </linearGradient>
+              <linearGradient id="gradPayout" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stopColor="#3b82f6" stopOpacity={1} />
+                <stop offset="100%" stopColor="#2563eb" stopOpacity={0.8} />
+              </linearGradient>
+              <linearGradient id="gradSupport" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stopColor="#8b5cf6" stopOpacity={1} />
+                <stop offset="100%" stopColor="#7c3aed" stopOpacity={0.8} />
+              </linearGradient>
+              <linearGradient id="gradPlatform" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stopColor="#f59e0b" stopOpacity={1} />
+                <stop offset="100%" stopColor="#d97706" stopOpacity={0.8} />
+              </linearGradient>
+              <filter id="shadowRadar" x="-20%" y="-20%" width="140%" height="140%">
+                <feDropShadow dx="0" dy="2" stdDeviation="2" floodColor="#000000" floodOpacity="0.1"/>
+              </filter>
+            </defs>
+            <PolarGrid stroke="#cbd5e1" strokeOpacity={0.5} />
+            <PolarAngleAxis 
+              dataKey="firm" 
+              tick={{ fontSize: 12, fill: '#475569', fontWeight: 500 }} 
+            />
+            <PolarRadiusAxis 
+              tick={{ fontSize: 10, fill: '#475569', fontWeight: 500 }} 
+              domain={[0, 100]} 
+            />
             <Radar
               name="Trust Score"
               dataKey="trustScore"
-              stroke="#14b8a6"
-              fill="#14b8a6"
-              fillOpacity={0.3}
-              strokeWidth={2}
+              stroke="url(#gradTrust)"
+              fill="url(#gradTrust)"
+              fillOpacity={0.25}
+              strokeWidth={2.5}
+              filter="url(#shadowRadar)"
             />
             <Radar
               name="Payout Speed"
               dataKey="payoutSpeed"
-              stroke="#3b82f6"
-              fill="#3b82f6"
-              fillOpacity={0.3}
-              strokeWidth={2}
+              stroke="url(#gradPayout)"
+              fill="url(#gradPayout)"
+              fillOpacity={0.25}
+              strokeWidth={2.5}
+              filter="url(#shadowRadar)"
             />
             <Radar
               name="Support"
               dataKey="support"
-              stroke="#8b5cf6"
-              fill="#8b5cf6"
-              fillOpacity={0.3}
-              strokeWidth={2}
+              stroke="url(#gradSupport)"
+              fill="url(#gradSupport)"
+              fillOpacity={0.25}
+              strokeWidth={2.5}
+              filter="url(#shadowRadar)"
             />
             <Radar
               name="Platform"
               dataKey="platform"
-              stroke="#f59e0b"
-              fill="#f59e0b"
-              fillOpacity={0.3}
-              strokeWidth={2}
+              stroke="url(#gradPlatform)"
+              fill="url(#gradPlatform)"
+              fillOpacity={0.25}
+              strokeWidth={2.5}
+              filter="url(#shadowRadar)"
             />
             <Tooltip 
               contentStyle={{
-                backgroundColor: '#f8fafc',
-                border: '1px solid #e2e8f0',
-                borderRadius: '8px',
-                boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)'
+                backgroundColor: '#ffffff',
+                border: '2px solid #e2e8f0',
+                borderRadius: '12px',
+                boxShadow: '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)',
+                padding: '12px'
               }}
               formatter={(value, name) => [`${value}%`, name]}
             />
@@ -262,19 +309,44 @@ const FirmDeepDives: React.FC = () => {
 
       {/* Support Quality Analysis */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-        <div className="bg-white border border-slate-200 rounded-xl p-6 shadow-sm">
-          <h3 className="text-xl font-semibold text-slate-900 mb-4">Support Quality Analysis</h3>
-          <ResponsiveContainer width="100%" height={300}>
+        <div className="bg-gradient-to-br from-white to-slate-50 border border-slate-200 rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300">
+          <h3 className="text-2xl font-bold text-slate-900 mb-6 flex items-center">
+            <span className="w-8 h-8 bg-gradient-to-r from-blue-500 to-indigo-600 rounded-lg flex items-center justify-center text-white text-sm font-bold mr-3">🎧</span>
+            Support Quality Analysis
+          </h3>
+          <ResponsiveContainer width="100%" height={320}>
             <BarChart data={supportAnalysis}>
-              <CartesianGrid strokeDasharray="3 3" stroke="#e2e8f0" />
-              <XAxis dataKey="firm" tick={{ fontSize: 12 }} stroke="#64748b" />
-              <YAxis tick={{ fontSize: 12 }} stroke="#64748b" />
+              <defs>
+                <linearGradient id="gradQuality" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stopColor="#14b8a6" stopOpacity={1} />
+                  <stop offset="100%" stopColor="#0d9488" stopOpacity={0.8} />
+                </linearGradient>
+                <linearGradient id="gradAvailability" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stopColor="#3b82f6" stopOpacity={1} />
+                  <stop offset="100%" stopColor="#2563eb" stopOpacity={0.8} />
+                </linearGradient>
+                <filter id="shadowSupport" x="-20%" y="-20%" width="140%" height="140%">
+                  <feDropShadow dx="0" dy="4" stdDeviation="4" floodColor="#000000" floodOpacity="0.1"/>
+                </filter>
+              </defs>
+              <CartesianGrid strokeDasharray="4 4" stroke="#cbd5e1" strokeOpacity={0.5} />
+              <XAxis 
+                dataKey="firm" 
+                tick={{ fontSize: 12, fill: '#475569', fontWeight: 500 }} 
+                stroke="#cbd5e1"
+                height={90}
+              />
+              <YAxis 
+                tick={{ fontSize: 12, fill: '#475569', fontWeight: 500 }} 
+                stroke="#cbd5e1"
+              />
               <Tooltip 
                 contentStyle={{
-                  backgroundColor: '#f8fafc',
-                  border: '1px solid #e2e8f0',
-                  borderRadius: '8px',
-                  boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)'
+                  backgroundColor: '#ffffff',
+                  border: '2px solid #e2e8f0',
+                  borderRadius: '12px',
+                  boxShadow: '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)',
+                  padding: '12px'
                 }}
                 formatter={(value, name) => [
                   name === 'responseTime' ? `${value}h` : 
@@ -287,25 +359,50 @@ const FirmDeepDives: React.FC = () => {
                   name === 'languages' ? 'Languages' : 'Rating'
                 ]}
               />
-              <Bar dataKey="quality" fill="#14b8a6" radius={[4, 4, 0, 0]} />
-              <Bar dataKey="availability" fill="#3b82f6" radius={[4, 4, 0, 0]} />
+              <Bar dataKey="quality" fill="url(#gradQuality)" radius={[12, 12, 0, 0]} filter="url(#shadowSupport)" />
+              <Bar dataKey="availability" fill="url(#gradAvailability)" radius={[12, 12, 0, 0]} filter="url(#shadowSupport)" />
             </BarChart>
           </ResponsiveContainer>
         </div>
 
-        <div className="bg-white border border-slate-200 rounded-xl p-6 shadow-sm">
-          <h3 className="text-xl font-semibold text-slate-900 mb-4">Platform Reliability</h3>
-          <ResponsiveContainer width="100%" height={300}>
+        <div className="bg-gradient-to-br from-white to-slate-50 border border-slate-200 rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300">
+          <h3 className="text-2xl font-bold text-slate-900 mb-6 flex items-center">
+            <span className="w-8 h-8 bg-gradient-to-r from-purple-500 to-violet-600 rounded-lg flex items-center justify-center text-white text-sm font-bold mr-3">💻</span>
+            Platform Reliability
+          </h3>
+          <ResponsiveContainer width="100%" height={320}>
             <BarChart data={platformReliability}>
-              <CartesianGrid strokeDasharray="3 3" stroke="#e2e8f0" />
-              <XAxis dataKey="firm" tick={{ fontSize: 12 }} stroke="#64748b" />
-              <YAxis tick={{ fontSize: 12 }} stroke="#64748b" />
+              <defs>
+                <linearGradient id="gradUptime" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stopColor="#10b981" stopOpacity={1} />
+                  <stop offset="100%" stopColor="#059669" stopOpacity={0.8} />
+                </linearGradient>
+                <linearGradient id="gradStability" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stopColor="#8b5cf6" stopOpacity={1} />
+                  <stop offset="100%" stopColor="#7c3aed" stopOpacity={0.8} />
+                </linearGradient>
+                <filter id="shadowPlatform" x="-20%" y="-20%" width="140%" height="140%">
+                  <feDropShadow dx="0" dy="4" stdDeviation="4" floodColor="#000000" floodOpacity="0.1"/>
+                </filter>
+              </defs>
+              <CartesianGrid strokeDasharray="4 4" stroke="#cbd5e1" strokeOpacity={0.5} />
+              <XAxis 
+                dataKey="firm" 
+                tick={{ fontSize: 12, fill: '#475569', fontWeight: 500 }} 
+                stroke="#cbd5e1"
+                height={90}
+              />
+              <YAxis 
+                tick={{ fontSize: 12, fill: '#475569', fontWeight: 500 }} 
+                stroke="#cbd5e1"
+              />
               <Tooltip 
                 contentStyle={{
-                  backgroundColor: '#f8fafc',
-                  border: '1px solid #e2e8f0',
-                  borderRadius: '8px',
-                  boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)'
+                  backgroundColor: '#ffffff',
+                  border: '2px solid #e2e8f0',
+                  borderRadius: '12px',
+                  boxShadow: '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)',
+                  padding: '12px'
                 }}
                 formatter={(value, name) => [
                   name === 'uptime' ? `${value}%` : 
@@ -318,44 +415,47 @@ const FirmDeepDives: React.FC = () => {
                   name === 'stability' ? 'Stability' : 'User Rating'
                 ]}
               />
-              <Bar dataKey="uptime" fill="#10b981" radius={[4, 4, 0, 0]} />
-              <Bar dataKey="stability" fill="#8b5cf6" radius={[4, 4, 0, 0]} />
+              <Bar dataKey="uptime" fill="url(#gradUptime)" radius={[12, 12, 0, 0]} filter="url(#shadowPlatform)" />
+              <Bar dataKey="stability" fill="url(#gradStability)" radius={[12, 12, 0, 0]} filter="url(#shadowPlatform)" />
             </BarChart>
           </ResponsiveContainer>
         </div>
       </div>
 
       {/* Withdrawal Success Rates */}
-      <div className="bg-white border border-slate-200 rounded-xl p-6">
-        <h3 className="text-xl font-semibold text-slate-900 mb-4">Withdrawal Success Rates</h3>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+      <div className="bg-gradient-to-br from-white to-slate-50 border border-slate-200 rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300">
+        <h3 className="text-2xl font-bold text-slate-900 mb-6 flex items-center">
+          <span className="w-8 h-8 bg-gradient-to-r from-emerald-500 to-teal-600 rounded-lg flex items-center justify-center text-white text-sm font-bold mr-3">💳</span>
+          Withdrawal Success Rates
+        </h3>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {withdrawalRates.map((firm, index) => (
-            <div key={firm.firm} className="p-4 bg-gradient-to-r from-slate-50 to-slate-100 rounded-lg">
-              <div className="flex items-center justify-between mb-3">
-                <h4 className="font-semibold text-slate-900">{firm.firm}</h4>
-                <span className="text-xs text-green-600 font-medium">{firm.successRate}% success</span>
+            <div key={firm.firm} className="p-6 bg-gradient-to-br from-slate-50 to-slate-100 rounded-2xl shadow-md hover:shadow-lg transition-all duration-300 hover:scale-105 border border-slate-200">
+              <div className="flex items-center justify-between mb-4">
+                <h4 className="font-bold text-slate-900 text-lg">{firm.firm}</h4>
+                <span className="text-xs text-emerald-600 font-bold bg-emerald-100 px-3 py-1 rounded-full">{firm.successRate}% success</span>
               </div>
-              <div className="space-y-2 text-sm">
+              <div className="space-y-3 text-sm">
                 <div className="flex justify-between">
-                  <span>Avg Time:</span>
-                  <span className="font-medium">{firm.avgTime} days</span>
+                  <span className="text-slate-600">Avg Time:</span>
+                  <span className="font-bold text-slate-900">{firm.avgTime} days</span>
                 </div>
                 <div className="flex justify-between">
-                  <span>Max Time:</span>
-                  <span className="font-medium">{firm.maxTime} days</span>
+                  <span className="text-slate-600">Max Time:</span>
+                  <span className="font-bold text-slate-900">{firm.maxTime} days</span>
                 </div>
                 <div className="flex justify-between">
-                  <span>Fees:</span>
-                  <span className="font-medium text-green-600">${firm.fees}</span>
+                  <span className="text-slate-600">Fees:</span>
+                  <span className="font-bold text-emerald-600">${firm.fees}</span>
                 </div>
                 <div className="flex justify-between">
-                  <span>Issues:</span>
-                  <span className="font-medium text-red-600">{firm.issues}%</span>
+                  <span className="text-slate-600">Issues:</span>
+                  <span className="font-bold text-red-600">{firm.issues}%</span>
                 </div>
               </div>
-              <div className="w-full bg-slate-200 rounded-full h-2 mt-2">
+              <div className="w-full bg-slate-200 rounded-full h-3 mt-4 shadow-inner">
                 <div 
-                  className="bg-gradient-to-r from-green-500 to-blue-600 h-2 rounded-full transition-all duration-1000"
+                  className="bg-gradient-to-r from-emerald-500 to-blue-600 h-3 rounded-full shadow-sm transition-all duration-1000 ease-out"
                   style={{ 
                     width: `${firm.successRate}%`,
                     animationDelay: `${index * 200}ms`
@@ -368,24 +468,30 @@ const FirmDeepDives: React.FC = () => {
       </div>
 
       {/* Real Trader Experiences */}
-      <div className="bg-white border border-slate-200 rounded-xl p-6">
-        <h3 className="text-xl font-semibold text-slate-900 mb-4">Real Trader Experiences</h3>
-        <div className="space-y-6">
+      <div className="bg-gradient-to-br from-white to-slate-50 border border-slate-200 rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300">
+        <h3 className="text-2xl font-bold text-slate-900 mb-6 flex items-center">
+          <span className="w-8 h-8 bg-gradient-to-r from-yellow-500 to-orange-600 rounded-lg flex items-center justify-center text-white text-sm font-bold mr-3">👥</span>
+          Real Trader Experiences
+        </h3>
+        <div className="space-y-8">
           {traderExperiences.map((firm) => (
-            <div key={firm.firm} className="border border-slate-200 rounded-lg p-4">
-              <h4 className="font-semibold text-slate-900 mb-3">{firm.firm} Reviews</h4>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div key={firm.firm} className="border border-slate-200 rounded-2xl p-6 bg-white shadow-md hover:shadow-lg transition-all duration-300">
+              <h4 className="font-bold text-slate-900 mb-4 text-lg flex items-center">
+                <span className="w-6 h-6 bg-gradient-to-r from-blue-500 to-indigo-600 rounded-full flex items-center justify-center text-white text-xs font-bold mr-2">🏢</span>
+                {firm.firm} Reviews
+              </h4>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                 {firm.experiences.map((experience, index) => (
-                  <div key={index} className="p-3 bg-slate-50 rounded-lg">
-                    <div className="flex items-center justify-between mb-2">
-                      <span className="font-medium text-sm">{experience.trader}</span>
+                  <div key={index} className="p-4 bg-gradient-to-br from-slate-50 to-slate-100 rounded-xl shadow-sm hover:shadow-md transition-all duration-300 border border-slate-200">
+                    <div className="flex items-center justify-between mb-3">
+                      <span className="font-bold text-sm text-slate-900">{experience.trader}</span>
                       <div className="flex items-center">
-                        <span className="text-yellow-500">★</span>
-                        <span className="text-sm font-medium ml-1">{experience.rating}/5</span>
-                        {experience.verified && <span className="text-xs text-green-600 ml-2">✓ Verified</span>}
+                        <span className="text-yellow-500 text-lg">★</span>
+                        <span className="text-sm font-bold ml-1 text-slate-900">{experience.rating}/5</span>
+                        {experience.verified && <span className="text-xs text-emerald-600 ml-2 bg-emerald-100 px-2 py-1 rounded-full font-medium">✓ Verified</span>}
                       </div>
                     </div>
-                    <p className="text-sm text-slate-600">{experience.experience}</p>
+                    <p className="text-sm text-slate-600 leading-relaxed">{experience.experience}</p>
                   </div>
                 ))}
               </div>
@@ -395,45 +501,75 @@ const FirmDeepDives: React.FC = () => {
       </div>
 
       {/* Firm Analysis */}
-      <div className="bg-white border border-slate-200 rounded-xl p-6">
-        <h3 className="text-xl font-semibold text-slate-900 mb-4">Detailed Firm Analysis</h3>
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+      <div className="bg-gradient-to-br from-white to-slate-50 border border-slate-200 rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300">
+        <h3 className="text-2xl font-bold text-slate-900 mb-6 flex items-center">
+          <span className="w-8 h-8 bg-gradient-to-r from-indigo-500 to-purple-600 rounded-lg flex items-center justify-center text-white text-sm font-bold mr-3">🔍</span>
+          Detailed Firm Analysis
+        </h3>
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {firmAnalysis.map((firm) => (
-            <div key={firm.firm} className="p-4 border border-slate-200 rounded-lg">
-              <h4 className="font-semibold text-slate-900 mb-3">{firm.firm}</h4>
+            <div key={firm.firm} className="p-6 border border-slate-200 rounded-2xl bg-white shadow-md hover:shadow-lg transition-all duration-300 hover:scale-105">
+              <h4 className="font-bold text-slate-900 mb-4 text-lg flex items-center">
+                <span className="w-6 h-6 bg-gradient-to-r from-emerald-500 to-teal-600 rounded-full flex items-center justify-center text-white text-xs font-bold mr-2">🏢</span>
+                {firm.firm}
+              </h4>
               
-              <div className="mb-4">
-                <h5 className="font-medium text-green-700 mb-2">Strengths:</h5>
-                <ul className="text-sm text-slate-600 space-y-1">
+              <div className="mb-6">
+                <h5 className="font-bold text-emerald-700 mb-3 flex items-center">
+                  <span className="w-4 h-4 bg-emerald-500 rounded-full mr-2"></span>
+                  Strengths:
+                </h5>
+                <ul className="text-sm text-slate-600 space-y-2">
                   {firm.strengths.map((strength, index) => (
-                    <li key={index}>• {strength}</li>
+                    <li key={index} className="flex items-start">
+                      <span className="w-1.5 h-1.5 bg-emerald-500 rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                      {strength}
+                    </li>
                   ))}
                 </ul>
               </div>
 
-              <div className="mb-4">
-                <h5 className="font-medium text-red-700 mb-2">Weaknesses:</h5>
-                <ul className="text-sm text-slate-600 space-y-1">
+              <div className="mb-6">
+                <h5 className="font-bold text-red-700 mb-3 flex items-center">
+                  <span className="w-4 h-4 bg-red-500 rounded-full mr-2"></span>
+                  Weaknesses:
+                </h5>
+                <ul className="text-sm text-slate-600 space-y-2">
                   {firm.weaknesses.map((weakness, index) => (
-                    <li key={index}>• {weakness}</li>
+                    <li key={index} className="flex items-start">
+                      <span className="w-1.5 h-1.5 bg-red-500 rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                      {weakness}
+                    </li>
                   ))}
                 </ul>
               </div>
 
-              <div className="mb-4">
-                <h5 className="font-medium text-blue-700 mb-2">Best For:</h5>
-                <ul className="text-sm text-slate-600 space-y-1">
+              <div className="mb-6">
+                <h5 className="font-bold text-blue-700 mb-3 flex items-center">
+                  <span className="w-4 h-4 bg-blue-500 rounded-full mr-2"></span>
+                  Best For:
+                </h5>
+                <ul className="text-sm text-slate-600 space-y-2">
                   {firm.bestFor.map((audience, index) => (
-                    <li key={index}>• {audience}</li>
+                    <li key={index} className="flex items-start">
+                      <span className="w-1.5 h-1.5 bg-blue-500 rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                      {audience}
+                    </li>
                   ))}
                 </ul>
               </div>
 
               <div>
-                <h5 className="font-medium text-orange-700 mb-2">Avoid If:</h5>
-                <ul className="text-sm text-slate-600 space-y-1">
+                <h5 className="font-bold text-orange-700 mb-3 flex items-center">
+                  <span className="w-4 h-4 bg-orange-500 rounded-full mr-2"></span>
+                  Avoid If:
+                </h5>
+                <ul className="text-sm text-slate-600 space-y-2">
                   {firm.avoidIf.map((reason, index) => (
-                    <li key={index}>• {reason}</li>
+                    <li key={index} className="flex items-start">
+                      <span className="w-1.5 h-1.5 bg-orange-500 rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                      {reason}
+                    </li>
                   ))}
                 </ul>
               </div>
@@ -443,24 +579,54 @@ const FirmDeepDives: React.FC = () => {
       </div>
 
       {/* Risk Assessment */}
-      <div className="bg-gradient-to-r from-green-50 to-blue-50 border border-slate-200 rounded-xl p-6">
-        <h3 className="text-xl font-semibold text-slate-900 mb-4">Claude 4.5 Risk Assessment</h3>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div>
-            <h4 className="font-semibold text-slate-800 mb-3">Lowest Risk Firms:</h4>
-            <ul className="space-y-2 text-sm text-slate-600">
-              <li>• <strong>FTMO:</strong> Low financial, regulatory, and operational risk</li>
-              <li>• <strong>Topstep:</strong> Low financial and regulatory risk, medium operational</li>
-              <li>• <strong>Apex:</strong> Low risk across all categories</li>
+      <div className="bg-gradient-to-br from-emerald-50 via-blue-50 to-indigo-50 border border-slate-200 rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300">
+        <h3 className="text-2xl font-bold text-slate-900 mb-6 flex items-center">
+          <span className="w-8 h-8 bg-gradient-to-r from-emerald-500 to-blue-600 rounded-lg flex items-center justify-center text-white text-sm font-bold mr-3">🛡️</span>
+          Claude 4.5 Risk Assessment
+        </h3>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="bg-white/60 backdrop-blur-sm rounded-2xl p-6 shadow-md">
+            <h4 className="font-bold text-slate-800 mb-4 flex items-center">
+              <span className="w-6 h-6 bg-gradient-to-r from-emerald-500 to-green-600 rounded-full flex items-center justify-center text-white text-xs font-bold mr-2">✓</span>
+              Lowest Risk Firms:
+            </h4>
+            <ul className="space-y-3 text-sm text-slate-600">
+              <li className="flex items-start">
+                <span className="w-2 h-2 bg-emerald-500 rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                <span><strong>FTMO:</strong> Low financial, regulatory, and operational risk</span>
+              </li>
+              <li className="flex items-start">
+                <span className="w-2 h-2 bg-emerald-500 rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                <span><strong>Topstep:</strong> Low financial and regulatory risk, medium operational</span>
+              </li>
+              <li className="flex items-start">
+                <span className="w-2 h-2 bg-emerald-500 rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                <span><strong>Apex:</strong> Low risk across all categories</span>
+              </li>
             </ul>
           </div>
-          <div>
-            <h4 className="font-semibold text-slate-800 mb-3">Key Risk Factors:</h4>
-            <ul className="space-y-2 text-sm text-slate-600">
-              <li>• <strong>Financial Risk:</strong> Firm's financial stability and backing</li>
-              <li>• <strong>Regulatory Risk:</strong> Compliance with financial regulations</li>
-              <li>• <strong>Operational Risk:</strong> Platform reliability and support quality</li>
-              <li>• <strong>Overall Risk:</strong> Combined assessment of all factors</li>
+          <div className="bg-white/60 backdrop-blur-sm rounded-2xl p-6 shadow-md">
+            <h4 className="font-bold text-slate-800 mb-4 flex items-center">
+              <span className="w-6 h-6 bg-gradient-to-r from-blue-500 to-indigo-600 rounded-full flex items-center justify-center text-white text-xs font-bold mr-2">ℹ</span>
+              Key Risk Factors:
+            </h4>
+            <ul className="space-y-3 text-sm text-slate-600">
+              <li className="flex items-start">
+                <span className="w-2 h-2 bg-blue-500 rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                <span><strong>Financial Risk:</strong> Firm's financial stability and backing</span>
+              </li>
+              <li className="flex items-start">
+                <span className="w-2 h-2 bg-blue-500 rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                <span><strong>Regulatory Risk:</strong> Compliance with financial regulations</span>
+              </li>
+              <li className="flex items-start">
+                <span className="w-2 h-2 bg-blue-500 rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                <span><strong>Operational Risk:</strong> Platform reliability and support quality</span>
+              </li>
+              <li className="flex items-start">
+                <span className="w-2 h-2 bg-blue-500 rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                <span><strong>Overall Risk:</strong> Combined assessment of all factors</span>
+              </li>
             </ul>
           </div>
         </div>

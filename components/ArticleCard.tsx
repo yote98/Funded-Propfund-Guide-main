@@ -38,12 +38,20 @@ const ArticleCard: React.FC<ArticleCardProps> = ({ article, viewArticle }) => {
   const category = getArticleCategory(article.title);
   const difficulty = getDifficultyLevel(article.title);
 
+  // Check if image should use contain (for images with people/heads)
+  const shouldUseContain = article.title.includes('Psychology') || 
+                           article.title.includes('Risk Management') ||
+                           article.title.includes('Mind');
+
+  // Special styling for Psychology images - no background, larger size
+  const isPsychology = article.title.includes('Psychology') || article.title.includes('Mind');
+
   return (
     <div className="bg-white border border-slate-200 rounded-xl overflow-hidden group shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 h-full flex flex-col">
       {/* Image with overlay */}
-      <div className="relative h-48 overflow-hidden">
+      <div className={`relative h-56 overflow-hidden ${shouldUseContain && !isPsychology ? 'bg-slate-100' : ''}`}>
         <img 
-          className="h-full w-full object-cover group-hover:scale-105 transition-transform duration-500" 
+          className={`h-full w-full ${isPsychology ? 'object-contain scale-150' : shouldUseContain ? 'object-contain scale-90' : 'object-cover'} group-hover:scale-105 transition-transform duration-500`}
           src={article.imageUrl} 
           alt={article.title} 
         />

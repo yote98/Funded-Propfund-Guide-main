@@ -19,7 +19,7 @@ const HomePage: React.FC<HomePageProps> = ({ viewFirm, firms, navigateToCompare 
   return (
     <div className="space-y-16">
       <section className="text-center py-16">
-        <h1 className="heading-font text-5xl md:text-6xl font-extrabold text-slate-900 tracking-tight">
+        <h1 className="font-heading text-5xl md:text-6xl font-extrabold text-slate-900 tracking-tight">
           <span className="block bg-gradient-to-r from-teal-500 to-slate-900 text-transparent bg-clip-text">
             We Research. You Profit.
           </span>
@@ -38,7 +38,7 @@ const HomePage: React.FC<HomePageProps> = ({ viewFirm, firms, navigateToCompare 
       </section>
 
       <section id="featured-firms">
-        <h2 className="heading-font text-3xl font-bold text-slate-900 text-center mb-8">Featured Firms</h2>
+        <h2 className="font-heading text-3xl font-bold text-slate-900 text-center mb-8">Featured Firms</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {featuredFirms.map(firm => (
             <FirmCard key={firm.id} firm={firm} viewFirm={viewFirm} />
@@ -47,13 +47,13 @@ const HomePage: React.FC<HomePageProps> = ({ viewFirm, firms, navigateToCompare 
       </section>
 
       <section id="top-deals">
-        <h2 className="heading-font text-3xl font-bold text-slate-900 text-center mb-2">Top {currentMonth} Deals</h2>
+        <h2 className="font-heading text-3xl font-bold text-slate-900 text-center mb-2">Top {currentMonth} Deals</h2>
         <p className="text-center text-slate-600 mb-8">Verified firms, top discounts.</p>
         <TopDeals firms={firms} />
       </section>
 
       <section id="testimonials">
-        <h2 className="text-3xl font-bold text-slate-900 text-center mb-2">What Our Users Say</h2>
+        <h2 className="font-heading text-3xl font-bold text-slate-900 text-center mb-2">What Our Users Say</h2>
         <p className="text-center text-slate-600 mb-8">Real reviews from successful funded traders</p>
         <ReviewCarousel 
           reviews={userReviews.filter(review => review.rating >= 4)} 

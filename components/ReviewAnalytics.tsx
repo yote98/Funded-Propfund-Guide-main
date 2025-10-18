@@ -100,40 +100,55 @@ const ReviewAnalytics: React.FC<ReviewAnalyticsProps> = ({ reviews }) => {
 
 
       {/* Summary Stats */}
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
-        <div className="bg-white border border-slate-200 rounded-xl p-4 text-center">
-          <div className="text-2xl font-bold text-teal-600">{totalReviews}</div>
-          <div className="text-sm text-slate-600">Total Reviews</div>
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-8">
+        <div className="bg-gradient-to-br from-teal-50 to-white border border-teal-200 rounded-2xl p-6 text-center shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300">
+          <div className="inline-block p-3 bg-teal-100 rounded-lg mb-3">
+            <div className="text-3xl font-bold text-teal-600">{totalReviews}</div>
+          </div>
+          <div className="text-sm font-semibold text-slate-900">Total Reviews</div>
+          <div className="text-xs text-slate-500 mt-1">From traders worldwide</div>
         </div>
-        <div className="bg-white border border-slate-200 rounded-xl p-4 text-center">
-          <div className="text-2xl font-bold text-slate-600">{averageRating.toFixed(1)}</div>
-          <div className="text-sm text-slate-600">Average Rating</div>
+        <div className="bg-gradient-to-br from-blue-50 to-white border border-blue-200 rounded-2xl p-6 text-center shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300">
+          <div className="inline-block p-3 bg-blue-100 rounded-lg mb-3">
+            <div className="text-3xl font-bold text-blue-600">{averageRating.toFixed(1)}</div>
+          </div>
+          <div className="text-sm font-semibold text-slate-900">Average Rating</div>
+          <div className="text-xs text-slate-500 mt-1">Out of 5 stars</div>
         </div>
-        <div className="bg-white border border-slate-200 rounded-xl p-4 text-center">
-          <div className="text-2xl font-bold text-green-600">{verifiedReviews}</div>
-          <div className="text-sm text-slate-600">Verified Reviews</div>
+        <div className="bg-gradient-to-br from-green-50 to-white border border-green-200 rounded-2xl p-6 text-center shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300">
+          <div className="inline-block p-3 bg-green-100 rounded-lg mb-3">
+            <div className="text-3xl font-bold text-green-600">{verifiedReviews}</div>
+          </div>
+          <div className="text-sm font-semibold text-slate-900">Verified Reviews</div>
+          <div className="text-xs text-slate-500 mt-1">Authentic feedback</div>
         </div>
-        <div className="bg-white border border-slate-200 rounded-xl p-4 text-center">
-          <div className="text-2xl font-bold text-blue-600">{Math.round((positiveReviews / totalReviews) * 100)}%</div>
-          <div className="text-sm text-slate-600">Positive Reviews</div>
+        <div className="bg-gradient-to-br from-purple-50 to-white border border-purple-200 rounded-2xl p-6 text-center shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300">
+          <div className="inline-block p-3 bg-purple-100 rounded-lg mb-3">
+            <div className="text-3xl font-bold text-purple-600">{Math.round((positiveReviews / totalReviews) * 100)}%</div>
+          </div>
+          <div className="text-sm font-semibold text-slate-900">Positive Reviews</div>
+          <div className="text-xs text-slate-500 mt-1">4-5 star ratings</div>
         </div>
       </div>
 
       {/* Charts Grid */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
         {/* Rating Distribution (CSS-based for reliability) */}
-        <div className="bg-white border border-slate-200 rounded-xl p-6 shadow-sm">
-          <h3 className="text-xl font-semibold text-slate-900 mb-4">Rating Distribution</h3>
-          <div className="space-y-3">
+        <div className="bg-gradient-to-br from-white to-slate-50 border border-slate-200 rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 hover:border-teal-200">
+          <div>
+            <h3 className="text-2xl font-bold text-slate-900">Rating Distribution</h3>
+            <p className="text-sm text-slate-500 mt-1">Breakdown of trader ratings</p>
+          </div>
+          <div className="space-y-4 mt-6">
             {ratingData.map((row) => (
               <div key={row.rating}>
-                <div className="flex justify-between text-sm mb-1">
-                  <span className="text-slate-700">{row.rating}</span>
-                  <span className="text-slate-500">{row.count} reviews • {row.percentage}%</span>
+                <div className="flex justify-between text-sm mb-2">
+                  <span className="font-semibold text-slate-900">{row.rating}</span>
+                  <span className="text-slate-600 font-medium">{row.count} reviews • {row.percentage}%</span>
                 </div>
-                <div className="w-full bg-slate-200 rounded-full h-3">
+                <div className="w-full bg-slate-200 rounded-full h-3 overflow-hidden shadow-sm">
                   <div
-                    className="bg-gradient-to-r from-teal-500 to-emerald-600 h-3 rounded-full"
+                    className="bg-gradient-to-r from-teal-500 to-emerald-600 h-3 rounded-full transition-all duration-500"
                     style={{ width: `${row.percentage}%` }}
                   />
                 </div>
@@ -143,18 +158,22 @@ const ReviewAnalytics: React.FC<ReviewAnalyticsProps> = ({ reviews }) => {
         </div>
 
         {/* Geographic Distribution */}
-        <div className="bg-white border border-slate-200 rounded-xl p-6 shadow-sm">
-          <h3 className="text-xl font-semibold text-slate-900 mb-4">Reviews by Country</h3>
-          <ResponsiveContainer width="100%" height={300}>
+        <div className="bg-gradient-to-br from-white to-slate-50 border border-slate-200 rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 hover:border-purple-200">
+          <div>
+            <h3 className="text-2xl font-bold text-slate-900">Reviews by Country</h3>
+            <p className="text-sm text-slate-500 mt-1">Geographic trader distribution</p>
+          </div>
+          <ResponsiveContainer width="100%" height={320}>
             <PieChart>
               <Pie
                 data={locationData}
                 cx="50%"
                 cy="50%"
                 nameKey="country"
-                labelLine={false}
+                labelLine={true}
                 label={({ payload, percent }) => `${payload.country} ${Math.round((percent || 0) * 100)}%`}
-                outerRadius={80}
+                outerRadius={100}
+                innerRadius={50}
                 fill="#8884d8"
                 dataKey="count"
               >
@@ -164,10 +183,11 @@ const ReviewAnalytics: React.FC<ReviewAnalyticsProps> = ({ reviews }) => {
               </Pie>
               <Tooltip 
                 contentStyle={{
-                  backgroundColor: '#f8fafc',
-                  border: '1px solid #e2e8f0',
-                  borderRadius: '8px',
-                  boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)'
+                  backgroundColor: '#ffffff',
+                  border: '2px solid #e2e8f0',
+                  borderRadius: '12px',
+                  boxShadow: '0 10px 25px rgba(0, 0, 0, 0.1)',
+                  padding: '8px'
                 }}
                 formatter={(value, name) => [`${value} reviews`, 'Count']}
               />
@@ -176,19 +196,39 @@ const ReviewAnalytics: React.FC<ReviewAnalyticsProps> = ({ reviews }) => {
         </div>
 
         {/* Monthly Review Trends */}
-        <div className="bg-white border border-slate-200 rounded-xl p-6 shadow-sm">
-          <h3 className="text-xl font-semibold text-slate-900 mb-4">Review Trends Over Time</h3>
-          <ResponsiveContainer width="100%" height={300}>
+        <div className="bg-gradient-to-br from-white to-slate-50 border border-slate-200 rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 hover:border-purple-200 lg:col-span-2">
+          <div>
+            <h3 className="text-2xl font-bold text-slate-900">Review Trends Over Time</h3>
+            <p className="text-sm text-slate-500 mt-1">Monthly review submission patterns</p>
+          </div>
+          <ResponsiveContainer width="100%" height={350}>
             <LineChart data={monthlyReviews}>
-              <CartesianGrid strokeDasharray="3 3" stroke="#e2e8f0" />
-              <XAxis dataKey="month" tick={{ fontSize: 12 }} stroke="#64748b" />
-              <YAxis tick={{ fontSize: 12 }} stroke="#64748b" />
+              <defs>
+                <linearGradient id="colorReviews" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stopColor="#8b5cf6" stopOpacity={0.9}/>
+                  <stop offset="100%" stopColor="#8b5cf6" stopOpacity={0.1}/>
+                </linearGradient>
+              </defs>
+              <CartesianGrid strokeDasharray="4 4" stroke="#e2e8f0" strokeOpacity={0.5} />
+              <XAxis 
+                dataKey="month" 
+                tick={{ fontSize: 12, fill: '#475569', fontWeight: 500 }}
+                stroke="#cbd5e1"
+                angle={-45}
+                textAnchor="end"
+                height={90}
+              />
+              <YAxis 
+                tick={{ fontSize: 12, fill: '#475569', fontWeight: 500 }}
+                stroke="#cbd5e1"
+              />
               <Tooltip 
                 contentStyle={{
-                  backgroundColor: '#f8fafc',
-                  border: '1px solid #e2e8f0',
-                  borderRadius: '8px',
-                  boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)'
+                  backgroundColor: '#ffffff',
+                  border: '2px solid #e2e8f0',
+                  borderRadius: '12px',
+                  boxShadow: '0 10px 25px rgba(0, 0, 0, 0.1)',
+                  padding: '8px'
                 }}
                 formatter={(value) => [`${value} reviews`, 'Count']}
               />
@@ -197,52 +237,85 @@ const ReviewAnalytics: React.FC<ReviewAnalyticsProps> = ({ reviews }) => {
                 dataKey="count" 
                 stroke="#8b5cf6" 
                 strokeWidth={3}
-                dot={{ fill: '#8b5cf6', strokeWidth: 2, r: 4 }}
-                activeDot={{ r: 6, stroke: '#8b5cf6', strokeWidth: 2 }}
+                dot={{ fill: '#8b5cf6', strokeWidth: 2, r: 6, filter: 'drop-shadow(0 2px 4px rgba(0,0,0,0.1))' }}
+                activeDot={{ r: 8, stroke: '#ffffff', strokeWidth: 3, fill: '#ec4899' }}
               />
             </LineChart>
           </ResponsiveContainer>
         </div>
 
         {/* Top Performers */}
-        <div className="bg-white border border-slate-200 rounded-xl p-6 shadow-sm">
-          <h3 className="text-xl font-semibold text-slate-900 mb-4">Top Profit Makers (in $K)</h3>
-          <ResponsiveContainer width="100%" height={300}>
+        <div className="bg-gradient-to-br from-white to-slate-50 border border-slate-200 rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 hover:border-green-200 lg:col-span-2">
+          <div>
+            <h3 className="text-2xl font-bold text-slate-900">Top Profit Makers</h3>
+            <p className="text-sm text-slate-500 mt-1">Highest earnings reported (in $K)</p>
+          </div>
+          <ResponsiveContainer width="100%" height={350}>
             <BarChart data={profitData}>
-              <CartesianGrid strokeDasharray="3 3" stroke="#e2e8f0" />
-              <XAxis dataKey="name" tick={{ fontSize: 12 }} stroke="#64748b" />
-              <YAxis tick={{ fontSize: 12 }} stroke="#64748b" />
+              <defs>
+                <linearGradient id="colorProfit" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stopColor="#10b981" stopOpacity={1}/>
+                  <stop offset="100%" stopColor="#059669" stopOpacity={0.7}/>
+                </linearGradient>
+                <filter id="shadowProfit">
+                  <feDropShadow dx="0" dy="2" stdDeviation="3" floodOpacity="0.1"/>
+                </filter>
+              </defs>
+              <CartesianGrid strokeDasharray="4 4" stroke="#e2e8f0" strokeOpacity={0.5} />
+              <XAxis 
+                dataKey="name" 
+                tick={{ fontSize: 12, fill: '#475569', fontWeight: 500 }}
+                stroke="#cbd5e1"
+                angle={-45}
+                textAnchor="end"
+                height={90}
+              />
+              <YAxis 
+                tick={{ fontSize: 12, fill: '#475569', fontWeight: 500 }}
+                stroke="#cbd5e1"
+              />
               <Tooltip 
                 contentStyle={{
-                  backgroundColor: '#f8fafc',
-                  border: '1px solid #e2e8f0',
-                  borderRadius: '8px',
-                  boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)'
+                  backgroundColor: '#ffffff',
+                  border: '2px solid #e2e8f0',
+                  borderRadius: '12px',
+                  boxShadow: '0 10px 25px rgba(0, 0, 0, 0.1)',
+                  padding: '8px'
                 }}
                 formatter={(value, name) => [
                   name === 'profit' ? `$${value}K` : `${value} stars`,
                   name === 'profit' ? 'Profit Made' : 'Rating'
                 ]}
               />
-              <Bar dataKey="profit" fill="#10b981" radius={[4, 4, 0, 0]} />
+              <Bar dataKey="profit" fill="url(#colorProfit)" radius={[12, 12, 0, 0]} filter="url(#shadowProfit)" />
             </BarChart>
           </ResponsiveContainer>
         </div>
       </div>
 
       {/* Experience Level Analysis */}
-      <div className="bg-white border border-slate-200 rounded-xl p-6 shadow-sm">
-        <h3 className="text-xl font-semibold text-slate-900 mb-4">Trading Experience Distribution</h3>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div className="bg-gradient-to-r from-teal-50 via-blue-50 to-purple-50 border border-slate-200 rounded-2xl p-8 shadow-lg">
+        <div>
+          <h3 className="text-2xl font-bold text-slate-900">Trading Experience Distribution</h3>
+          <p className="text-sm text-slate-500 mt-1">Trader skill level breakdown</p>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-6">
           {experienceData.map((item, index) => (
-            <div key={item.experience} className="text-center">
-              <div className="text-3xl font-bold text-slate-900 mb-2">{item.count}</div>
-              <div className="text-sm text-slate-600">{item.experience}</div>
-              <div className="w-full bg-slate-200 rounded-full h-2 mt-2">
-                <div 
-                  className="bg-gradient-to-r from-teal-500 to-slate-900 h-2 rounded-full transition-all duration-500"
-                  style={{ width: `${(item.count / Math.max(...experienceData.map(e => e.count))) * 100}%` }}
-                />
+            <div key={item.experience} className="bg-white rounded-2xl p-6 shadow-md border border-slate-100 hover:shadow-lg transition-all duration-300">
+              <div className="text-center">
+                <div className="inline-block p-3 bg-slate-100 rounded-lg mb-3">
+                  <div className="text-3xl font-bold text-slate-900">{item.count}</div>
+                </div>
+                <div className="text-sm font-semibold text-slate-900 mb-1">{item.experience}</div>
+                <div className="text-xs text-slate-500 mb-4">
+                  {Math.round((item.count / reviews.length) * 100)}% of traders
+                </div>
+                <div className="w-full bg-slate-200 rounded-full h-3 overflow-hidden shadow-sm">
+                  <div 
+                    className="bg-gradient-to-r from-teal-500 to-blue-600 h-3 rounded-full transition-all duration-500"
+                    style={{ width: `${(item.count / Math.max(...experienceData.map(e => e.count))) * 100}%` }}
+                  />
+                </div>
               </div>
             </div>
           ))}

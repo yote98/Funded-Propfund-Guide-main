@@ -75,42 +75,72 @@ const MarketInsights: React.FC<{ selectedPlatform?: string; selectedRegion?: str
       )}
 
       {/* Key Metrics - Research-Based */}
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-8">
-        <div className="bg-gradient-to-r from-teal-500 to-teal-600 text-white rounded-xl p-6 text-center">
-          <div className="text-3xl font-bold mb-2">120</div>
-          <div className="text-sm opacity-90">Active Prop Firms</div>
+      <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
+        <div className="bg-gradient-to-br from-teal-500 to-teal-600 text-white rounded-2xl p-8 text-center shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-105">
+          <div className="text-4xl font-bold mb-2">120</div>
+          <div className="text-sm font-medium opacity-90">Active Prop Firms</div>
+          <div className="text-xs opacity-75 mt-2">Industry-wide</div>
         </div>
-        <div className="bg-gradient-to-r from-slate-600 to-slate-700 text-white rounded-xl p-6 text-center">
-          <div className="text-3xl font-bold mb-2">4.3K</div>
-          <div className="text-sm opacity-90">New Traders/Month</div>
+        <div className="bg-gradient-to-br from-slate-600 to-slate-700 text-white rounded-2xl p-8 text-center shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-105">
+          <div className="text-4xl font-bold mb-2">4.3K</div>
+          <div className="text-sm font-medium opacity-90">New Traders/Month</div>
+          <div className="text-xs opacity-75 mt-2">Growing rapidly</div>
         </div>
-        <div className="bg-gradient-to-r from-blue-500 to-blue-600 text-white rounded-xl p-6 text-center">
-          <div className="text-3xl font-bold mb-2">$95M</div>
-          <div className="text-sm opacity-90">Total Funding</div>
+        <div className="bg-gradient-to-br from-blue-500 to-blue-600 text-white rounded-2xl p-8 text-center shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-105">
+          <div className="text-4xl font-bold mb-2">$95M</div>
+          <div className="text-sm font-medium opacity-90">Total Funding</div>
+          <div className="text-xs opacity-75 mt-2">Capital available</div>
         </div>
-        <div className="bg-gradient-to-r from-purple-500 to-purple-600 text-white rounded-xl p-6 text-center">
-          <div className="text-3xl font-bold mb-2">18%</div>
-          <div className="text-sm opacity-90">Market Growth</div>
+        <div className="bg-gradient-to-br from-purple-500 to-purple-600 text-white rounded-2xl p-8 text-center shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-105">
+          <div className="text-4xl font-bold mb-2">18%</div>
+          <div className="text-sm font-medium opacity-90">Market Growth</div>
+          <div className="text-xs opacity-75 mt-2">Year-over-year</div>
         </div>
       </div>
 
       {/* Charts Grid */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
         {/* Market Growth Trends */}
-        <div className="bg-white border border-slate-200 rounded-xl p-6 shadow-sm">
-          <h3 className="text-xl font-semibold text-slate-900 mb-4">Market Growth Trends</h3>
-          <ResponsiveContainer width="100%" height={300}>
+        <div className="bg-gradient-to-br from-white to-slate-50 border border-slate-200 rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 hover:border-teal-200 lg:col-span-2">
+          <div>
+            <h3 className="text-2xl font-bold text-slate-900">Market Growth Trends</h3>
+            <p className="text-sm text-slate-500 mt-1">Firms, traders, and funding growth over time</p>
+          </div>
+          <ResponsiveContainer width="100%" height={350}>
             <ComposedChart data={marketTrends}>
-              <CartesianGrid strokeDasharray="3 3" stroke="#e2e8f0" />
-              <XAxis dataKey="month" tick={{ fontSize: 12 }} stroke="#64748b" />
-              <YAxis yAxisId="left" tick={{ fontSize: 12 }} stroke="#64748b" />
-              <YAxis yAxisId="right" orientation="right" tick={{ fontSize: 12 }} stroke="#64748b" />
+              <defs>
+                <linearGradient id="colorFirms" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stopColor="#14b8a6" stopOpacity={0.9}/>
+                  <stop offset="100%" stopColor="#14b8a6" stopOpacity={0.1}/>
+                </linearGradient>
+              </defs>
+              <CartesianGrid strokeDasharray="4 4" stroke="#e2e8f0" strokeOpacity={0.5} />
+              <XAxis 
+                dataKey="month" 
+                tick={{ fontSize: 12, fill: '#475569', fontWeight: 500 }}
+                stroke="#cbd5e1"
+                angle={-45}
+                textAnchor="end"
+                height={90}
+              />
+              <YAxis 
+                yAxisId="left" 
+                tick={{ fontSize: 12, fill: '#475569', fontWeight: 500 }}
+                stroke="#cbd5e1"
+              />
+              <YAxis 
+                yAxisId="right" 
+                orientation="right" 
+                tick={{ fontSize: 12, fill: '#475569', fontWeight: 500 }}
+                stroke="#cbd5e1"
+              />
               <Tooltip 
                 contentStyle={{
-                  backgroundColor: '#f8fafc',
-                  border: '1px solid #e2e8f0',
-                  borderRadius: '8px',
-                  boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)'
+                  backgroundColor: '#ffffff',
+                  border: '2px solid #e2e8f0',
+                  borderRadius: '12px',
+                  boxShadow: '0 10px 25px rgba(0, 0, 0, 0.1)',
+                  padding: '8px'
                 }}
                 formatter={(value, name) => [
                   name === 'propFirms' ? `${value} firms` :
@@ -125,8 +155,9 @@ const MarketInsights: React.FC<{ selectedPlatform?: string; selectedRegion?: str
                 type="monotone"
                 dataKey="propFirms"
                 stroke="#14b8a6"
-                fill="#14b8a6"
-                fillOpacity={0.3}
+                fill="url(#colorFirms)"
+                fillOpacity={1}
+                strokeWidth={3}
               />
               <Line
                 yAxisId="right"
@@ -134,30 +165,34 @@ const MarketInsights: React.FC<{ selectedPlatform?: string; selectedRegion?: str
                 dataKey="funding"
                 stroke="#8b5cf6"
                 strokeWidth={3}
-                dot={{ fill: '#8b5cf6', strokeWidth: 2, r: 4 }}
+                dot={{ fill: '#8b5cf6', strokeWidth: 2, r: 6, filter: 'drop-shadow(0 2px 4px rgba(0,0,0,0.1))' }}
+                activeDot={{ r: 8, stroke: '#ffffff', strokeWidth: 3, fill: '#ec4899' }}
               />
             </ComposedChart>
           </ResponsiveContainer>
         </div>
 
         {/* Trading Instruments Distribution */}
-        <div className="bg-white border border-slate-200 rounded-xl p-6 shadow-sm">
-          <h3 className="text-xl font-semibold text-slate-900 mb-4">Trading Instruments</h3>
-          <div className="space-y-4">
+        <div className="bg-gradient-to-br from-white to-slate-50 border border-slate-200 rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 hover:border-orange-200">
+          <div>
+            <h3 className="text-2xl font-bold text-slate-900">Trading Instruments</h3>
+            <p className="text-sm text-slate-500 mt-1">Popularity and growth rates</p>
+          </div>
+          <div className="space-y-5 mt-6">
             {tradingInstruments.map((item, index) => (
               <div key={item.instrument} className="relative">
                 <div className="flex justify-between items-center mb-2">
-                  <span className="font-medium text-slate-900">{item.instrument}</span>
+                  <span className="font-semibold text-slate-900">{item.instrument}</span>
                   <div className="flex items-center space-x-2">
-                    <span className="text-sm text-slate-600">{item.percentage}%</span>
-                    <span className="text-xs bg-green-100 text-green-800 px-2 py-1 rounded-full">
+                    <span className="text-sm font-medium text-slate-700">{item.percentage}%</span>
+                    <span className="text-xs bg-green-100 text-green-800 px-3 py-1 rounded-full font-semibold">
                       +{item.growth}%
                     </span>
                   </div>
                 </div>
-                <div className="w-full bg-slate-200 rounded-full h-3">
+                <div className="w-full bg-slate-200 rounded-full h-3 overflow-hidden shadow-sm">
                   <div 
-                    className="bg-gradient-to-r from-teal-500 to-slate-900 h-3 rounded-full transition-all duration-1000"
+                    className="bg-gradient-to-r from-teal-500 to-emerald-600 h-3 rounded-full transition-all duration-1000"
                     style={{ 
                       width: `${item.percentage}%`,
                       animationDelay: `${index * 200}ms`
@@ -170,18 +205,24 @@ const MarketInsights: React.FC<{ selectedPlatform?: string; selectedRegion?: str
         </div>
 
         {/* Funding Models Popularity */}
-        <div className="bg-white border border-slate-200 rounded-xl p-6 shadow-sm">
-          <h3 className="text-xl font-semibold text-slate-900 mb-4">Funding Models Popularity</h3>
-          <div className="space-y-4">
+        <div className="bg-gradient-to-br from-white to-slate-50 border border-slate-200 rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 hover:border-purple-200">
+          <div>
+            <h3 className="text-2xl font-bold text-slate-900">Funding Models Popularity</h3>
+            <p className="text-sm text-slate-500 mt-1">Trader preferences and approval times</p>
+          </div>
+          <div className="space-y-5 mt-6">
             {fundingModels.map((item, index) => (
               <div key={item.model}>
-                <div className="flex justify-between items-center mb-1 text-sm">
-                  <span className="font-medium text-slate-900">{item.model}</span>
-                  <span className="text-slate-600">{item.popularity}% • Avg time: {item.avgTime} days</span>
+                <div className="flex justify-between items-center mb-2">
+                  <span className="font-semibold text-slate-900 text-sm">{item.model}</span>
+                  <div className="text-xs text-slate-600 font-medium">
+                    <span className="bg-slate-100 px-2 py-1 rounded mr-2">{item.popularity}%</span>
+                    <span className="text-slate-500">{item.avgTime} days avg</span>
+                  </div>
                 </div>
-                <div className="w-full bg-slate-200 rounded-full h-3">
+                <div className="w-full bg-slate-200 rounded-full h-3 overflow-hidden shadow-sm">
                   <div
-                    className="bg-gradient-to-r from-teal-500 to-emerald-600 h-3 rounded-full"
+                    className="bg-gradient-to-r from-purple-500 to-pink-600 h-3 rounded-full transition-all duration-500"
                     style={{ width: `${item.popularity}%` }}
                   />
                 </div>
@@ -191,18 +232,21 @@ const MarketInsights: React.FC<{ selectedPlatform?: string; selectedRegion?: str
         </div>
 
         {/* Regional Distribution */}
-        <div className="bg-white border border-slate-200 rounded-xl p-6 shadow-sm">
-          <h3 className="text-xl font-semibold text-slate-900 mb-4">Regional Distribution</h3>
-          <div className="space-y-4">
+        <div className="bg-gradient-to-br from-white to-slate-50 border border-slate-200 rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 hover:border-blue-200">
+          <div>
+            <h3 className="text-2xl font-bold text-slate-900">Regional Distribution</h3>
+            <p className="text-sm text-slate-500 mt-1">Geographic market breakdown</p>
+          </div>
+          <div className="space-y-4 mt-6">
             {regionalData.map((region, index) => (
-              <div key={region.region} className="flex items-center justify-between p-4 bg-slate-50 rounded-lg">
+              <div key={region.region} className="flex items-center justify-between p-4 bg-gradient-to-r from-slate-50 to-slate-100 rounded-xl border border-slate-200 hover:border-slate-300 hover:shadow-md transition-all duration-300">
                 <div>
-                  <div className="font-medium text-slate-900">{region.region}</div>
-                  <div className="text-sm text-slate-600">{region.firms} firms • ${region.funding}K funding</div>
+                  <div className="font-semibold text-slate-900">{region.region}</div>
+                  <div className="text-sm text-slate-600 mt-1">{region.firms} firms • ${region.funding}K funding</div>
                 </div>
-                <div className="text-right">
-                  <div className="text-lg font-bold text-slate-900">+{region.growth}%</div>
-                  <div className="text-xs text-green-600">Growth</div>
+                <div className="text-right bg-white rounded-lg p-3 shadow-sm">
+                  <div className="text-lg font-bold text-green-600">+{region.growth}%</div>
+                  <div className="text-xs text-slate-500 font-medium">Growth</div>
                 </div>
               </div>
             ))}
@@ -211,28 +255,39 @@ const MarketInsights: React.FC<{ selectedPlatform?: string; selectedRegion?: str
       </div>
 
       {/* Market Predictions - Research-Based */}
-      <div className="bg-gradient-to-r from-slate-50 to-teal-50 border border-slate-200 rounded-xl p-6">
-        <h3 className="text-xl font-semibold text-slate-900 mb-4">AI Research Predictions 2025</h3>
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-          <div className="text-center">
-            <div className="text-3xl font-bold text-teal-600 mb-2">150+</div>
-            <div className="text-sm text-slate-600">Expected Prop Firms</div>
-            <div className="text-xs text-slate-500 mt-1">GPT-5 & Claude 4.5 Analysis</div>
+      <div className="bg-gradient-to-r from-slate-50 via-teal-50 to-blue-50 border border-slate-200 rounded-2xl p-8 shadow-lg">
+        <div>
+          <h3 className="text-2xl font-bold text-slate-900 mb-2">AI Research Predictions 2025</h3>
+          <p className="text-sm text-slate-500">Multi-AI consensus: GPT-5, Claude 4.5, Grok 4, Gemini 2.5 Pro</p>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mt-6">
+          <div className="bg-white rounded-2xl p-6 shadow-md border border-slate-100 hover:shadow-lg hover:scale-105 transition-all duration-300 text-center">
+            <div className="inline-block p-3 bg-teal-100 rounded-lg mb-3">
+              <div className="text-3xl font-bold text-teal-600">150+</div>
+            </div>
+            <div className="text-sm font-semibold text-slate-900">Expected Prop Firms</div>
+            <div className="text-xs text-slate-500 mt-2">GPT-5 & Claude 4.5 Analysis</div>
           </div>
-          <div className="text-center">
-            <div className="text-3xl font-bold text-slate-600 mb-2">$2.8B</div>
-            <div className="text-sm text-slate-600">Market Size</div>
-            <div className="text-xs text-slate-500 mt-1">Grok 4 & Gemini 2.5 Pro</div>
+          <div className="bg-white rounded-2xl p-6 shadow-md border border-slate-100 hover:shadow-lg hover:scale-105 transition-all duration-300 text-center">
+            <div className="inline-block p-3 bg-slate-100 rounded-lg mb-3">
+              <div className="text-3xl font-bold text-slate-600">$2.8B</div>
+            </div>
+            <div className="text-sm font-semibold text-slate-900">Market Size</div>
+            <div className="text-xs text-slate-500 mt-2">Grok 4 & Gemini 2.5 Pro</div>
           </div>
-          <div className="text-center">
-            <div className="text-3xl font-bold text-blue-600 mb-2">25%</div>
-            <div className="text-sm text-slate-600">Crypto Growth</div>
-            <div className="text-xs text-slate-500 mt-1">Multi-AI Consensus</div>
+          <div className="bg-white rounded-2xl p-6 shadow-md border border-slate-100 hover:shadow-lg hover:scale-105 transition-all duration-300 text-center">
+            <div className="inline-block p-3 bg-blue-100 rounded-lg mb-3">
+              <div className="text-3xl font-bold text-blue-600">25%</div>
+            </div>
+            <div className="text-sm font-semibold text-slate-900">Crypto Growth</div>
+            <div className="text-xs text-slate-500 mt-2">Multi-AI Consensus</div>
           </div>
-          <div className="text-center">
-            <div className="text-3xl font-bold text-purple-600 mb-2">20%</div>
-            <div className="text-sm text-slate-600">Success Rate</div>
-            <div className="text-xs text-slate-500 mt-1">AI-Predicted Improvement</div>
+          <div className="bg-white rounded-2xl p-6 shadow-md border border-slate-100 hover:shadow-lg hover:scale-105 transition-all duration-300 text-center">
+            <div className="inline-block p-3 bg-purple-100 rounded-lg mb-3">
+              <div className="text-3xl font-bold text-purple-600">20%</div>
+            </div>
+            <div className="text-sm font-semibold text-slate-900">Success Rate</div>
+            <div className="text-xs text-slate-500 mt-2">AI-Predicted Improvement</div>
           </div>
         </div>
       </div>

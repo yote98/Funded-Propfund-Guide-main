@@ -45,7 +45,7 @@ const FirmCard: React.FC<FirmCardProps> = ({ firm, viewFirm }) => {
                     <Logo firmName={name} logoUrl={firm.logoUrl} className="object-contain max-h-full max-w-full" />
                 </div>
               <div>
-                <h3 id={`firm-${firm.id}-title`} className="heading-font text-xl font-bold text-slate-900">{name}</h3>
+                <h3 id={`firm-${firm.id}-title`} className="font-heading text-xl font-bold text-slate-900">{name}</h3>
                 <div className="flex items-center mt-1" aria-label={`Rating: ${rating} out of 5 stars`}>
                   <StarRating rating={rating} />
                   <span className="text-xs text-slate-500 ml-2">({reviewCount} reviews)</span>

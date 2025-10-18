@@ -261,7 +261,7 @@ const FirmReviewPage: React.FC<FirmReviewPageProps> = ({ firm }) => {
                   totalPayouts={firm.payoutHistory.totalPayouts}
                 />
               )}
-              
+
               {/* Add basic payout info for firms without verified data */}
               {!hasVerifiedPayoutData && (
                 <PayoutInfo
