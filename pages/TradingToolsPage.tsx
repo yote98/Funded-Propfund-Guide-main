@@ -53,12 +53,12 @@ const TradingToolsPage: React.FC<TradingToolsPageProps> = ({ tools }) => {
                   {/* Tool Name & Logo */}
                   <td className="px-6 py-4">
                     <div className="flex items-center">
-                      <div className="w-16 h-16 bg-white rounded-lg p-2 border border-slate-200 mr-4 flex-shrink-0">
-                        <Logo firmName={tool.name} logoUrl={tool.logoUrl} className="w-full h-full object-contain" />
+                      <div className="w-20 h-20 bg-gradient-to-br from-slate-50 to-slate-100 rounded-xl p-3 shadow-md hover:shadow-lg border-2 border-slate-200 hover:border-teal-300 mr-4 flex-shrink-0 transition-all duration-300 hover:scale-105">
+                        <Logo firmName={tool.name} logoUrl={tool.logoUrl} className="w-full h-full object-contain drop-shadow-sm" />
                       </div>
                       <div className="min-w-0">
-                        <div className="text-sm font-semibold text-slate-900 truncate">{tool.name}</div>
-                        <div className="text-xs text-slate-500 truncate">{tool.tagline}</div>
+                        <div className="text-base font-bold text-slate-900 truncate">{tool.name}</div>
+                        <div className="text-xs text-slate-600 truncate mt-0.5">{tool.tagline}</div>
                       </div>
                     </div>
                   </td>
@@ -77,8 +77,16 @@ const TradingToolsPage: React.FC<TradingToolsPageProps> = ({ tools }) => {
                       target="_blank"
                       rel="noopener noreferrer"
                       onClick={() => handleAffiliateClick(tool)}
-                      className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-gradient-to-r from-teal-500 to-slate-900 hover:from-teal-600 hover:to-slate-800 transition-all duration-300"
+                      className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-lg text-white bg-gradient-to-r from-teal-500 to-slate-900 hover:from-teal-600 hover:to-slate-800 transition-all duration-300 shadow-md hover:shadow-lg hover:scale-105"
                     >
+                      <img 
+                        src="/images/icons/rocket-3d.png" 
+                        alt="Visit" 
+                        className="h-4 w-4 mr-2"
+                        onError={(e) => {
+                          e.currentTarget.style.display = 'none';
+                        }}
+                      />
                       Visit Website
                     </a>
                   </td>
@@ -95,12 +103,12 @@ const TradingToolsPage: React.FC<TradingToolsPageProps> = ({ tools }) => {
           {tools.map(tool => (
             <div key={tool.id} className="bg-white rounded-lg shadow-sm border border-slate-200 p-4">
               <div className="flex items-start space-x-4">
-                <div className="w-16 h-16 bg-white rounded-lg p-2 border border-slate-200 flex-shrink-0">
-                  <Logo firmName={tool.name} logoUrl={tool.logoUrl} className="w-full h-full object-contain" />
+                <div className="w-20 h-20 bg-gradient-to-br from-slate-50 to-slate-100 rounded-xl p-3 shadow-md border-2 border-slate-200 flex-shrink-0">
+                  <Logo firmName={tool.name} logoUrl={tool.logoUrl} className="w-full h-full object-contain drop-shadow-sm" />
                 </div>
                 <div className="flex-1 min-w-0">
-                  <h3 className="text-sm font-semibold text-slate-900">{tool.name}</h3>
-                  <p className="text-xs text-slate-500 mb-2">{tool.tagline}</p>
+                  <h3 className="text-base font-bold text-slate-900">{tool.name}</h3>
+                  <p className="text-xs text-slate-600 mb-2">{tool.tagline}</p>
                   <p className="text-sm text-slate-600 mb-3">{tool.shortDescription}</p>
                   <div className="flex justify-end">
                     <a
@@ -108,8 +116,16 @@ const TradingToolsPage: React.FC<TradingToolsPageProps> = ({ tools }) => {
                       target="_blank"
                       rel="noopener noreferrer"
                       onClick={() => handleAffiliateClick(tool)}
-                      className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-gradient-to-r from-teal-500 to-slate-900 hover:from-teal-600 hover:to-slate-800 transition-all duration-300"
+                      className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-lg text-white bg-gradient-to-r from-teal-500 to-slate-900 hover:from-teal-600 hover:to-slate-800 transition-all duration-300 shadow-md hover:shadow-lg hover:scale-105"
                     >
+                      <img 
+                        src="/images/icons/rocket-3d.png" 
+                        alt="Visit" 
+                        className="h-4 w-4 mr-2"
+                        onError={(e) => {
+                          e.currentTarget.style.display = 'none';
+                        }}
+                      />
                       Visit Website
                     </a>
                   </div>
