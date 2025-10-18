@@ -383,7 +383,7 @@ export const tradingTools: TradingTool[] = [
     reviewCount: 1800,
     affiliateUrl: 'https://atas.net?ref=FPG',
     fpgAffiliateCode: 'FPG',
-    categories: ['Technical Analysis', 'Market Analysis'],
+    categories: ['Technical Analysis', 'Institutional Data'],
     targetMarkets: ['Futures', 'Forex', 'Stocks', 'Crypto'],
     pricing: {
       free: true,

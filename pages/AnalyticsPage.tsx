@@ -136,7 +136,7 @@ const AnalyticsPage: React.FC<AnalyticsPageProps> = ({ firms, reviews }) => {
           >
             <SuccessMetrics 
               evaluationPassRate={0.15}
-              averageTimeToPass={45}
+              averageTimeToPass="45"
               traderRetentionRate={0.68}
               scalingSuccessRate={0.42}
             />

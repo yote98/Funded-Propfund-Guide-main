@@ -112,13 +112,6 @@ const Logo: React.FC<LogoProps> = ({ firmName, logoUrl, className = "" }) => {
         'https://funded.seacrestmarkets.io/android-chrome-192x192.png',
         'https://funded.seacrestmarkets.io/favicon-32x32.png'
       ],
-          // Trading Tools
-          'Edgeful': [
-            '/logos/edgeful.png',
-            'https://logo.clearbit.com/edgeful.com',
-            'https://edgeful.com/favicon.ico',
-            'https://edgeful.com/logo.png'
-          ],
       'Lux Algo': [
         'https://logo.clearbit.com/luxalgo.com',
         'https://luxalgo.com/favicon.ico',
