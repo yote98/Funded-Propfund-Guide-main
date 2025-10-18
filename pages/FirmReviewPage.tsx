@@ -234,7 +234,20 @@ const FirmReviewPage: React.FC<FirmReviewPageProps> = ({ firm }) => {
                 </ul>
             </div>
 
-            <a href={firm.affiliateUrl} target="_blank" rel="noopener noreferrer" className="mt-6 w-full block text-center bg-gradient-to-r from-teal-500 to-slate-900 text-white font-bold py-3 px-6 rounded-lg hover:from-teal-600 hover:to-slate-800 transition-all duration-300">
+            <a 
+                href={firm.affiliateUrl} 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="mt-6 w-full block text-center bg-gradient-to-r from-teal-500 to-slate-900 text-white font-bold py-3 px-6 rounded-lg hover:from-teal-600 hover:to-slate-800 transition-all duration-300 flex items-center justify-center"
+            >
+                <img 
+                  src="/images/icons/rocket-3d.png" 
+                  alt="Get Funded" 
+                  className="h-6 w-6 mr-2"
+                  onError={(e) => {
+                    e.currentTarget.style.display = 'none';
+                  }}
+                />
                 Get Funded Now
             </a>
 

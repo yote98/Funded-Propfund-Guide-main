@@ -2,6 +2,28 @@ import React, { useState } from 'react';
 import type { Page } from '../types.ts';
 import FpgLogoIcon from './FpgLogoIcon.tsx';
 
+// Helper function to get icon for each navigation item
+const getNavIcon = (page: Page): string => {
+  switch(page) {
+    case 'home':
+      return '/images/icons/3dicons-star-dynamic-color.png';
+    case 'compare':
+      return '/images/icons/3dicons-calculator-dynamic-color.png';
+    case 'trading-tools':
+      return '/images/icons/tools-3d.png';
+    case 'education':
+      return '/images/icons/bookmark-3d.png';
+    case 'analytics':
+      return '/images/icons/chart-3d.png';
+    case 'glossary':
+      return '/images/icons/3dicons-explorer-dynamic-color.png';
+    case 'about':
+      return '/images/icons/3dicons-key-dynamic-color.png';
+    default:
+      return '';
+  }
+};
+
 interface HeaderProps {
   navigateTo: (page: Page) => void;
   currentPage: Page;
@@ -30,7 +52,19 @@ const NavLink: React.FC<{
       onClick={() => navigateTo(page)}
       className={finalClassName}
     >
-      {children}
+      <div className="flex items-center">
+        {getNavIcon(page) && (
+          <img 
+            src={getNavIcon(page)} 
+            alt={String(page)} 
+            className={`${isMobile ? 'h-5 w-5' : 'h-4 w-4'} mr-1.5 ${isActive ? 'opacity-100' : 'opacity-80'}`}
+            onError={(e) => {
+              e.currentTarget.style.display = 'none';
+            }}
+          />
+        )}
+        {children}
+      </div>
     </button>
   );
 };
