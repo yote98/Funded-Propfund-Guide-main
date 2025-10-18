@@ -530,6 +530,11 @@ export const propFirms: PropFirm[] = [
     cons: ["Slightly higher cost than some competitors"],
     details: { minFunding: 5000, maxFunding: 5000000, profitSplit: 100, maxDrawdown: 10, dailyDrawdown: 5, profitTarget: 10, minTradingDays: 0 },
     features: { scalingPlan: true, weekendHolding: true, newsTrading: true, expertAdvisors: true, fastPayouts: true, noTimeLimit: true },
+
+    // Company Information
+    countryFounded: 'United Kingdom',
+    foundedYear: 2021,
+    headquarters: 'United Kingdom',
   },
     {
     id: 'finotive-funding',
