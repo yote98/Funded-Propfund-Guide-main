@@ -62,6 +62,11 @@ export interface PropFirm {
     webTrading: boolean;
   }[];
 
+  // Company Information
+  countryFounded?: string; // e.g., "Czech Republic", "United States", "United Kingdom"
+  headquarters?: string; // e.g., "Prague, Czech Republic"
+  foundedYear?: number; // e.g., 2015, 2021, 2017
+
   // Verification & sourcing (optional to avoid breaking existing data)
   sources?: string[]; // e.g., ["Official site", "TradingPilot", "TheTrustedProp", "Payout Junction"]
   verificationStatus?: 'unverified' | 'partial' | 'verified';
