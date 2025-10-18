@@ -81,6 +81,7 @@ const App: React.FC = () => {
     
     // Set initial page from URL
     const path = window.location.pathname;
+    console.log('Initial path:', path);
     if (path.startsWith('/firm-review/')) {
       const firmId = path.split('/')[2] as FirmId;
       setSelectedFirmId(firmId.toLowerCase()); // Ensure lowercase for case-insensitive matching
@@ -91,6 +92,7 @@ const App: React.FC = () => {
       setCurrentPage('article');
     } else {
       const page = (path.substring(1) as Page) || 'home';
+      console.log('Setting page to:', page);
       setCurrentPage(page);
     }
 
@@ -135,6 +137,7 @@ const App: React.FC = () => {
   }, []);
   
   const renderPage = () => {
+    console.log('Rendering page:', currentPage);
     if (isLoading) {
       return (
         <div className="flex justify-center items-center h-64">
