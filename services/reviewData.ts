@@ -511,6 +511,24 @@ export const userReviews: UserReview[] = [
     profitMade: 8900,
     payoutReceived: true
   },
+  
+  {
+    id: 'fundednext-review-4',
+    firmId: 'fundednext',
+    userName: 'Sophia Martinez',
+    userAvatar: '/avatars/sophia-martinez.jpg',
+    rating: 5,
+    title: 'Exceptional mobile trading experience',
+    content: 'FundedNext has completely transformed my trading career. As someone who trades primarily on mobile, their DXtrade platform integration is flawless - no lag, instant execution, and perfect synchronization across devices. The Stellar program with its 90% profit split is unmatched in the industry. Their Dubai office provides 24/7 support that actually resolves issues quickly. I have been with them for 8 months, received 6 payouts (all within 24-48 hours), and recently qualified for their VIP program with additional perks. Their educational webinars and market analysis have significantly improved my trading strategy.',
+    date: '2024-10-15',
+    verified: true,
+    helpful: 94,
+    userLocation: 'Madrid, Spain',
+    tradingExperience: '5 years',
+    accountSize: '$100,000',
+    profitMade: 18500,
+    payoutReceived: true
+  },
 
   // City Traders Imperium Reviews - UK Leader
   {
