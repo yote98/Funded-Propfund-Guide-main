@@ -273,6 +273,11 @@ export const propFirms: PropFirm[] = [
         webTrading: true
       }
     ],
+
+    // Company Information
+    countryFounded: 'United Kingdom',
+    foundedYear: 2021,
+    headquarters: 'UK',
   },
   {
     id: 'fund-your-fx',
@@ -335,6 +340,11 @@ export const propFirms: PropFirm[] = [
         webTrading: true
       }
     ],
+
+    // Company Information
+    countryFounded: 'United Kingdom',
+    foundedYear: 2020,
+    headquarters: 'London, UK',
   },
     {
     id: 'ftmo',
@@ -589,6 +599,11 @@ export const propFirms: PropFirm[] = [
     cons: ["Newer firm with limited reviews", "Bi-weekly payouts are standard"],
     details: { minFunding: 10000, maxFunding: 200000, profitSplit: 90, maxDrawdown: 10, dailyDrawdown: 5, profitTarget: 8, minTradingDays: 0 },
     features: { scalingPlan: true, weekendHolding: true, newsTrading: true, expertAdvisors: true, fastPayouts: true, noTimeLimit: true },
+
+    // Company Information
+    countryFounded: 'Australia',
+    foundedYear: 2023,
+    headquarters: 'Australia',
   },
   {
     id: 'funded-next',
@@ -757,6 +772,11 @@ export const propFirms: PropFirm[] = [
     cons: ["Only offers a 2-step challenge", "Newer firm"],
     details: { minFunding: 10000, maxFunding: 1000000, profitSplit: 85, maxDrawdown: 10, dailyDrawdown: 5, profitTarget: 8, minTradingDays: 4 },
     features: { scalingPlan: true, weekendHolding: true, newsTrading: true, expertAdvisors: true, fastPayouts: true, noTimeLimit: true },
+
+    // Company Information
+    countryFounded: 'Australia',
+    foundedYear: 2024,
+    headquarters: 'Australia',
   },
     // Futures-Focused Firms
   {
@@ -910,6 +930,11 @@ export const propFirms: PropFirm[] = [
     cons: ["Higher one-time cost than subscription models", "Rules can be strict for consistency"],
     details: { minFunding: 25000, maxFunding: 250000, profitSplit: 90, maxDrawdown: 5, dailyDrawdown: 0, profitTarget: 0, minTradingDays: 0 },
     features: { scalingPlan: true, weekendHolding: false, newsTrading: true, expertAdvisors: false, fastPayouts: true, noTimeLimit: true },
+
+    // Company Information
+    countryFounded: 'Canada',
+    foundedYear: 2022,
+    headquarters: 'Canada',
   },
     {
     id: 'seacrest-funded',
@@ -1184,6 +1209,11 @@ export const propFirms: PropFirm[] = [
     cons: ["Strict 40% consistency rule"],
     details: { minFunding: 25000, maxFunding: 250000, profitSplit: 90, maxDrawdown: 10, dailyDrawdown: 0, profitTarget: 6, minTradingDays: 10 },
     features: { scalingPlan: true, weekendHolding: false, newsTrading: true, expertAdvisors: false, fastPayouts: true, noTimeLimit: true },
+
+    // Company Information
+    countryFounded: 'United States',
+    foundedYear: 2024,
+    headquarters: 'USA',
   },
   {
     id: 'ticktick-trader',
@@ -1216,6 +1246,11 @@ export const propFirms: PropFirm[] = [
     cons: ["Recent update to the sim profit split (80/20)"],
     details: { minFunding: 25000, maxFunding: 150000, profitSplit: 90, maxDrawdown: 5, dailyDrawdown: 0, profitTarget: 6, minTradingDays: 5 },
     features: { scalingPlan: true, weekendHolding: false, newsTrading: true, expertAdvisors: false, fastPayouts: true, noTimeLimit: true },
+
+    // Company Information
+    countryFounded: 'United Arab Emirates',
+    foundedYear: 2023,
+    headquarters: 'Dubai, UAE',
   },
   // Multi-Asset Firms
   {
@@ -1246,6 +1281,11 @@ export const propFirms: PropFirm[] = [
     cons: ["Complex model for beginners", "Lower profit share (15-20% performance fees)", "Not for short-term challenge passers", "No US clients"],
     details: { minFunding: 50000, maxFunding: 3000000, profitSplit: 20, maxDrawdown: 20, dailyDrawdown: 10, profitTarget: 0, minTradingDays: 0 },
     features: { scalingPlan: true, weekendHolding: true, newsTrading: true, expertAdvisors: true, fastPayouts: false, noTimeLimit: true },
+
+    // Company Information
+    countryFounded: 'Spain',
+    foundedYear: 2012,
+    headquarters: 'Madrid, Spain',
   },
     {
     id: 'dna-funded',
@@ -1378,6 +1418,11 @@ export const propFirms: PropFirm[] = [
     cons: ["Mixed reviews on customer support"],
     details: { minFunding: 10000, maxFunding: 2000000, profitSplit: 90, maxDrawdown: 10, dailyDrawdown: 5, profitTarget: 10, minTradingDays: 0 },
     features: { scalingPlan: true, weekendHolding: true, newsTrading: true, expertAdvisors: true, fastPayouts: true, noTimeLimit: true },
+
+    // Company Information
+    countryFounded: 'United Kingdom',
+    foundedYear: 2023,
+    headquarters: 'UK',
   },
     {
     id: 'my-flash-funding',
@@ -1441,6 +1486,11 @@ export const propFirms: PropFirm[] = [
     cons: ["Limited data and reviews", "Unproven track record"],
     details: { minFunding: 10000, maxFunding: 400000, profitSplit: 90, maxDrawdown: 10, dailyDrawdown: 5, profitTarget: 10, minTradingDays: 5 },
     features: { scalingPlan: true, weekendHolding: true, newsTrading: true, expertAdvisors: true, fastPayouts: true, noTimeLimit: true },
+
+    // Company Information
+    countryFounded: 'United Kingdom',
+    foundedYear: 2023,
+    headquarters: 'UK',
   },
     {
     id: 'venus-funded',
@@ -1538,6 +1588,11 @@ export const propFirms: PropFirm[] = [
     cons: ["Very new firm with limited data", "Higher entry cost"],
     details: { minFunding: 10000, maxFunding: 500000, profitSplit: 90, maxDrawdown: 10, dailyDrawdown: 5, profitTarget: 8, minTradingDays: 5 },
     features: { scalingPlan: true, weekendHolding: true, newsTrading: true, expertAdvisors: true, fastPayouts: true, noTimeLimit: true },
+
+    // Company Information
+    countryFounded: 'United Kingdom',
+    foundedYear: 2023,
+    headquarters: 'UK',
   },
     {
     id: 'quantfunded',
@@ -1777,7 +1832,12 @@ export const propFirms: PropFirm[] = [
         mobileSupport: true,
         webTrading: true
       }
-    ]
+    ],
+
+    // Company Information
+    countryFounded: 'Cyprus',
+    foundedYear: 2025,
+    headquarters: 'Limassol, Cyprus',
   },
   {
     id: 'funded-kingdom',
@@ -1837,7 +1897,12 @@ export const propFirms: PropFirm[] = [
         mobileSupport: true,
         webTrading: true
       }
-    ]
+    ],
+
+    // Company Information
+    countryFounded: 'Mauritius',
+    foundedYear: 2025,
+    headquarters: 'Port Louis, Mauritius',
   }
 ];
 
