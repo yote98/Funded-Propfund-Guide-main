@@ -538,7 +538,12 @@ const FirmReviewPage: React.FC<FirmReviewPageProps> = ({ firm }) => {
         </h2>
         
         {/* Live Payout Data */}
-        {(firm.id === 'funding-pips' || firm.id === 'fxify' || firm.id === 'the-5ers' || firm.id === 'funded-next' || firm.id === 'blue-guardian') && (
+        {(firm.id === 'funding-pips' || firm.id === 'fxify' || firm.id === 'the-5ers' || firm.id === 'funded-next' || firm.id === 'blue-guardian' || 
+          firm.id === 'ftmo' || firm.id === 'apex-trader-funding' || firm.id === 'topstep' || firm.id === 'e8-funding' || firm.id === 'lux-trading-firm' ||
+          firm.id === 'audacity-capital' || firm.id === 'city-traders-imperium' || firm.id === 'funded-trading-plus' || firm.id === 'seacrest-funded' ||
+          firm.id === 'blueberry-funded' || firm.id === 'tradeify' || firm.id === 'ftuk' || firm.id === 'fund-your-fx' || firm.id === 'funded-prime' ||
+          firm.id === 'finotive-funding' || firm.id === 'lark-funding' || firm.id === 'toptier-trader' || firm.id === 'top-one-futures' ||
+          firm.id === 'funded-futures-network' || firm.id === 'ticktick-trader' || firm.id === 'darwinex') && (
           <div className="mt-8 bg-white border border-slate-200 rounded-xl p-6 shadow-sm">
             <h3 className="text-lg font-semibold text-slate-900 mb-4 hidden">Live Payout Data</h3>
             {firm.id === 'funding-pips' && (
