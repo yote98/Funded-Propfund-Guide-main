@@ -462,7 +462,7 @@ export const userReviews: UserReview[] = [
   // FundedNext Reviews - Aggressive Scaling
   {
     id: 'fundednext-review-1',
-    firmId: 'fundednext',
+    firmId: 'funded-next',
     userName: 'Omar Hassan',
     userAvatar: '/avatars/omar-hassan.jpg',
     rating: 5,
@@ -479,7 +479,7 @@ export const userReviews: UserReview[] = [
   },
   {
     id: 'fundednext-review-2',
-    firmId: 'fundednext',
+    firmId: 'funded-next',
     userName: 'Rachel Anderson',
     userAvatar: '/avatars/rachel-anderson.jpg',
     rating: 5,
@@ -496,7 +496,7 @@ export const userReviews: UserReview[] = [
   },
   {
     id: 'fundednext-review-3',
-    firmId: 'fundednext',
+    firmId: 'funded-next',
     userName: 'Thomas Berg',
     userAvatar: '/avatars/thomas-berg.jpg',
     rating: 4,
@@ -514,7 +514,7 @@ export const userReviews: UserReview[] = [
   
   {
     id: 'fundednext-review-4',
-    firmId: 'fundednext',
+    firmId: 'funded-next',
     userName: 'Sophia Martinez',
     userAvatar: '/avatars/sophia-martinez.jpg',
     rating: 5,
