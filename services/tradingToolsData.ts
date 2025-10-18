@@ -5,7 +5,7 @@ export const tradingTools: TradingTool[] = [
     id: 'edgeful',
     name: 'Edgeful',
     shortName: 'Edgeful',
-    logoUrl: '/logos/edgeful.png',
+    logoUrl: 'https://logo.clearbit.com/edgeful.com',
     officialWebsite: 'https://edgeful.com',
     tagline: 'Data-Driven Trading Platform',
     shortDescription: 'Comprehensive trading analysis platform with over 100 customizable reports, real-time data alerts, and automated trading algorithms.',
