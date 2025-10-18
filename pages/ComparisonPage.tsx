@@ -407,7 +407,7 @@ const ComparisonPage: React.FC<ComparisonPageProps> = ({ viewFirm, firms, initia
                         <td className="px-4 py-4 whitespace-nowrap">
                           <button 
                             onClick={() => {
-                              trackPropFirmClick(firm.id, firm.name);
+                              trackPropFirmClick(firm.id, firm.name, 'view');
                               viewFirm(firm.id);
                             }} 
                             className="flex items-center group"
@@ -459,7 +459,7 @@ const ComparisonPage: React.FC<ComparisonPageProps> = ({ viewFirm, firms, initia
                              href={firm.affiliateUrl} 
                              target="_blank" 
                              rel="noopener noreferrer" 
-                             onClick={() => trackPropFirmClick(firm.id, firm.name, 'affiliate_link')}
+                             onClick={() => trackPropFirmClick(firm.id, firm.name, 'click')}
                              className="text-teal-600 hover:text-teal-500 font-bold py-2 px-4 rounded-md bg-teal-500/10 hover:bg-teal-500/20 transition-colors shadow-sm hover:shadow"
                            >
                              Visit Site

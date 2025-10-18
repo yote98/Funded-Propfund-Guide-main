@@ -134,7 +134,12 @@ const AnalyticsPage: React.FC<AnalyticsPageProps> = ({ firms, reviews }) => {
               </div>
             }
           >
-            <SuccessMetrics />
+            <SuccessMetrics 
+              evaluationPassRate={0.15}
+              averageTimeToPass={45}
+              traderRetentionRate={0.68}
+              scalingSuccessRate={0.42}
+            />
           </ErrorBoundary>
         )}
         {activeTab === 'timing' && <MarketTimingInsights />}
