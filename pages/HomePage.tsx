@@ -3,6 +3,7 @@ import FirmCard from '../components/FirmCard';
 import TopDeals from '../components/TopDeals';
 import NewsletterSignUp from '../components/NewsletterSignUp';
 import ReviewCarousel from '../components/ReviewCarousel';
+import ReviewCarouselDebug from '../components/ReviewCarouselDebug';
 import type { FirmId, PropFirm } from '../types';
 import { userReviews } from '../services/reviewData';
 
@@ -55,7 +56,7 @@ const HomePage: React.FC<HomePageProps> = ({ viewFirm, firms, navigateToCompare 
       <section id="testimonials">
         <h2 className="text-3xl font-bold text-slate-900 text-center mb-2">What Our Users Say</h2>
         <p className="text-center text-slate-600 mb-8">Real reviews from successful funded traders</p>
-        <ReviewCarousel 
+        <ReviewCarouselDebug 
           reviews={userReviews.filter(review => review.rating >= 4)} 
           showCount={3}
           autoSlide={true}
