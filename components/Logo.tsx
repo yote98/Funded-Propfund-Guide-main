@@ -50,6 +50,12 @@ const Logo: React.FC<LogoProps> = ({ firmName, logoUrl, className = "" }) => {
         'https://logo.clearbit.com/toptiertrader.com',
         'https://toptiertrader.com/wp-content/uploads/2023/01/toptier-logo.png'
       ],
+      'Edgeful': [
+        '/logos/edgeful.png',
+        'https://logo.clearbit.com/edgeful.com',
+        'https://edgeful.com/logo.png',
+        'https://edgeful.com/assets/logo.png'
+      ],
       'FXIFY': [
         'https://logo.clearbit.com/fxify.com',
         'https://fxify.com/wp-content/uploads/2023/01/fxify-logo.png'
@@ -222,11 +228,12 @@ const Logo: React.FC<LogoProps> = ({ firmName, logoUrl, className = "" }) => {
   const currentUrl = currentUrlIndex < candidates.length ? candidates[currentUrlIndex] : '';
 
 
-  // Apply special styling for Fundora logo which needs resizing
-  const specialStyles = firmName === 'Fundora' ? { maxWidth: '80%', maxHeight: '80%' } : {};
+  // Apply special styling for logos which need resizing
+  const specialStyles = firmName === 'Fundora' ? { maxWidth: '80%', maxHeight: '80%' } : 
+                       firmName === 'Edgeful' ? { maxWidth: '120%', maxHeight: '120%', transform: 'scale(1.2)' } : {};
   
   return (
-    <div className={`${className} relative overflow-hidden rounded-lg`}>
+    <div className={`${className} relative overflow-hidden rounded-lg ${firmName === 'Edgeful' ? 'bg-white' : ''}`}>
       {/* Loading skeleton */}
       {isLoading && (
         <div className="absolute inset-0 bg-gradient-to-r from-slate-200 via-slate-300 to-slate-200 animate-pulse rounded-lg" />
@@ -236,7 +243,7 @@ const Logo: React.FC<LogoProps> = ({ firmName, logoUrl, className = "" }) => {
       <img
         src={currentUrl}
         alt={`${firmName} Logo`}
-        className={`${className} transition-all duration-300 hover:scale-110 hover:brightness-110 ${isLoading ? 'opacity-0' : 'opacity-100'}`}
+        className={`${className} transition-all duration-300 hover:scale-110 hover:brightness-110 ${isLoading ? 'opacity-0' : 'opacity-100'} ${firmName === 'Edgeful' ? 'mix-blend-multiply' : ''}`}
         style={specialStyles}
         referrerPolicy="no-referrer"
         onError={handleError}
