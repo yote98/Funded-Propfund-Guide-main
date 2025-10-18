@@ -389,7 +389,6 @@ const ComparisonPage: React.FC<ComparisonPageProps> = ({ viewFirm, firms, initia
                       <SortableHeader sortKey="maxFunding">Max Funding</SortableHeader>
                       <SortableHeader sortKey="profitSplit">Profit Split</SortableHeader>
                       <SortableHeader sortKey="payoutFrequency">Payout Freq.</SortableHeader>
-                      <th className="px-4 py-3 text-left text-xs font-medium text-slate-500 uppercase tracking-wider">Platforms</th>
                       <SortableHeader sortKey="scalingPlan" title="Scaling Plan" className="text-center"><TrendingUpIcon className="h-5 w-5 mx-auto" /></SortableHeader>
                       <SortableHeader sortKey="expertAdvisors" title="EAs Allowed" className="text-center"><ChipIcon className="h-5 w-5 mx-auto" /></SortableHeader>
                       <SortableHeader sortKey="newsTrading" title="News Trading" className="text-center"><NewspaperIcon className="h-5 w-5 mx-auto" /></SortableHeader>
@@ -427,18 +426,6 @@ const ComparisonPage: React.FC<ComparisonPageProps> = ({ viewFirm, firms, initia
                         <td className="px-4 py-4 whitespace-nowrap text-sm text-slate-600 font-medium">${firm.details.maxFunding.toLocaleString()}</td>
                         <td className="px-4 py-4 whitespace-nowrap text-sm font-bold text-green-600">{firm.details.profitSplit}%</td>
                         <td className="px-4 py-4 whitespace-nowrap text-sm text-slate-600 font-medium">{firm.payoutFrequency}</td>
-                        <td className="px-4 py-4 whitespace-nowrap text-sm text-slate-600">
-                          <div className="flex flex-wrap gap-1">
-                            {firm.platforms && firm.platforms.length > 0 ? 
-                              firm.platforms.map((platform) => (
-                                <span key={`platform-${platform}`} className="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-blue-100 text-blue-800 border border-blue-200">
-                                  {platform}
-                                </span>
-                              )) : 
-                              <span className="text-slate-400">N/A</span>
-                            }
-                          </div>
-                        </td>
                         <td className="px-4 py-4 whitespace-nowrap text-center">
                             {firm.features.scalingPlan ? <CheckIcon className="w-6 h-6 text-green-500 mx-auto" /> : <XIcon className="w-6 h-6 text-red-500 mx-auto" />}
                         </td>
