@@ -60,7 +60,8 @@ const AboutPage: React.FC = () => {
               </div>
               <div>
                 <h3 className="font-semibold text-slate-900">Email Us</h3>
-                <p className="text-slate-600">hello@fundedprogramguide.com</p>
+                <p className="text-slate-600">support@fundedprogramguide.com</p>
+                <p className="text-xs text-slate-400 mt-1">Updated: {new Date().toLocaleString()}</p>
               </div>
             </div>
 
