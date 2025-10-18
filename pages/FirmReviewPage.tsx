@@ -512,7 +512,17 @@ const FirmReviewPage: React.FC<FirmReviewPageProps> = ({ firm }) => {
 
       {/* Data Sources & Verification Section - Moved to Bottom */}
       <div className="mt-12 space-y-6">
-        <h2 className="text-2xl font-bold text-slate-900 mb-6 text-center">Data Sources & Verification</h2>
+        <h2 className="text-2xl font-bold text-slate-900 mb-6 text-center flex items-center justify-center">
+          <img 
+            src="/images/icons/3dicons-explorer-dynamic-color.png" 
+            alt="Data Sources" 
+            className="h-7 w-7 mr-2"
+            onError={(e) => {
+              e.currentTarget.style.display = 'none';
+            }}
+          />
+          Data Sources & Verification
+        </h2>
         
         {/* Live Payout Data */}
         {(firm.id === 'funding-pips' || firm.id === 'fxify' || firm.id === 'the-5ers' || firm.id === 'funded-next' || firm.id === 'blue-guardian') && (
