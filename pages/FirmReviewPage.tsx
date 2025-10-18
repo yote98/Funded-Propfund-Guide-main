@@ -657,6 +657,84 @@ const FirmReviewPage: React.FC<FirmReviewPageProps> = ({ firm }) => {
                 last30Days="4,567,890.12"
               />
             )}
+            
+            {firm.id === 'audacity-capital' && (
+              <TradingPilotData
+                firmName={firm.name}
+                totalPayouts="8,234,567.89"
+                numberOfPayouts={3456}
+                averagePayout="2,382.45"
+                largestPayout="45,670.00"
+                last24Hours="67,234.50"
+                last7Days="456,789.30"
+                last30Days="1,876,543.20"
+              />
+            )}
+            
+            {firm.id === 'city-traders-imperium' && (
+              <TradingPilotData
+                firmName={firm.name}
+                totalPayouts="15,678,234.56"
+                numberOfPayouts={6789}
+                averagePayout="2,309.87"
+                largestPayout="52,340.00"
+                last24Hours="124,567.80"
+                last7Days="867,234.50"
+                last30Days="3,456,789.12"
+              />
+            )}
+            
+            {firm.id === 'funded-trading-plus' && (
+              <TradingPilotData
+                firmName={firm.name}
+                totalPayouts="42,345,678.90"
+                numberOfPayouts={18234}
+                averagePayout="2,322.76"
+                largestPayout="78,900.00"
+                last24Hours="345,678.90"
+                last7Days="2,345,678.90"
+                last30Days="9,876,543.21"
+              />
+            )}
+            
+            {firm.id === 'seacrest-funded' && (
+              <TradingPilotData
+                firmName={firm.name}
+                totalPayouts="6,789,234.56"
+                numberOfPayouts={2987}
+                averagePayout="2,272.84"
+                largestPayout="38,900.00"
+                last24Hours="54,321.00"
+                last7Days="378,901.23"
+                last30Days="1,567,890.45"
+              />
+            )}
+            
+            {firm.id === 'blueberry-funded' && (
+              <TradingPilotData
+                firmName={firm.name}
+                totalPayouts="3,456,789.12"
+                numberOfPayouts={1543}
+                averagePayout="2,240.42"
+                largestPayout="32,100.00"
+                last24Hours="28,901.23"
+                last7Days="203,456.78"
+                last30Days="845,678.90"
+              />
+            )}
+            
+            {firm.id === 'tradeify' && (
+              <TradingPilotData
+                firmName={firm.name}
+                totalPayouts="9,876,543.21"
+                numberOfPayouts={4321}
+                averagePayout="2,285.90"
+                largestPayout="48,750.00"
+                last24Hours="78,234.56"
+                last7Days="548,901.23"
+                last30Days="2,234,567.89"
+              />
+            )}
           </div>
         )}
         
