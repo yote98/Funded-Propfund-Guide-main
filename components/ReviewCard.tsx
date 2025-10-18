@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import type { UserReview } from '../types';
 
 interface ReviewCardProps {
@@ -6,6 +6,16 @@ interface ReviewCardProps {
 }
 
 const ReviewCard: React.FC<ReviewCardProps> = ({ review }) => {
+  const [helpfulCount, setHelpfulCount] = useState(review.helpful);
+  const [hasVoted, setHasVoted] = useState(false);
+
+  const handleHelpfulClick = () => {
+    if (!hasVoted) {
+      setHelpfulCount(prev => prev + 1);
+      setHasVoted(true);
+    }
+  };
+
   const formatDate = (dateString: string) => {
     const date = new Date(dateString);
     return date.toLocaleDateString('en-US', { 
@@ -121,11 +131,21 @@ const ReviewCard: React.FC<ReviewCardProps> = ({ review }) => {
       <div className="flex items-center justify-between pt-3 border-t border-slate-100">
         <span className="text-xs text-slate-500">Was this review helpful?</span>
         <button 
-          className="group flex items-center gap-1.5 px-3 py-1.5 rounded-md bg-slate-50 hover:bg-teal-50 border border-slate-200 hover:border-teal-300 transition-all duration-200"
-          title="Mark as helpful"
+          onClick={handleHelpfulClick}
+          disabled={hasVoted}
+          className={`group flex items-center gap-1.5 px-3 py-1.5 rounded-md border transition-all duration-200 ${
+            hasVoted 
+              ? 'bg-teal-50 border-teal-300 cursor-default' 
+              : 'bg-slate-50 hover:bg-teal-50 border-slate-200 hover:border-teal-300 cursor-pointer'
+          }`}
+          title={hasVoted ? "Thank you for your feedback!" : "Mark as helpful"}
         >
           <svg 
-            className="w-4 h-4 text-slate-500 group-hover:text-teal-600 transition-colors duration-200" 
+            className={`w-4 h-4 transition-colors duration-200 ${
+              hasVoted 
+                ? 'text-teal-600' 
+                : 'text-slate-500 group-hover:text-teal-600'
+            }`}
             fill="none" 
             stroke="currentColor" 
             viewBox="0 0 24 24"
@@ -137,8 +157,12 @@ const ReviewCard: React.FC<ReviewCardProps> = ({ review }) => {
               d="M14 10h4.764a2 2 0 011.789 2.894l-3.5 7A2 2 0 0115.263 21h-4.017c-.163 0-.326-.02-.485-.06L7 20m7-10V5a2 2 0 00-2-2h-.095c-.5 0-.905.405-.905.905 0 .714-.211 1.412-.608 2.006L7 11v9m7-10h-2M7 20H5a2 2 0 01-2-2v-6a2 2 0 012-2h2.5" 
             />
           </svg>
-          <span className="text-xs font-semibold text-slate-600 group-hover:text-teal-700 transition-colors duration-200">
-            {review.helpful}
+          <span className={`text-xs font-semibold transition-colors duration-200 ${
+            hasVoted 
+              ? 'text-teal-700' 
+              : 'text-slate-600 group-hover:text-teal-700'
+          }`}>
+            {helpfulCount}
           </span>
         </button>
       </div>
