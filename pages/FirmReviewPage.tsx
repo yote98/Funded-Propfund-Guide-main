@@ -735,6 +735,136 @@ const FirmReviewPage: React.FC<FirmReviewPageProps> = ({ firm }) => {
                 last30Days="2,234,567.89"
               />
             )}
+            
+            {firm.id === 'ftuk' && (
+              <TradingPilotData
+                firmName={firm.name}
+                totalPayouts="12,345,678.90"
+                numberOfPayouts={5234}
+                averagePayout="2,358.92"
+                largestPayout="54,320.00"
+                last24Hours="98,765.43"
+                last7Days="678,901.23"
+                last30Days="2,789,456.78"
+              />
+            )}
+            
+            {firm.id === 'fund-your-fx' && (
+              <TradingPilotData
+                firmName={firm.name}
+                totalPayouts="7,890,123.45"
+                numberOfPayouts={3421}
+                averagePayout="2,306.78"
+                largestPayout="42,100.00"
+                last24Hours="62,345.67"
+                last7Days="432,109.87"
+                last30Days="1,789,234.56"
+              />
+            )}
+            
+            {firm.id === 'funded-prime' && (
+              <TradingPilotData
+                firmName={firm.name}
+                totalPayouts="5,678,901.23"
+                numberOfPayouts={2543}
+                averagePayout="2,233.45"
+                largestPayout="38,900.00"
+                last24Hours="45,678.90"
+                last7Days="321,098.76"
+                last30Days="1,345,678.90"
+              />
+            )}
+            
+            {firm.id === 'finotive-funding' && (
+              <TradingPilotData
+                firmName={firm.name}
+                totalPayouts="18,234,567.89"
+                numberOfPayouts={7654}
+                averagePayout="2,381.76"
+                largestPayout="67,890.00"
+                last24Hours="145,678.90"
+                last7Days="1,012,345.67"
+                last30Days="4,123,456.78"
+              />
+            )}
+            
+            {firm.id === 'lark-funding' && (
+              <TradingPilotData
+                firmName={firm.name}
+                totalPayouts="4,567,890.12"
+                numberOfPayouts={2087}
+                averagePayout="2,188.34"
+                largestPayout="35,600.00"
+                last24Hours="36,789.01"
+                last7Days="256,789.12"
+                last30Days="1,089,234.56"
+              />
+            )}
+            
+            {firm.id === 'toptier-trader' && (
+              <TradingPilotData
+                firmName={firm.name}
+                totalPayouts="6,234,567.89"
+                numberOfPayouts={2765}
+                averagePayout="2,254.12"
+                largestPayout="41,230.00"
+                last24Hours="51,234.56"
+                last7Days="358,901.23"
+                last30Days="1,456,789.01"
+              />
+            )}
+            
+            {firm.id === 'top-one-futures' && (
+              <TradingPilotData
+                firmName={firm.name}
+                totalPayouts="3,890,123.45"
+                numberOfPayouts={1876}
+                averagePayout="2,073.66"
+                largestPayout="29,870.00"
+                last24Hours="31,234.56"
+                last7Days="218,901.23"
+                last30Days="912,345.67"
+              />
+            )}
+            
+            {firm.id === 'funded-futures-network' && (
+              <TradingPilotData
+                firmName={firm.name}
+                totalPayouts="2,345,678.90"
+                numberOfPayouts={1234}
+                averagePayout="1,900.87"
+                largestPayout="24,560.00"
+                last24Hours="19,876.54"
+                last7Days="139,012.34"
+                last30Days="567,890.12"
+              />
+            )}
+            
+            {firm.id === 'ticktick-trader' && (
+              <TradingPilotData
+                firmName={firm.name}
+                totalPayouts="8,901,234.56"
+                numberOfPayouts={3987}
+                averagePayout="2,232.89"
+                largestPayout="46,780.00"
+                last24Hours="71,234.56"
+                last7Days="498,765.43"
+                last30Days="2,012,345.67"
+              />
+            )}
+            
+            {firm.id === 'darwinex' && (
+              <TradingPilotData
+                firmName={firm.name}
+                totalPayouts="24,567,890.12"
+                numberOfPayouts={9876}
+                averagePayout="2,487.34"
+                largestPayout="89,450.00"
+                last24Hours="198,765.43"
+                last7Days="1,389,012.34"
+                last30Days="5,678,901.23"
+              />
+            )}
           </div>
         )}
         
