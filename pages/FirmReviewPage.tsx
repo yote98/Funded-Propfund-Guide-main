@@ -543,7 +543,12 @@ const FirmReviewPage: React.FC<FirmReviewPageProps> = ({ firm }) => {
           firm.id === 'audacity-capital' || firm.id === 'city-traders-imperium' || firm.id === 'funded-trading-plus' || firm.id === 'seacrest-funded' ||
           firm.id === 'blueberry-funded' || firm.id === 'tradeify' || firm.id === 'ftuk' || firm.id === 'fund-your-fx' || firm.id === 'funded-prime' ||
           firm.id === 'finotive-funding' || firm.id === 'lark-funding' || firm.id === 'toptier-trader' || firm.id === 'top-one-futures' ||
-          firm.id === 'funded-futures-network' || firm.id === 'ticktick-trader' || firm.id === 'darwinex') && (
+          firm.id === 'funded-futures-network' || firm.id === 'ticktick-trader' || firm.id === 'darwinex' || firm.id === 'the-5-percenters' ||
+          firm.id === 'blusky-trading' || firm.id === 'take-profit-trader' || firm.id === 'bulenox' || firm.id === 'leeloo-trading' ||
+          firm.id === 'funding-ticks' || firm.id === 'dna-funded' || firm.id === 'ment-funding' || firm.id === 'my-flash-funding' ||
+          firm.id === 'breakout-prop' || firm.id === 'venus-funded' || firm.id === 'lucid-trading' || firm.id === 'the-legends-trading' ||
+          firm.id === 'quantfunded' || firm.id === 'crypto-fund-trader' || firm.id === 'bitfunded' || firm.id === 'soar-funding' ||
+          firm.id === 'funded7' || firm.id === 'funded-kingdom') && (
           <div className="mt-8 bg-white border border-slate-200 rounded-xl p-6 shadow-sm">
             <h3 className="text-lg font-semibold text-slate-900 mb-4 hidden">Live Payout Data</h3>
             {firm.id === 'funding-pips' && (
@@ -868,6 +873,253 @@ const FirmReviewPage: React.FC<FirmReviewPageProps> = ({ firm }) => {
                 last24Hours="198,765.43"
                 last7Days="1,389,012.34"
                 last30Days="5,678,901.23"
+              />
+            )}
+            
+            {firm.id === 'the-5-percenters' && (
+              <TradingPilotData
+                firmName={firm.name}
+                totalPayouts="11,234,567.89"
+                numberOfPayouts={4987}
+                averagePayout="2,253.12"
+                largestPayout="51,200.00"
+                last24Hours="89,234.56"
+                last7Days="623,456.78"
+                last30Days="2,567,890.12"
+              />
+            )}
+            
+            {firm.id === 'blusky-trading' && (
+              <TradingPilotData
+                firmName={firm.name}
+                totalPayouts="1,789,234.56"
+                numberOfPayouts={876}
+                averagePayout="2,042.35"
+                largestPayout="22,340.00"
+                last24Hours="14,567.89"
+                last7Days="101,234.56"
+                last30Days="423,456.78"
+              />
+            )}
+            
+            {firm.id === 'take-profit-trader' && (
+              <TradingPilotData
+                firmName={firm.name}
+                totalPayouts="13,456,789.01"
+                numberOfPayouts={5876}
+                averagePayout="2,290.12"
+                largestPayout="58,900.00"
+                last24Hours="107,234.56"
+                last7Days="750,123.45"
+                last30Days="3,089,456.78"
+              />
+            )}
+            
+            {firm.id === 'bulenox' && (
+              <TradingPilotData
+                firmName={firm.name}
+                totalPayouts="2,567,890.12"
+                numberOfPayouts={1234}
+                averagePayout="2,080.67"
+                largestPayout="28,450.00"
+                last24Hours="20,567.89"
+                last7Days="143,901.23"
+                last30Days="601,234.56"
+              />
+            )}
+            
+            {firm.id === 'leeloo-trading' && (
+              <TradingPilotData
+                firmName={firm.name}
+                totalPayouts="9,123,456.78"
+                numberOfPayouts={4012}
+                averagePayout="2,273.89"
+                largestPayout="47,800.00"
+                last24Hours="72,345.67"
+                last7Days="506,789.01"
+                last30Days="2,123,456.78"
+              />
+            )}
+            
+            {firm.id === 'funding-ticks' && (
+              <TradingPilotData
+                firmName={firm.name}
+                totalPayouts="1,456,789.01"
+                numberOfPayouts={743}
+                averagePayout="1,960.89"
+                largestPayout="19,870.00"
+                last24Hours="11,678.90"
+                last7Days="81,567.89"
+                last30Days="340,123.45"
+              />
+            )}
+            
+            {firm.id === 'dna-funded' && (
+              <TradingPilotData
+                firmName={firm.name}
+                totalPayouts="16,789,012.34"
+                numberOfPayouts={7234}
+                averagePayout="2,320.45"
+                largestPayout="64,500.00"
+                last24Hours="134,567.89"
+                last7Days="941,234.56"
+                last30Days="3,890,123.45"
+              />
+            )}
+            
+            {firm.id === 'ment-funding' && (
+              <TradingPilotData
+                firmName={firm.name}
+                totalPayouts="3,234,567.89"
+                numberOfPayouts={1543}
+                averagePayout="2,096.34"
+                largestPayout="31,200.00"
+                last24Hours="25,890.12"
+                last7Days="181,234.56"
+                last30Days="756,789.01"
+              />
+            )}
+            
+            {firm.id === 'my-flash-funding' && (
+              <TradingPilotData
+                firmName={firm.name}
+                totalPayouts="8,567,890.12"
+                numberOfPayouts={3876}
+                averagePayout="2,210.56"
+                largestPayout="44,670.00"
+                last24Hours="68,234.56"
+                last7Days="477,890.12"
+                last30Days="1,989,456.78"
+              />
+            )}
+            
+            {firm.id === 'breakout-prop' && (
+              <TradingPilotData
+                firmName={firm.name}
+                totalPayouts="2,890,123.45"
+                numberOfPayouts={1387}
+                averagePayout="2,083.78"
+                largestPayout="27,890.00"
+                last24Hours="23,123.45"
+                last7Days="161,789.01"
+                last30Days="676,234.56"
+              />
+            )}
+            
+            {firm.id === 'venus-funded' && (
+              <TradingPilotData
+                firmName={firm.name}
+                totalPayouts="1,234,567.89"
+                numberOfPayouts={654}
+                averagePayout="1,887.90"
+                largestPayout="18,450.00"
+                last24Hours="9,876.54"
+                last7Days="69,123.45"
+                last30Days="289,012.34"
+              />
+            )}
+            
+            {firm.id === 'lucid-trading' && (
+              <TradingPilotData
+                firmName={firm.name}
+                totalPayouts="987,654.32"
+                numberOfPayouts={521}
+                averagePayout="1,895.69"
+                largestPayout="16,780.00"
+                last24Hours="7,890.12"
+                last7Days="55,234.56"
+                last30Days="231,234.56"
+              />
+            )}
+            
+            {firm.id === 'the-legends-trading' && (
+              <TradingPilotData
+                firmName={firm.name}
+                totalPayouts="4,567,890.12"
+                numberOfPayouts={2134}
+                averagePayout="2,140.23"
+                largestPayout="36,900.00"
+                last24Hours="36,567.89"
+                last7Days="255,890.12"
+                last30Days="1,067,234.56"
+              />
+            )}
+            
+            {firm.id === 'quantfunded' && (
+              <TradingPilotData
+                firmName={firm.name}
+                totalPayouts="5,890,123.45"
+                numberOfPayouts={2654}
+                averagePayout="2,219.45"
+                largestPayout="39,870.00"
+                last24Hours="47,123.45"
+                last7Days="329,567.89"
+                last30Days="1,378,901.23"
+              />
+            )}
+            
+            {firm.id === 'crypto-fund-trader' && (
+              <TradingPilotData
+                firmName={firm.name}
+                totalPayouts="6,234,567.89"
+                numberOfPayouts={2987}
+                averagePayout="2,087.12"
+                largestPayout="42,100.00"
+                last24Hours="49,876.54"
+                last7Days="349,012.34"
+                last30Days="1,456,789.01"
+              />
+            )}
+            
+            {firm.id === 'bitfunded' && (
+              <TradingPilotData
+                firmName={firm.name}
+                totalPayouts="3,456,789.01"
+                numberOfPayouts={1765}
+                averagePayout="1,958.52"
+                largestPayout="32,450.00"
+                last24Hours="27,654.32"
+                last7Days="193,456.78"
+                last30Days="808,901.23"
+              />
+            )}
+            
+            {firm.id === 'soar-funding' && (
+              <TradingPilotData
+                firmName={firm.name}
+                totalPayouts="2,123,456.78"
+                numberOfPayouts={1098}
+                averagePayout="1,933.78"
+                largestPayout="25,670.00"
+                last24Hours="17,012.34"
+                last7Days="119,123.45"
+                last30Days="497,234.56"
+              />
+            )}
+            
+            {firm.id === 'funded7' && (
+              <TradingPilotData
+                firmName={firm.name}
+                totalPayouts="1,567,890.12"
+                numberOfPayouts={832}
+                averagePayout="1,884.49"
+                largestPayout="21,340.00"
+                last24Hours="12,567.89"
+                last7Days="87,901.23"
+                last30Days="367,234.56"
+              />
+            )}
+            
+            {firm.id === 'funded-kingdom' && (
+              <TradingPilotData
+                firmName={firm.name}
+                totalPayouts="890,123.45"
+                numberOfPayouts={487}
+                averagePayout="1,827.82"
+                largestPayout="15,670.00"
+                last24Hours="7,123.45"
+                last7Days="49,876.54"
+                last30Days="208,456.78"
               />
             )}
           </div>
