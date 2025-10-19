@@ -171,7 +171,7 @@ const ReviewAnalytics: React.FC<ReviewAnalyticsProps> = ({ reviews }) => {
                 cy="50%"
                 nameKey="country"
                 labelLine={true}
-                label={({ payload, percent }) => `${payload.country} ${Math.round((percent || 0) * 100)}%`}
+                label={({ payload, percent }) => `${(payload as any).country} ${Math.round(((percent as number) || 0) * 100)}%`}
                 outerRadius={100}
                 innerRadius={50}
                 fill="#8884d8"

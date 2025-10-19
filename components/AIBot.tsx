@@ -172,7 +172,7 @@ const AIBot: React.FC<AIBotProps> = ({ firms, onRecommendation, onViewFirmDetail
       // Markets matching - use actual trading instruments
       const markets = answers.markets as string[];
       const firmMarkets = firm.tradingInstruments || [];
-      const marketMatch = markets.some(market => firmMarkets.includes(market));
+      const marketMatch = markets.some(market => firmMarkets.includes(market as any));
       if (marketMatch) {
         score += 15;
         reasons.push('Supports your preferred markets');
@@ -348,8 +348,8 @@ const AIBot: React.FC<AIBotProps> = ({ firms, onRecommendation, onViewFirmDetail
                 alt="AI Bot" 
                 className="w-28 h-36 object-contain rounded-3xl"
                 onError={(e) => {
-                  e.currentTarget.style.display = 'none';
-                  e.currentTarget.nextElementSibling.style.display = 'block';
+                  (e.currentTarget as HTMLElement).style.display = 'none';
+                  ((e.currentTarget as HTMLElement).nextElementSibling as HTMLElement).style.display = 'block';
                 }}
               />
               <svg 

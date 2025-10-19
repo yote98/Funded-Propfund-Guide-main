@@ -234,7 +234,7 @@ const MultiAIResearch: React.FC = () => {
                   borderRadius: '8px',
                   boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)'
                 }}
-                formatter={(value, name) => [`${value} firms`, name.toUpperCase()]}
+                formatter={(value, name) => [`${value} firms`, (name as string).toUpperCase()]}
               />
               <Line type="monotone" dataKey="gpt5" stroke="#14b8a6" strokeWidth={2} dot={{ r: 3 }} />
               <Line type="monotone" dataKey="grok4" stroke="#3b82f6" strokeWidth={2} dot={{ r: 3 }} />

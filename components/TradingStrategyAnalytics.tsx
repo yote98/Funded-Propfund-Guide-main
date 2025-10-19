@@ -154,7 +154,7 @@ const TradingStrategyAnalytics: React.FC = () => {
                   boxShadow: '0 10px 25px rgba(0, 0, 0, 0.1)',
                   padding: '8px'
                 }}
-                formatter={(value, name) => [`${value}%`, name.toUpperCase()]}
+                formatter={(value, name) => [`${value}%`, (name as string).toUpperCase()]}
               />
               <Bar dataKey="ftmo" fill="url(#gradFTMO)" radius={[12, 12, 0, 0]} />
               <Bar dataKey="topstep" fill="url(#gradTopstep)" radius={[12, 12, 0, 0]} />
@@ -189,7 +189,7 @@ const TradingStrategyAnalytics: React.FC = () => {
                   boxShadow: '0 10px 25px rgba(0, 0, 0, 0.1)',
                   padding: '8px'
                 }}
-                formatter={(value, name) => [`${value}%`, name.replace(/([A-Z])/g, ' $1').trim()]}
+                formatter={(value, name) => [`${value}%`, (name as string).replace(/([A-Z])/g, ' $1').trim()]}
               />
               <Line type="monotone" dataKey="scalping" stroke="#14b8a6" strokeWidth={3} dot={{ fill: '#14b8a6', r: 6 }} activeDot={{ r: 8 }} />
               <Line type="monotone" dataKey="dayTrading" stroke="#3b82f6" strokeWidth={3} dot={{ fill: '#3b82f6', r: 6 }} activeDot={{ r: 8 }} />

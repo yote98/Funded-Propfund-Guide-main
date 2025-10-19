@@ -155,7 +155,7 @@ const CostAnalysisDashboard: React.FC = () => {
                   borderRadius: '8px',
                   boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)'
                 }}
-                formatter={(value, name) => [`$${value}`, name.toUpperCase()]}
+                formatter={(value, name) => [`$${value}`, (name as string).toUpperCase()]}
               />
               <Area type="monotone" dataKey="ftmo" stackId="1" stroke="#14b8a6" fill="#14b8a6" fillOpacity={0.6} />
               <Area type="monotone" dataKey="topstep" stackId="1" stroke="#3b82f6" fill="#3b82f6" fillOpacity={0.6} />

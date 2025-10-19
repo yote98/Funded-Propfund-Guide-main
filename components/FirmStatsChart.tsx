@@ -141,7 +141,7 @@ const FirmStatsChart: React.FC<FirmStatsChartProps> = ({ firms }) => {
                 cx="50%"
                 cy="50%"
                 labelLine={true}
-                label={({ name, percent }) => `${name} ${(percent * 100).toFixed(0)}%`}
+                label={({ name, percent }) => `${name} ${((percent as number || 0) * 100).toFixed(0)}%`}
                 outerRadius={100}
                 innerRadius={50}
                 fill="#8884d8"

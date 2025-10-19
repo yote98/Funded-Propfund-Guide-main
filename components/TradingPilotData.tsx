@@ -31,8 +31,8 @@ const TradingPilotData: React.FC<TradingPilotDataProps> = ({
             className="h-6 w-6"
             onError={(e) => {
               // Fallback to SVG if 3D icon fails to load
-              e.currentTarget.style.display = 'none';
-              e.currentTarget.nextElementSibling.style.display = 'block';
+              (e.currentTarget as HTMLElement).style.display = 'none';
+              ((e.currentTarget as HTMLElement).nextElementSibling as HTMLElement).style.display = 'block';
             }}
           />
           <svg className="w-6 h-6 text-green-600 hidden" fill="currentColor" viewBox="0 0 20 20">

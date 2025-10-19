@@ -199,7 +199,7 @@ const MarketTimingInsights: React.FC = () => {
                   boxShadow: '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)',
                   padding: '12px'
                 }}
-                formatter={(value, name) => [`${value}%`, name.toUpperCase()]}
+                formatter={(value, name) => [`${value}%`, (name as string).toUpperCase()]}
               />
               <Bar dataKey="london" fill="url(#gradLondon)" radius={[12, 12, 0, 0]} filter="url(#shadowBar)" />
               <Bar dataKey="newyork" fill="url(#gradNewYork)" radius={[12, 12, 0, 0]} filter="url(#shadowBar)" />

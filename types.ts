@@ -96,6 +96,26 @@ export interface PropFirm {
     description: string;
     isTopDeal?: boolean;
   };
+
+  // Additional properties for components
+  yearsInOperation?: number;
+  originalPrice?: number;
+  discountedPrice?: number;
+  discountPercentage?: number;
+  isDiscounted?: boolean;
+  discountCode?: string;
+  trustScore?: number;
+  trustedByUsers?: number;
+  regulatoryCompliance?: string;
+  industryAwards?: string[];
+  socialProof?: {
+    trustpilotRating?: string;
+    googleRating?: string;
+    redditMentions?: number;
+    youtubeReviews?: string;
+  };
+  score?: number;
+  reasons?: string[];
 }
 
 export interface Article {
@@ -127,7 +147,7 @@ export interface UserReview {
 }
 
 // Trading Tools Types
-export type ToolCategory = 'Options Flow' | 'Dark Pool Data' | 'Technical Analysis' | 'News & Sentiment' | 'Institutional Data' | 'Social Trading' | 'Algorithmic Trading';
+export type ToolCategory = 'Options Flow' | 'Dark Pool Data' | 'Technical Analysis' | 'News & Sentiment' | 'Institutional Data' | 'Social Trading' | 'Algorithmic Trading' | 'Order Flow Analysis';
 export type MarketType = 'Stocks' | 'Options' | 'Crypto' | 'Forex' | 'Futures' | 'Bonds';
 
 export interface TradingTool {

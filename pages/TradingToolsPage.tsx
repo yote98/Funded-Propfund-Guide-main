@@ -13,7 +13,7 @@ const TradingToolsPage: React.FC<TradingToolsPageProps> = ({ tools }) => {
     const startTime = Date.now();
     
     // Track page view
-    trackTradingToolClick('trading-tools-page', 'view');
+    trackTradingToolClick('trading-tools-page');
     
     // Track time spent when component unmounts
     return () => {
@@ -24,8 +24,8 @@ const TradingToolsPage: React.FC<TradingToolsPageProps> = ({ tools }) => {
 
   // Handle affiliate link clicks
   const handleAffiliateClick = (tool: TradingTool) => {
-    trackAffiliateClick(tool.name, 'trading-tool', tool.affiliateUrl || tool.officialWebsite);
-    trackTradingToolClick(tool.name, 'click');
+    trackAffiliateClick(tool.name);
+    trackTradingToolClick(tool.name);
   };
 
   return (

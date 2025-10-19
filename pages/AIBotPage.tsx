@@ -29,8 +29,8 @@ const AIBotPage: React.FC<AIBotPageProps> = ({ firms, onViewFirmDetails }) => {
               alt="AI Bot" 
               className="w-32 h-40 object-contain rounded-3xl"
               onError={(e) => {
-                e.currentTarget.style.display = 'none';
-                e.currentTarget.nextElementSibling.style.display = 'block';
+                (e.currentTarget as HTMLElement).style.display = 'none';
+                ((e.currentTarget as HTMLElement).nextElementSibling as HTMLElement).style.display = 'block';
               }}
             />
             <svg 
