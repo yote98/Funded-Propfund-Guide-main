@@ -60,7 +60,7 @@ const AboutPage: React.FC = () => {
               </div>
               <div>
                 <h3 className="font-semibold text-slate-900">Email Us</h3>
-                <p className="text-slate-600">hello@fundedprogramguide.com</p>
+                <p className="text-slate-600">support@fundedprogramguide.com</p>
               </div>
             </div>
 

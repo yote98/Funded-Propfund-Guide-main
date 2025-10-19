@@ -7,8 +7,10 @@ export default defineConfig(({ mode }) => {
     return {
       server: {
         port: 3000,
-        host: '0.0.0.0',
-        open: '/education',
+        host: '0.0.0.0', // Listen on all network interfaces
+        strictPort: false, // Auto-increment port if 3000 is busy
+        open: '/', // Default page to open (homepage)
+        cors: true, // Enable CORS
       },
       plugins: [react()],
       define: {

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import type { PropFirm } from '../types.ts';
 import StarRating from '../components/StarRating';
 import CheckIcon from '../components/icons/CheckIcon';
@@ -10,7 +10,6 @@ import NewspaperIcon from '../components/icons/NewspaperIcon';
 import ChipIcon from '../components/icons/ChipIcon';
 import LightningIcon from '../components/icons/LightningIcon';
 import InfinityIcon from '../components/icons/InfinityIcon';
-import ReviewSummary from '../components/ReviewSummary';
 import PlatformIcon from '../components/PlatformIcon';
 import PayoutTimeline from '../components/PayoutTimeline';
 import PayoutInfo from '../components/PayoutInfo';
@@ -18,7 +17,6 @@ import DataDisclaimer from '../components/DataDisclaimer';
 import TradingPilotData from '../components/TradingPilotData';
 import DataVerification from '../components/DataVerification';
 import VerificationGuide from '../components/VerificationGuide';
-import { getReviewStats, getReviewsByFirmId } from '../services/reviewData';
 
 
 interface FirmReviewPageProps {
@@ -46,7 +44,6 @@ const MetricItem: React.FC<{ label: string; value: React.ReactNode }> = ({ label
 
 
 const FirmReviewPage: React.FC<FirmReviewPageProps> = ({ firm }) => {
-  const [showAllReviews, setShowAllReviews] = useState(false);
   
   // Helper to determine if firm has TradingPilot data
   const hasVerifiedPayoutData = ['fxify', 'the-5-percenters', 'funded-next', 'ftmo', 'apex-trader-funding', 'topstep', 'e8-funding', 'lux-trading-firm'].includes(firm.id);
@@ -276,252 +273,6 @@ const FirmReviewPage: React.FC<FirmReviewPageProps> = ({ firm }) => {
         </aside>
       </div>
 
-      {/* Reviews Section */}
-      <div className="mt-8">
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          {/* Review Summary - Left Column */}
-          <div className="lg:col-span-1">
-            <ReviewSummary {...getReviewStats(firm.id)} />
-          </div>
-          
-          {/* Recent Reviews - Right Column */}
-          <div className="lg:col-span-2">
-            <div className="bg-white border border-slate-200 rounded-xl p-6 shadow-sm">
-              <h3 className="text-xl font-bold text-slate-900 mb-6">Recent Reviews</h3>
-              
-              <div className="space-y-4">
-                {/* Sample Recent Reviews */}
-                <div className="border border-slate-100 rounded-lg p-4">
-                  <div className="flex items-center justify-between mb-2">
-                    <div className="flex items-center space-x-2">
-                      <div className="w-8 h-8 bg-gradient-to-r from-teal-500 to-slate-900 rounded-full flex items-center justify-center text-white font-bold text-sm">
-                        J
-                      </div>
-                      <div>
-                        <div className="font-semibold text-slate-900">John M.</div>
-                        <div className="text-sm text-slate-500">Verified Trader</div>
-                      </div>
-                    </div>
-                    <div className="flex items-center space-x-1">
-                      {[1,2,3,4,5].map((star) => (
-                        <svg key={`star-rating-${Math.random()}-${star}`} className="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
-                          <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                        </svg>
-                      ))}
-                    </div>
-                  </div>
-                  <p className="text-slate-700 text-sm italic">
-                    "Great firm with excellent support. The evaluation process was fair and the payouts are reliable. Highly recommend for serious traders."
-                  </p>
-                  <div className="text-xs text-slate-500 mt-2">2 days ago</div>
-                </div>
-
-                <div className="border border-slate-100 rounded-lg p-4">
-                  <div className="flex items-center justify-between mb-2">
-                    <div className="flex items-center space-x-2">
-                      <div className="w-8 h-8 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full flex items-center justify-center text-white font-bold text-sm">
-                        S
-                      </div>
-                      <div>
-                        <div className="font-semibold text-slate-900">Sarah K.</div>
-                        <div className="text-sm text-slate-500">Verified Trader</div>
-                      </div>
-                    </div>
-                    <div className="flex items-center space-x-1">
-                      {[1,2,3,4,5].map((star) => (
-                        <svg key={`star-rating-${Math.random()}-${star}`} className="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
-                          <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                        </svg>
-                      ))}
-                    </div>
-                  </div>
-                  <p className="text-slate-700 text-sm italic">
-                    "Fast payouts and good customer service. The rules are clear and the platform is stable. Would definitely trade with them again."
-                  </p>
-                  <div className="text-xs text-slate-500 mt-2">1 week ago</div>
-                </div>
-
-                <div className="border border-slate-100 rounded-lg p-4">
-                  <div className="flex items-center justify-between mb-2">
-                    <div className="flex items-center space-x-2">
-                      <div className="w-8 h-8 bg-gradient-to-r from-green-500 to-teal-600 rounded-full flex items-center justify-center text-white font-bold text-sm">
-                        M
-                      </div>
-                      <div>
-                        <div className="font-semibold text-slate-900">Mike R.</div>
-                        <div className="text-sm text-slate-500">Verified Trader</div>
-                      </div>
-                    </div>
-                    <div className="flex items-center space-x-1">
-                      {[1,2,3,4].map((star) => (
-                        <svg key={`star-rating-${Math.random()}-${star}`} className="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
-                          <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                        </svg>
-                      ))}
-                      <svg className="w-4 h-4 text-gray-300" fill="currentColor" viewBox="0 0 20 20">
-                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                      </svg>
-                    </div>
-                  </div>
-                  <p className="text-slate-700 text-sm italic">
-                    "Good overall experience. Some minor issues with customer support response time, but the trading conditions are solid."
-                  </p>
-                  <div className="text-xs text-slate-500 mt-2">2 weeks ago</div>
-                </div>
-
-                {/* Additional Reviews - Show when expanded */}
-                {showAllReviews && (
-                  <>
-                    <div className="border border-slate-100 rounded-lg p-4">
-                      <div className="flex items-center justify-between mb-2">
-                        <div className="flex items-center space-x-2">
-                          <div className="w-8 h-8 bg-gradient-to-r from-purple-500 to-pink-600 rounded-full flex items-center justify-center text-white font-bold text-sm">
-                            A
-                          </div>
-                          <div>
-                            <div className="font-semibold text-slate-900">Alex T.</div>
-                            <div className="text-sm text-slate-500">Verified Trader</div>
-                          </div>
-                        </div>
-                        <div className="flex items-center space-x-1">
-                          {[1,2,3,4,5].map((star) => (
-                            <svg key={`star-rating-${Math.random()}-${star}`} className="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
-                              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                            </svg>
-                          ))}
-                        </div>
-                      </div>
-                      <p className="text-slate-700 text-sm italic">
-                        "Excellent trading conditions and very professional support team. The evaluation was straightforward and the payouts are always on time."
-                      </p>
-                      <div className="text-xs text-slate-500 mt-2">3 weeks ago</div>
-                    </div>
-
-                    <div className="border border-slate-100 rounded-lg p-4">
-                      <div className="flex items-center justify-between mb-2">
-                        <div className="flex items-center space-x-2">
-                          <div className="w-8 h-8 bg-gradient-to-r from-orange-500 to-red-600 rounded-full flex items-center justify-center text-white font-bold text-sm">
-                            L
-                          </div>
-                          <div>
-                            <div className="font-semibold text-slate-900">Lisa P.</div>
-                            <div className="text-sm text-slate-500">Verified Trader</div>
-                          </div>
-                        </div>
-                        <div className="flex items-center space-x-1">
-                          {[1,2,3,4].map((star) => (
-                            <svg key={`star-rating-${Math.random()}-${star}`} className="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
-                              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                            </svg>
-                          ))}
-                          <svg className="w-4 h-4 text-gray-300" fill="currentColor" viewBox="0 0 20 20">
-                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                          </svg>
-                        </div>
-                      </div>
-                      <p className="text-slate-700 text-sm italic">
-                        "Good firm overall. Some delays in customer support but the trading platform is reliable and the rules are fair."
-                      </p>
-                      <div className="text-xs text-slate-500 mt-2">1 month ago</div>
-                    </div>
-
-                    <div className="border border-slate-100 rounded-lg p-4">
-                      <div className="flex items-center justify-between mb-2">
-                        <div className="flex items-center space-x-2">
-                          <div className="w-8 h-8 bg-gradient-to-r from-indigo-500 to-blue-600 rounded-full flex items-center justify-center text-white font-bold text-sm">
-                            D
-                          </div>
-                          <div>
-                            <div className="font-semibold text-slate-900">David W.</div>
-                            <div className="text-sm text-slate-500">Verified Trader</div>
-                          </div>
-                        </div>
-                        <div className="flex items-center space-x-1">
-                          {[1,2,3,4,5].map((star) => (
-                            <svg key={`star-rating-${Math.random()}-${star}`} className="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
-                              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                            </svg>
-                          ))}
-                        </div>
-                      </div>
-                      <p className="text-slate-700 text-sm italic">
-                        "Outstanding experience! The evaluation process was smooth, and the support team is very responsive. Highly recommend to any serious trader."
-                      </p>
-                      <div className="text-xs text-slate-500 mt-2">1 month ago</div>
-                    </div>
-                  </>
-                )}
-              </div>
-
-              <div className="mt-6 pt-4 border-t border-slate-100">
-                <button 
-                  onClick={() => setShowAllReviews(!showAllReviews)}
-                  className="w-full bg-gradient-to-r from-teal-500 to-slate-900 text-white font-semibold py-2 px-4 rounded-lg hover:from-teal-600 hover:to-slate-800 transition-all duration-300"
-                >
-                  {showAllReviews ? 'Show Less Reviews' : 'View All Reviews'}
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Review Insights Section */}
-        <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-6">
-          <div className="bg-white border border-slate-200 rounded-xl p-6 shadow-sm">
-            <h4 className="text-lg font-semibold text-slate-900 mb-4">Key Strengths</h4>
-            <div className="space-y-3">
-              <div className="flex items-center space-x-2">
-                <div className="w-2 h-2 bg-green-500 rounded-full"></div>
-                <span className="text-sm text-slate-700">Fast Payouts</span>
-              </div>
-              <div className="flex items-center space-x-2">
-                <div className="w-2 h-2 bg-green-500 rounded-full"></div>
-                <span className="text-sm text-slate-700">Reliable Support</span>
-              </div>
-              <div className="flex items-center space-x-2">
-                <div className="w-2 h-2 bg-green-500 rounded-full"></div>
-                <span className="text-sm text-slate-700">Fair Rules</span>
-              </div>
-            </div>
-          </div>
-
-          <div className="bg-white border border-slate-200 rounded-xl p-6 shadow-sm">
-            <h4 className="text-lg font-semibold text-slate-900 mb-4">Common Feedback</h4>
-            <div className="space-y-3">
-              <div className="flex items-center space-x-2">
-                <div className="w-2 h-2 bg-yellow-500 rounded-full"></div>
-                <span className="text-sm text-slate-700">Platform Stability</span>
-              </div>
-              <div className="flex items-center space-x-2">
-                <div className="w-2 h-2 bg-yellow-500 rounded-full"></div>
-                <span className="text-sm text-slate-700">Customer Service</span>
-              </div>
-              <div className="flex items-center space-x-2">
-                <div className="w-2 h-2 bg-yellow-500 rounded-full"></div>
-                <span className="text-sm text-slate-700">Response Time</span>
-              </div>
-            </div>
-          </div>
-
-          <div className="bg-white border border-slate-200 rounded-xl p-6 shadow-sm">
-            <h4 className="text-lg font-semibold text-slate-900 mb-4">Review Trends</h4>
-            <div className="space-y-3">
-              <div className="flex items-center justify-between">
-                <span className="text-sm text-slate-700">This Month</span>
-                <span className="text-sm font-semibold text-green-600">+12%</span>
-              </div>
-              <div className="flex items-center justify-between">
-                <span className="text-sm text-slate-700">Avg Rating</span>
-                <span className="text-sm font-semibold text-slate-900">4.2/5</span>
-              </div>
-              <div className="flex items-center justify-between">
-                <span className="text-sm text-slate-700">Response Rate</span>
-                <span className="text-sm font-semibold text-blue-600">85%</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
 
       {/* Data Sources & Verification Section - Moved to Bottom */}
       <div className="mt-12 space-y-6">

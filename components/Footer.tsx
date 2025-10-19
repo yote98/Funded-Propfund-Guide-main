@@ -21,7 +21,7 @@ const Footer: React.FC<FooterProps> = ({ navigateTo }) => {
             <div className="lg:col-span-1">
               <div className="flex items-center space-x-3 mb-6">
                 <FpgLogoIcon className="h-10 w-10 text-teal-600" />
-                <span className="font-bold text-xl text-slate-800">Funded Program Guide</span>
+                <span className="font-heading font-bold text-xl text-slate-800">Funded Program Guide</span>
               </div>
               <p className="text-slate-600 text-sm leading-relaxed mb-6 max-w-sm">
                 Your trusted independent guide to prop trading firms. We help traders make informed decisions 
@@ -31,7 +31,7 @@ const Footer: React.FC<FooterProps> = ({ navigateTo }) => {
 
             {/* Navigation Section */}
             <div>
-              <h3 className="text-sm font-bold text-slate-800 uppercase tracking-wider mb-6 flex items-center">
+              <h3 className="text-sm font-heading font-bold text-slate-800 uppercase tracking-wider mb-6 flex items-center">
                 <span className="w-2 h-2 bg-teal-500 rounded-full mr-2"></span>
                 Navigation
               </h3>
@@ -95,7 +95,7 @@ const Footer: React.FC<FooterProps> = ({ navigateTo }) => {
 
             {/* Resources Section */}
             <div>
-              <h3 className="text-sm font-bold text-slate-800 uppercase tracking-wider mb-6 flex items-center">
+              <h3 className="text-sm font-heading font-bold text-slate-800 uppercase tracking-wider mb-6 flex items-center">
                 <span className="w-2 h-2 bg-teal-500 rounded-full mr-2"></span>
                 Resources
               </h3>
@@ -145,19 +145,19 @@ const Footer: React.FC<FooterProps> = ({ navigateTo }) => {
           <div className="mt-12 pt-8 border-t border-slate-300">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
               <div className="text-center">
-                <div className="text-2xl font-bold text-teal-600 mb-1">43+</div>
+                <div className="text-2xl font-heading font-bold text-teal-600 mb-1">43+</div>
                 <div className="text-sm text-slate-600">Prop Firms</div>
               </div>
               <div className="text-center">
-                <div className="text-2xl font-bold text-teal-600 mb-1">10K+</div>
+                <div className="text-2xl font-heading font-bold text-teal-600 mb-1">10K+</div>
                 <div className="text-sm text-slate-600">Traders Helped</div>
               </div>
               <div className="text-center">
-                <div className="text-2xl font-bold text-teal-600 mb-1">500+</div>
+                <div className="text-2xl font-heading font-bold text-teal-600 mb-1">500+</div>
                 <div className="text-sm text-slate-600">Reviews</div>
               </div>
               <div className="text-center">
-                <div className="text-2xl font-bold text-teal-600 mb-1">24/7</div>
+                <div className="text-2xl font-heading font-bold text-teal-600 mb-1">24/7</div>
                 <div className="text-sm text-slate-600">Support</div>
               </div>
             </div>

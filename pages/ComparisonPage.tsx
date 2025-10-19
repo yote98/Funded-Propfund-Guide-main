@@ -11,7 +11,7 @@ import CalendarIcon from '../components/icons/CalendarIcon.tsx';
 import NewspaperIcon from '../components/icons/NewspaperIcon.tsx';
 import ChipIcon from '../components/icons/ChipIcon.tsx';
 import InfinityIcon from '../components/icons/InfinityIcon.tsx';
-import { trackPropFirmClick, trackFilterUsage, trackSearch, trackTimeOnPage } from '../utils/analytics';
+import { trackPropFirmClick } from '../utils/analytics';
 
 interface ComparisonPageProps {
   viewFirm: (firmId: FirmId) => void;
@@ -258,7 +258,7 @@ const ComparisonPage: React.FC<ComparisonPageProps> = ({ viewFirm, firms, initia
                 }}
                 onFocus={() => setShowSuggestions(true)}
                 onBlur={() => setTimeout(() => setShowSuggestions(false), 200)}
-                placeholder="Search firms (e.g., FTMO, Apex, Fundora...)" 
+                placeholder="Search firms (e.g., FTMO, Apex, Topstep...)" 
                 className="w-full border border-slate-300 rounded-lg shadow-sm py-3 pl-10 pr-10 text-slate-900 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-teal-500" 
               />
               {searchTerm && (

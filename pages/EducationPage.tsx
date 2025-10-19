@@ -8,6 +8,8 @@ interface EducationPageProps {
 }
 
 const EducationPage: React.FC<EducationPageProps> = ({ viewArticle, articles }) => {
+  console.log("EducationPage - articles received:", articles);
+  console.log("EducationPage - articles length:", articles?.length);
 
   return (
     <div className="container mx-auto px-4 py-8">

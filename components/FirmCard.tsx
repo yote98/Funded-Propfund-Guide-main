@@ -73,23 +73,16 @@ const FirmCard: React.FC<FirmCardProps> = ({ firm, viewFirm }) => {
         </div>
       </div>
       <div className="px-6 pb-6 mt-auto pt-4">
-        <div className="flex flex-col sm:flex-row gap-3">
+        <div className="mt-4">
           <a 
             href={affiliateUrl} 
             target="_blank" 
             rel="noopener noreferrer" 
-            className="flex-1 text-center bg-gradient-to-r from-teal-500 to-slate-900 text-white font-semibold py-2 px-4 rounded-lg hover:from-teal-600 hover:to-slate-800 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:ring-offset-2"
+            className="w-full text-center block bg-gradient-to-r from-teal-500 to-slate-900 text-white font-semibold py-2 px-4 rounded-lg hover:from-teal-600 hover:to-slate-800 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:ring-offset-2"
             aria-label={`Visit ${name} official website`}
           >
             Visit Site
           </a>
-          <button 
-            onClick={() => viewFirm(firm.id)} 
-            className="flex-1 text-center bg-slate-200 text-slate-800 font-semibold py-2 px-4 rounded-lg hover:bg-slate-300 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:ring-offset-2"
-            aria-label={`Read detailed review of ${name}`}
-          >
-            Read Review
-          </button>
         </div>
       </div>
     </div>

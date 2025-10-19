@@ -10,18 +10,24 @@ const DataDisclaimer: React.FC = () => {
           </svg>
         </div>
         <div className="ml-3">
-          <h3 className="text-sm font-medium text-yellow-800">
+          <h3 className="text-sm font-bold text-yellow-800 mb-2">
             Data Verification Notice
           </h3>
-          <div className="mt-2 text-sm text-yellow-700">
-            <p>
-              <strong>Important:</strong> Some payout and success metrics data has been removed as it could not be independently verified. 
-              We prioritize accuracy over impressive numbers to protect traders from misleading information.
-            </p>
-            <p className="mt-2">
-              <strong>Our Commitment:</strong> We only display data we can verify through reliable sources like 
-              TradingPilot.net, Payout Junction, and direct firm verification. When in doubt, we err on the side of caution.
-            </p>
+          <div className="text-xs text-yellow-700 space-y-2">
+            <div>
+              <span className="text-xs font-bold text-yellow-800">Important:</span>
+              <span className="text-xs text-yellow-700 ml-1">
+                Some payout and success metrics data has been removed as it could not be independently verified. 
+                We prioritize accuracy over impressive numbers to protect traders from misleading information.
+              </span>
+            </div>
+            <div>
+              <span className="text-xs font-bold text-yellow-800">Our Commitment:</span>
+              <span className="text-xs text-yellow-700 ml-1">
+                We only display data we can verify through reliable sources like 
+                TradingPilot.net, Payout Junction, and direct firm verification. When in doubt, we err on the side of caution.
+              </span>
+            </div>
           </div>
         </div>
       </div>

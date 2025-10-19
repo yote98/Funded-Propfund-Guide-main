@@ -15,6 +15,7 @@ import GlossaryPage from './pages/GlossaryPage.tsx';
 import TradingToolsPage from './pages/TradingToolsPage.tsx';
 import AnalyticsPage from './pages/AnalyticsPage.tsx';
 import AuditPage from './pages/AuditPage.tsx';
+import AIBotPage from './pages/AIBotPage.tsx';
 import { Page, FirmId, ArticleId, PropFirm, Article, TradingTool } from './types.ts';
 import { getPropFirms, getArticles } from './services/apiService.ts';
 import { tradingTools } from './services/tradingToolsData.ts';
@@ -44,6 +45,8 @@ const App: React.FC = () => {
         console.log("Has Fundora:", firmsData.some(f => f.id === 'fundora'));
         setFirms(firmsData);
         setAllArticles(articlesData);
+        console.log("App - articles loaded:", articlesData);
+        console.log("App - articles length:", articlesData?.length);
       } catch (error) {
         console.error("Failed to fetch data:", error);
       } finally {
@@ -121,10 +124,12 @@ const App: React.FC = () => {
   }, []);
 
   const viewFirm = useCallback((firmId: FirmId) => {
+    console.log('App: viewFirm called with firmId:', firmId);
     setSelectedFirmId(firmId.toLowerCase()); // Ensure lowercase for case-insensitive matching
     setCurrentPage('firm-review');
     window.scrollTo(0, 0);
     window.history.pushState({ page: 'firm-review', firmId }, '', `/firm-review/${firmId}`);
+    console.log('App: Navigation to firm-review page completed');
   }, []);
 
   const viewArticle = useCallback((articleId: ArticleId) => {
@@ -259,6 +264,18 @@ const App: React.FC = () => {
               canonicalUrl="/audit"
             />
             <AuditPage firms={firms} />
+          </>
+        );
+      case 'ai-bot':
+        return (
+          <>
+            <SEOHead 
+              title="AI Prop Firm Finder - Get Personalized Recommendations"
+              description="Use our AI-powered bot to find the perfect prop trading firm based on your trading style, experience, and preferences. Get personalized recommendations in minutes."
+              keywords="AI prop firm finder, prop trading recommendations, AI trading bot, personalized prop firm matching, trading style analysis"
+              canonicalUrl="/ai-bot"
+            />
+            <AIBotPage firms={firms} onViewFirmDetails={(firmId) => viewFirm(firmId)} />
           </>
         );
       case 'article':

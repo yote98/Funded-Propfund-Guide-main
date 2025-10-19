@@ -60,6 +60,14 @@ const Header: React.FC<HeaderProps> = ({ navigateTo, currentPage }) => {
                     <nav className="hidden md:flex items-center space-x-1" role="navigation" aria-label="Main navigation">
                         <NavLink page="home" currentPage={currentPage} navigateTo={navigateTo}>Home</NavLink>
                         <NavLink page="compare" currentPage={currentPage} navigateTo={navigateTo}>Compare Firms</NavLink>
+                        <NavLink page="ai-bot" currentPage={currentPage} navigateTo={navigateTo}>
+                            <div className="flex items-center space-x-1">
+                                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+                                </svg>
+                                <span>AI Bot</span>
+                            </div>
+                        </NavLink>
                         <NavLink page="trading-tools" currentPage={currentPage} navigateTo={navigateTo}>Trading Tools</NavLink>
                         <NavLink page="education" currentPage={currentPage} navigateTo={navigateTo}>Education</NavLink>
                         <NavLink page="analytics" currentPage={currentPage} navigateTo={navigateTo}>Analytics</NavLink>
@@ -88,6 +96,14 @@ const Header: React.FC<HeaderProps> = ({ navigateTo, currentPage }) => {
                 <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
                     <NavLink page="home" currentPage={currentPage} navigateTo={handleMobileNavClick} isMobile>Home</NavLink>
                     <NavLink page="compare" currentPage={currentPage} navigateTo={handleMobileNavClick} isMobile>Compare Firms</NavLink>
+                    <NavLink page="ai-bot" currentPage={currentPage} navigateTo={handleMobileNavClick} isMobile>
+                        <div className="flex items-center space-x-2">
+                            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+                            </svg>
+                            <span>AI Bot</span>
+                        </div>
+                    </NavLink>
                     <NavLink page="trading-tools" currentPage={currentPage} navigateTo={handleMobileNavClick} isMobile>Trading Tools</NavLink>
                     <NavLink page="education" currentPage={currentPage} navigateTo={handleMobileNavClick} isMobile>Education</NavLink>
                     <NavLink page="analytics" currentPage={currentPage} navigateTo={handleMobileNavClick} isMobile>Analytics</NavLink>

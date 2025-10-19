@@ -1,4 +1,4 @@
-export type Page = 'home' | 'firm-review' | 'compare' | 'education' | 'about' | 'article' | 'glossary' | 'trading-tools' | 'analytics' | 'audit';
+export type Page = 'home' | 'firm-review' | 'compare' | 'education' | 'about' | 'article' | 'glossary' | 'trading-tools' | 'analytics' | 'audit' | 'ai-bot';
 
 export type FirmId = string;
 export type ArticleId = string;
