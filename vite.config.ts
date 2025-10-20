@@ -21,6 +21,10 @@ export default defineConfig(({ mode }) => {
         alias: {
           '@': path.resolve(__dirname, '.'),
         }
+      },
+      build: {
+        // Silence Vite's large chunk warning for our single-page app bundle size
+        chunkSizeWarningLimit: 2000
       }
     };
 });
