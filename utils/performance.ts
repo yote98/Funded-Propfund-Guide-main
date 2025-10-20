@@ -12,8 +12,8 @@ export const measurePerformance = (name: string, fn: () => void) => {
 
 export const reportWebVitals = (metric: any) => {
   // Report to analytics service
-  if (typeof window !== 'undefined' && window.gtag) {
-    window.gtag('event', metric.name, {
+  if (typeof window !== 'undefined' && (window as any).gtag) {
+    (window as any).gtag('event', metric.name, {
       event_category: 'Web Vitals',
       value: Math.round(metric.name === 'CLS' ? metric.value * 1000 : metric.value),
       event_label: metric.id,
