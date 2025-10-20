@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { subscribeToNewsletter, mockSubscribeToNewsletter } from '../services/newsletterService';
 
 const NewsletterSignUp: React.FC = () => {
   const [isSubscribed, setIsSubscribed] = useState(false);
@@ -27,10 +28,18 @@ const NewsletterSignUp: React.FC = () => {
 
     setIsLoading(true);
     
-    // Simulate API call
     try {
-      await new Promise(resolve => setTimeout(resolve, 1500));
-      setIsSubscribed(true);
+      // Use real API in production, mock in development
+      const isProduction = process.env.NODE_ENV === 'production';
+      const result = isProduction 
+        ? await subscribeToNewsletter({ email, source: 'website' })
+        : await mockSubscribeToNewsletter({ email, source: 'website' });
+      
+      if (result.success) {
+        setIsSubscribed(true);
+      } else {
+        setError(result.error || 'Something went wrong. Please try again.');
+      }
     } catch (err) {
       setError('Something went wrong. Please try again.');
     } finally {
