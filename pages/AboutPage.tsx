@@ -27,7 +27,7 @@ const AboutPage: React.FC = () => {
             Welcome to Funded Program Guide, your number one source for navigating the world of proprietary trading firms. We are dedicated to giving you the very best, with a focus on dependability, customer service, and uniqueness.
           </p>
           <p>
-            Founded in 2023, Funded Program Guide has come a long way from its beginnings. When we first started out, our passion for helping other traders find legitimate and fair funding opportunities drove us to do intense research, and gave us the impetus to turn hard work and inspiration into a booming online resource. We now serve traders all over the world, and are thrilled to be a part of the fair-trade wing of the proprietary trading industry.
+            Founded in 2025, Funded Program Guide has come a long way from its beginnings. When we first started out, our passion for helping other traders find legitimate and fair funding opportunities drove us to do intense research, and gave us the impetus to turn hard work and inspiration into a booming online resource. We now serve traders all over the world, and are thrilled to be a part of the fair-trade wing of the proprietary trading industry.
           </p>
           <h2 className="text-2xl font-bold text-slate-800 mt-6 mb-3">Our Mission</h2>
           <p>
@@ -60,8 +60,7 @@ const AboutPage: React.FC = () => {
               </div>
               <div>
                 <h3 className="font-semibold text-slate-900">Email Us</h3>
-                <p className="text-slate-600">support@fundedprogramguide.com</p>
-                <p className="text-xs text-slate-400 mt-1">Updated: {new Date().toLocaleString()}</p>
+                <p className="text-slate-600">support@propfundedguide.com</p>
               </div>
             </div>
 
