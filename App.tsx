@@ -5,17 +5,20 @@ import SEOHead from './components/SEOHead.tsx';
 import ErrorBoundary from './components/ErrorBoundary.tsx';
 import SkipNavigation from './components/SkipNavigation.tsx';
 import LoadingSpinner from './components/LoadingSpinner.tsx';
+import { lazy, Suspense } from 'react';
 import HomePage from './pages/HomePage.tsx';
-import FirmReviewPage from './pages/FirmReviewPage.tsx';
-import ComparisonPage from './pages/ComparisonPage.tsx';
-import EducationPage from './pages/EducationPage.tsx';
 import AboutPage from './pages/AboutPage.tsx';
-import ArticlePage from './pages/ArticlePage.tsx';
-import GlossaryPage from './pages/GlossaryPage.tsx';
-import TradingToolsPage from './pages/TradingToolsPage.tsx';
-import AnalyticsPage from './pages/AnalyticsPage.tsx';
-import AuditPage from './pages/AuditPage.tsx';
-import AIBotPage from './pages/AIBotPage.tsx';
+
+// Lazy load heavy pages for better performance
+const FirmReviewPage = lazy(() => import('./pages/FirmReviewPage.tsx'));
+const ComparisonPage = lazy(() => import('./pages/ComparisonPage.tsx'));
+const EducationPage = lazy(() => import('./pages/EducationPage.tsx'));
+const ArticlePage = lazy(() => import('./pages/ArticlePage.tsx'));
+const GlossaryPage = lazy(() => import('./pages/GlossaryPage.tsx'));
+const TradingToolsPage = lazy(() => import('./pages/TradingToolsPage.tsx'));
+const AnalyticsPage = lazy(() => import('./pages/AnalyticsPage.tsx'));
+const AuditPage = lazy(() => import('./pages/AuditPage.tsx'));
+const AIBotPage = lazy(() => import('./pages/AIBotPage.tsx'));
 import { Page, FirmId, ArticleId, PropFirm, Article, TradingTool } from './types.ts';
 import { getPropFirms, getArticles } from './services/apiService.ts';
 import { tradingTools } from './services/tradingToolsData.ts';
@@ -178,7 +181,9 @@ const App: React.FC = () => {
                 canonicalUrl={`/firm-review/${firm.id}`}
                 structuredData={getFirmStructuredData(firm)}
               />
-              <FirmReviewPage firm={firm} />
+              <Suspense fallback={<LoadingSpinner size="lg" text="Loading firm details..." />}>
+                <FirmReviewPage firm={firm} />
+              </Suspense>
             </>
           );
         }
@@ -192,7 +197,9 @@ const App: React.FC = () => {
               keywords="compare prop firms, prop trading comparison, best prop firm, trading firm comparison"
               canonicalUrl="/compare"
             />
-            <ComparisonPage viewFirm={viewFirm} firms={firms} initialSearchTerm={initialSearchTerm} onSearchHandled={() => setInitialSearchTerm('')} />
+            <Suspense fallback={<LoadingSpinner size="lg" text="Loading comparison tool..." />}>
+              <ComparisonPage viewFirm={viewFirm} firms={firms} initialSearchTerm={initialSearchTerm} onSearchHandled={() => setInitialSearchTerm('')} />
+            </Suspense>
           </>
         );
       case 'education':
@@ -204,7 +211,9 @@ const App: React.FC = () => {
               keywords="prop trading education, proprietary trading guide, trading education, prop firm guide"
               canonicalUrl="/education"
             />
-            <EducationPage viewArticle={viewArticle} articles={allArticles} />
+            <Suspense fallback={<LoadingSpinner size="lg" text="Loading education content..." />}>
+              <EducationPage viewArticle={viewArticle} articles={allArticles} />
+            </Suspense>
           </>
         );
       case 'about':
@@ -228,7 +237,9 @@ const App: React.FC = () => {
               keywords="prop trading glossary, trading terms, proprietary trading definitions, trading vocabulary"
               canonicalUrl="/glossary"
             />
-            <GlossaryPage />
+            <Suspense fallback={<LoadingSpinner size="lg" text="Loading glossary..." />}>
+              <GlossaryPage />
+            </Suspense>
           </>
         );
       case 'trading-tools':
@@ -240,7 +251,9 @@ const App: React.FC = () => {
               keywords="trading tools, trading software, prop trading tools, trading platforms, trading analytics"
               canonicalUrl="/trading-tools"
             />
-            <TradingToolsPage tools={tradingTools} />
+            <Suspense fallback={<LoadingSpinner size="lg" text="Loading trading tools..." />}>
+              <TradingToolsPage tools={tradingTools} />
+            </Suspense>
           </>
         );
       case 'analytics':
@@ -252,7 +265,9 @@ const App: React.FC = () => {
               keywords="prop trading analytics, trading data, market insights, trading statistics, prop firm analytics"
               canonicalUrl="/analytics"
             />
-            <AnalyticsPage firms={firms} reviews={userReviews} />
+            <Suspense fallback={<LoadingSpinner size="lg" text="Loading analytics..." />}>
+              <AnalyticsPage firms={firms} reviews={userReviews} />
+            </Suspense>
           </>
         );
       case 'audit':
@@ -263,7 +278,9 @@ const App: React.FC = () => {
               description="Internal audit of firm data completeness"
               canonicalUrl="/audit"
             />
-            <AuditPage firms={firms} />
+            <Suspense fallback={<LoadingSpinner size="lg" text="Loading audit data..." />}>
+              <AuditPage firms={firms} />
+            </Suspense>
           </>
         );
       case 'ai-bot':
@@ -275,7 +292,9 @@ const App: React.FC = () => {
               keywords="AI prop firm finder, prop trading recommendations, AI trading bot, personalized prop firm matching, trading style analysis"
               canonicalUrl="/ai-bot"
             />
-            <AIBotPage firms={firms} onViewFirmDetails={(firmId) => viewFirm(firmId)} />
+            <Suspense fallback={<LoadingSpinner size="lg" text="Loading AI bot..." />}>
+              <AIBotPage firms={firms} onViewFirmDetails={(firmId) => viewFirm(firmId)} />
+            </Suspense>
           </>
         );
       case 'article':
@@ -290,11 +309,17 @@ const App: React.FC = () => {
                 canonicalUrl={`/article/${article.id}`}
                 structuredData={getArticleStructuredData(article)}
               />
-              <ArticlePage article={article} navigateToEducation={() => navigateTo('education')} />
+              <Suspense fallback={<LoadingSpinner size="lg" text="Loading article..." />}>
+                <ArticlePage article={article} navigateToEducation={() => navigateTo('education')} />
+              </Suspense>
             </>
           );
         }
-        return <EducationPage viewArticle={viewArticle} articles={allArticles} />;
+        return (
+          <Suspense fallback={<LoadingSpinner size="lg" text="Loading education content..." />}>
+            <EducationPage viewArticle={viewArticle} articles={allArticles} />
+          </Suspense>
+        );
       default:
         return <HomePage viewFirm={viewFirm} firms={firms} navigateToCompare={navigateToCompare} />;
     }
